@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <servlet>
+        <servlet-name>GeneralRouter</servlet-name>
+        <servlet-class>com.hxsd.services.router.ServiceRouter</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ApplicationInitializer</servlet-name>
+        <servlet-class>com.hxsd.application.Initializer</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ApplicationInitializer</servlet-name>
+        <url-pattern>/ApplicationInitializer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GeneralRouter</servlet-name>
+        <url-pattern>/generalRouter</url-pattern>
+    </servlet-mapping>
+<!--
+    <filter>
+        <filter-name>authorizationFilter</filter-name>
+        <filter-class>com.doubeye.core.authorization.AuthorizationFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>authorizationFilter</filter-name>
+        <realUrl-pattern>/generalRouter</realUrl-pattern>
+    </filter-mapping>
+-->
+    <!--
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>
+                Restricted Area
+            </web-resource-name>
+            <realUrl-pattern>/index.html</realUrl-pattern>
+        </web-resource-collection>
+    </security-constraint>
+    -->
+    <!--
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>
+                Restricted Area
+            </web-resource-name>
+            <realUrl-pattern>/GeneralRouter</realUrl-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>users</role-name>
+        </auth-constraint>
+    </security-constraint>
+    -->
+    <!--
+    <login-initConfig>
+        <auth-method>BASIC</auth-method>
+        <realm-name>Authenticate yourself</realm-name>
+    </login-initConfig>
+    -->
+</web-app>

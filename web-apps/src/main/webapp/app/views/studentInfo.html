@@ -1,0 +1,84 @@
+<div class="searchBar">
+    <div>
+        <div><label>请选择要使用的数据库</label><d-group-radio cookie-name="eduDataSource"></d-group-radio></div>
+    </div>
+    <input type="text" ng-model="$ctrl.mobileNumber"/>
+    <button ng-click="$ctrl.doSearch()">搜索</button>
+    <div>
+        <ul>
+            <li ng-repeat="student in $ctrl.students">
+                <div>
+                    <a href="javascript:void(0);" ng-click="$ctrl.showStudentTimeLine(student)">{{student.studentname}}</a>
+                </div>
+                <div>
+                    <div>旧EDU基本信息，除初次意向系外，来自于student表</div>
+                    <table>
+                        <tr>
+                            <th>学生编号</th>
+                            <th>学生姓名</th>
+                            <th>建表时间</th>
+                            <th>校区</th>
+                            <th>初次意向</th>
+                            <th>身份证号</th>
+                            <th>手机号</th>
+                            <th>手机号2</th>
+                            <th>qq</th>
+                            <th>微信</th>
+                            <th>等级</th>
+                            <th>负责人编号</th>
+                            <th>负责人时间</th>
+                            <th>报名编号</th>
+                            <th>报名时间</th>
+                            <th>最后一次反馈编号</th>
+                            <th>最后一次反馈时间</th>
+                            <th>无效标记</th>
+                            <th>删除标记</th>
+                            <th>废弃标记</th>
+                            <th>旧量标记</th>
+                        </tr>
+                        <tr>
+                            <th>{{student.studentid}}</th>
+                            <th>{{student.studentname}}</th>
+                            <th>{{student.dateline}}</th>
+                            <th>{{student.campusName}}</th>
+                            <th>{{student.allFaculty}}</th>
+                            <th>{{student.idcard}}</th>
+                            <th>{{student.mobile}}</th>
+                            <th>{{student.mobile2}}</th>
+                            <th>{{student.qq}}</th>
+                            <th>{{student.wechar}}</th>
+                            <th>{{student.enrolllevel}}</th>
+                            <th>{{student.ecuser}}</th>
+                            <th>{{student.ecdateline}}</th>
+                            <th>{{student.enrollmentid}}</th>
+                            <th>{{student.enrolldateline}}</th>
+                            <th>{{student.feedbackid}}</th>
+                            <th>{{student.feedbackdateline}}</th>
+                            <th>{{student.invalid}}</th>
+                            <th>{{student.deleted}}</th>
+                            <th>{{student.discard}}</th>
+                            <th>{{student.oldstudent}}</th>
+                        </tr>
+                    </table>
+                    <div>
+                        <p>时间线</p>
+                        <table>
+                            <tr>
+                                <th>序号</th>
+                                <th style="width:100px;">类型</th>
+                                <th style="width:200px;">时间</th>
+                                <th>其他信息</th>
+                            </tr>
+                            <tr ng-repeat="timeLine in $ctrl.currentStudent.timeLine">
+                                <td>{{$index + 1}}</td>
+                                <td>{{timeLine.infoTypeName}}</td>
+                                <td>{{timeLine.dateline}}</td>
+                                <td>{{timeLine.info}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

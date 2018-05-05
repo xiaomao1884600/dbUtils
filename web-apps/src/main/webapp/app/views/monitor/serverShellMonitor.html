@@ -1,0 +1,54 @@
+<style>
+
+    .monitor-chart {
+        width:calc(50% - 5px);
+        margin-right: 2px;
+        margin-bottom: 2px;
+        float:left;
+    }
+
+</style>
+<div>
+    <div id="header">
+        <md-input-container>
+            <md-select ng-model="$ctrl.selectedApp" placeholder="请选择要查询的项目">
+                <md-option ng-value="item" ng-repeat="item in $ctrl.apps">{{ item.name }}</md-option>
+            </md-select>
+        </md-input-container>
+        <button ng-click="$ctrl.getData()">获取</button>
+
+        <d-date-time-picker start-time="$ctrl.startTime" end-time="$ctrl.endTime" date-group="$ctrl.dateGroup"></d-date-time-picker>
+
+        <h3 style="text-align: center">{{$ctrl.selectedApp.name}}</h3>
+    </div>
+
+    <div   class="monitor-chart">
+        <line-chart options="$ctrl.tasks"  title="'Tasks'" chart-height="$ctrl.chartHeight"
+                    chart-id="'tasks'" on-click="$ctrl.onChartClick"></line-chart>
+    </div>
+
+    <div   class="monitor-chart">
+        <line-chart options="$ctrl.cpu"  title="'CPU/TOP'" chart-height="$ctrl.chartHeight"
+                    chart-id="'cpu'" on-click="$ctrl.onChartClick"></line-chart>
+    </div>
+
+    <div   class="monitor-chart">
+        <line-chart options="$ctrl.men"  title="'内存'" chart-height="$ctrl.chartHeight"
+                    chart-id="'men'" on-click="$ctrl.onChartClick"></line-chart>
+    </div>
+
+    <div   class="monitor-chart">
+        <line-chart options="$ctrl.swap"  title="'swap'" chart-height="$ctrl.chartHeight"
+                    chart-id="'swap'" on-click="$ctrl.onChartClick"></line-chart>
+    </div>
+
+    <div   class="monitor-chart">
+        <line-chart options="$ctrl.iostatUtil"  title="'swap'" chart-height="$ctrl.chartHeight"
+                    chart-id="'iostatUtil'" on-click="$ctrl.onChartClick"></line-chart>
+    </div>
+
+    <div   class="monitor-chart">
+        <line-chart options="$ctrl.diskUsages"  title="'可用空间（GB）'" chart-height="$ctrl.chartHeight"
+                    chart-id="'diskUsages'" on-click="$ctrl.onChartClick"></line-chart>
+    </div>
+</div>

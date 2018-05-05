@@ -1,0 +1,53 @@
+<style>
+    td,th{
+        padding: 2px 10px;
+    }
+    tr:nth-child(odd),tr:hover{
+        background-color: #f0f0f0;
+    }
+    .red {
+        background-color: #ff8864;
+    }
+    .green {
+        background-color: #3e8f3e;
+    }
+    .ngdialog.ngdialog-theme-plain.custom-width .ngdialog-content {
+        width: 550px;
+    }
+</style>
+<div>
+    <label>请选择要使用的数据库</label><d-group-radio cookie-name="eDataSource"></d-group-radio>
+</div>
+请选择分配时间(实际搜索时间为选定时间的前后60分钟)：<button ng-click="$ctrl.assignLogByTimeRange()">按时间段搜索</button>
+
+<d-date-time-picker start-time="start" end-time="end" date-group="$ctrl.dataGroup"></d-date-time-picker>
+
+或者选择一个学生：
+<input type="text" ng-model="$ctrl.studentId"/> <button ng-click="$ctrl.assignLogByStudentId()">按学生搜索</button>
+
+<div class="assignDetail">
+    <div ng-repeat="assignLogDetail in $ctrl.assignLogDetails">
+        <h3>将{{assignLogDetail.campusid}}校区的{{assignLogDetail.studentid}}分配给{{assignLogDetail.ecsuser.username}}({{assignLogDetail.ecsuser.userid}})，分配详情：</h3>
+        <label>在线用户</label>
+        <table>
+            <tr>
+                <th>用户id</th>
+                <th>用户姓名</th>
+                <th>是否达到日上线</th>
+                <th>未反馈是否超过3</th>
+                <th>是否超过AB量上线</th>
+                <th>接量个数</th>
+                <th>是否可接量</th>
+            </tr>
+            <tr ng-repeat="onlineuser in assignLogDetail.onlineuser">
+                <td>{{onlineuser.userid}}</td>
+                <td>{{onlineuser.username}}</td>
+                <td>{{onlineuser.dayLimit}}</td>
+                <td>{{onlineuser.noFeedback}}</td>
+                <td>{{onlineuser.eduLevel}}</td>
+                <td>{{onlineuser.allocatedCount}}</td>
+                <td>{{onlineuser.minCount}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

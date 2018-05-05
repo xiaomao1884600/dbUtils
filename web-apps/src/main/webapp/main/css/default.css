@@ -1,0 +1,35 @@
+#container {
+	padding: 5px;
+	overflow: scroll;
+}
+
+.com-doubeye-default-float-left {
+	float: left;
+}
+
+.com-doubeye-default-float-right {
+	float: right;
+}
+
+.com-doubeye-default-clear-float {
+	clear: both;
+}
+
+.com-doubeye-default-highlight {
+	border: 1px solid #888;
+	background-color: #ffc;
+}
+
+.com-doubeye-default-searchHighlight {
+	background-color: #ffc;
+}
+
+.com-doubeye-default-float {
+	background-color: #F6F6F6;
+	border: 1px solid #CCCCCC;
+	position: absolute;
+}
+
+.com-doubeye-default-invalid {
+	background-color: #FFD7D7;
+}

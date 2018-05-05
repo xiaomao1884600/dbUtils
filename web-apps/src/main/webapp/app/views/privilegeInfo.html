@@ -1,0 +1,97 @@
+<style>
+    td,th{
+        padding: 2px 10px;
+    }
+    tr:nth-child(odd),tr:hover{
+        background-color: #f0f0f0;
+    }
+    .red {
+        background-color: #ff8864;
+    }
+    .green {
+        background-color: #3e8f3e;
+    }
+    .ngdialog.ngdialog-theme-plain.custom-width .ngdialog-content {
+        width: 550px;
+    }
+</style>
+<div class="searchBar">
+    <div>
+        <h3>已重置密码的用户列表，记得改回来！！</h3>
+        <table>
+            <tr>
+                <th>数据源</th>
+                <th>用户编号</th>
+                <th>用户姓名--登录名</th>
+                <th>操作</th>
+            </tr>
+            <tr ng-repeat="user in $ctrl.resettedUsers">
+                <td>{{user.datasource}}</td>
+                <td>{{user.userid}}</td>
+                <td>{{user.username}}</td>
+                <td><button ng-click="$ctrl.restorePassword(user)">恢复</button></td>
+            </tr>
+        </table>
+    </div>
+
+    <div>
+        <div><label>请选择要使用的数据库</label><d-group-radio cookie-name="eDataSource"></d-group-radio></div>
+        <div><input ng-model="$ctrl.userInfo" type="text"/> <button ng-click="$ctrl.getPrivileges()">获取用户权限信息</button></div>
+        <div><input ng-model="$ctrl.groupInfo" type="text"/>  <d-manageable-combo-box label-property-name="name" value-property-name="id" realUrl="'generalRouter?objectName=com.hxsd.services.productLine.e.privilege.GroupService&action=getAllGroups&dataSource=E-PRODUCT'" component-value="$ctrl.userGroup"></d-manageable-combo-box> <button ng-click="$ctrl.getUsersUnderGroup()">获取用户组下的用户</button></div>
+    </div>
+    <div ng-repeat="info in $ctrl.infoes">
+        <div>
+            <h3>基本信息</h3>
+            <ul>
+                <span ng-repeat="userNameAndAssignFlag in info.userNameAndAssignFlag" style="padding-left: 10px">
+                    用户编号：{{userNameAndAssignFlag.userid}}  用户姓名：{{userNameAndAssignFlag.username}}  登录名：{{userNameAndAssignFlag.loginname}}   {{userNameAndAssignFlag.autoassign}}
+                    <button ng-click="$ctrl.setDefaultPassword(userNameAndAssignFlag)">将密码改为123456</button>
+                </span>
+            </ul>
+        </div>
+        <div>
+            <h3>用户校区</h3>
+            <ul>
+                <span ng-repeat="userCampus in info.userCampuses" style="padding-left: 10px">
+                    {{userCampus.title}}
+                </span>
+            </ul>
+        </div>
+        <div>
+            <h3>用户包含的用户组为</h3>
+            <ul>
+                <li ng-repeat="userGroup in info.userGroups">
+                    {{userGroup.name}}
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h3>用户包含的角色为</h3>
+            <li ng-repeat="role in info.groupRoles">
+                {{role.name}}
+            </li>
+        </div>
+        <div>
+            <h3>用户包含的权限为</h3>
+            <table>
+                <tr>
+                    <th>名称</th>
+                    <th>参数</th>
+                </tr>
+                <tr ng-repeat="permission in info.permissions">
+                    <td>{{permission.name}}</td>
+                    <td>{{permission.params}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div>
+        <table>
+            <tr ng-repeat="user in $ctrl.usersUnderGroup">
+                <td>{{$index + 1}}</td>
+                <td>{{user.username}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

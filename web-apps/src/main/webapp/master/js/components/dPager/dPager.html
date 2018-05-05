@@ -1,0 +1,27 @@
+<div>
+    <md-button ng-click="$ctrl.goTo(1)" ng-disabled="$ctrl.currentPage <= 1">
+        首页
+    </md-button>
+    <md-button ng-click="$ctrl.goTo($ctrl.currentPage - 1)" ng-disabled="$ctrl.currentPage <= 1">
+        上一页
+    </md-button>
+
+    <a ng-repeat="entry in $ctrl.previousPages" href="javascript:void(0);" ng-click="$ctrl.goTo(entry.page)"> {{entry.page}}</a>
+    <label>{{$ctrl.currentPage}}</label>
+    <a ng-repeat="entry in $ctrl.nextPages" href="javascript:void(0);" ng-click="$ctrl.goTo(entry.page)"> {{entry.page}}</a>
+
+
+    <md-button ng-click="$ctrl.goTo($ctrl.currentPage + 1)" ng-disabled="$ctrl.currentPage >= $ctrl.totalPage">
+        下一页
+    </md-button>
+    <md-button ng-click="$ctrl.goTo($ctrl.totalPage)" ng-disabled="$ctrl.currentPage >= $ctrl.totalPage">
+        尾页
+    </md-button>
+
+<!--    <md-input-container> -->
+    <label ng-if="$ctrl.totalPage > 0">共{{$ctrl.totalPage}}页</label> <label ng-if="$ctrl.totalRecords">共{{$ctrl.totalRecords}}条记录</label>
+        <label for="jumpTo">转到</label>
+        <input id="jumpTo" type="number" ng-model="$ctrl.toPage" style="width:60px;" ng-change="$ctrl.onPageChange()">
+<!--    </md-input-container> -->
+    <md-button ng-click="$ctrl.goTo($ctrl.toPage)">跳转</md-button>
+</div>

@@ -1,0 +1,135 @@
+<style>
+    .stat-result {
+        clear: both;
+    }
+    .result-grid {
+        overflow-y: scroll;
+        height : 400px;
+    }
+    .contribution-result {
+        width:calc(45% - 5px);
+        margin-right: 2px;
+        margin-bottom: 2px;
+        float:left;
+    }
+    .team-contribution-result {
+        width:calc(40% - 5px);
+        margin-right: 2px;
+        margin-bottom: 2px;
+        float:left;
+    }
+    .result-tab {
+        height:50px;min-height:10px !important;
+    }
+
+    md-input-container {
+        vertical-align: top;
+    }
+
+    .debug_pass {
+        color : darkgreen;
+    }
+    .debug_fail {
+        color : crimson;
+    }
+</style>
+
+<div>
+    <md-input-container>
+        <md-select ng-model="$ctrl.selectedCampus" placeholder="请选择校区">
+            <md-option ng-value="item" ng-repeat="item in $ctrl.campuses">{{ item.name }}</md-option>
+        </md-select>
+    </md-input-container>
+
+    <d-date-range-picker start-time="$ctrl.startTime" end-time="$ctrl.endTime" date-group="$ctrl.dateGroup"></d-date-range-picker>
+
+    <md-input-container>
+        <md-switch ng-model="$ctrl.mode" aria-label="mode" ng-true-value="'团队'" ng-false-value="'个人'" class="md-primary" style="margin-top: 0px !important;">
+            {{$ctrl.mode}}
+        </md-switch>
+    </md-input-container>
+    <md-input-container>
+        <md-button class="md-parimary" ng-click="$ctrl.getData()">查询</md-button>
+    </md-input-container>
+    <md-input-container>
+        <md-button ng-show="$ctrl.contributions && $ctrl.contributions.length > 0" ng-click="$ctrl.showTeamStat()">{{$ctrl.showTeamButtonTitle}}</md-button>
+    </md-input-container>
+</div>
+<div>
+    <div ng-show="$ctrl.displayTeamStat" class="stat-result">
+        <div class="row">
+            <div class="team-contribution-result" width="$ctrl.chartWisth" style="width: auto">
+
+                <line-chart options="$ctrl.team.callOut"  title="'团队有效呼出对比'" chart-height="380" chart-width="$ctrl.chartWidth"
+                            chart-id="'teamCallOut'"></line-chart>
+            </div>
+            <div class="team-contribution-result" width="$ctrl.chartWisth" style="width: auto">
+
+                <line-chart options="$ctrl.team.rangeStats"  title="'团队工作时段对比'" chart-height="380" chart-width="$ctrl.chartWidth"
+                            chart-id="'teamTimeRange'" force-re-render="'true'"></line-chart>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 帮助测试查看数据是否能对上，如果需要则打开注释
+    <div ng-if="$ctrl.developer" ng-class="{true: 'debug_pass', false : 'debug_fail'}[$ctrl.__debug.c.totalCallCountValid === $ctrl.__debug.d.totalCallCountValid && $ctrl.__debug.c.totalCallLengthValid === $ctrl.__debug.d.totalCallLengthValid]">
+        根据录音贡献度计算   有效电话总数：{{$ctrl.__debug.c.totalCallCountValid}}  有效播出时长：{{$ctrl.__debug.c.totalCallLengthValid}}
+        根据等级计算   有效电话总数：{{$ctrl.__debug.d.totalCallCountValid}}  有效播出时长：{{$ctrl.__debug.d.totalCallLengthValid}}
+    </div>
+    -->
+
+    <div layout="column" ng-cloak class="stat-result">
+        <md-content class="md-padding" >
+            <md-tabs class="result-tab" md-selected="$ctrl.selectedIndex" md-border-bottom md-enable-disconnect md-autoselect="false">
+                     <md-tab ng-repeat="entry in $ctrl.contributions" label="{{entry.name}}" md-on-select="$ctrl.renderChart(entry)">
+              </md-tab>
+            </md-tabs>
+            <div class="content" ng-show="$ctrl.contributions && $ctrl.contributions.length > 0">
+                <div class="stat-result">
+                    <div class="contribution-result result-grid">
+                        <d-grid column-defines="$ctrl.__callOutLengthContributionColumnDefine" grid-data="$ctrl.currentUser.data.person_call_length"></d-grid>
+                    </div>
+
+                    <div class="contribution-result">
+                        <line-chart options="$ctrl.currentUser.callOutLength"  title="'拨出时长贡献度'" chart-height="380" chart-width="$ctrl.chartWidth"
+                                    chart-id="'callLength'" on-click="$ctrl.onMobileClick"></line-chart>
+                    </div>
+                </div>
+                <div class="stat-result">
+                    <div class="contribution-result result-grid">
+                        <d-grid column-defines="$ctrl.__intervalContributionColumnDefine" grid-data="$ctrl.currentUser.data.person_call_interval"></d-grid>
+                    </div>
+                    <div class="contribution-result">
+                        <line-chart options="$ctrl.currentUser.range"  title="'时段贡献度'" chart-height="380" chart-width="$ctrl.chartWidth"
+                                    chart-id="'range'" on-click="$ctrl.onRangeClick"></line-chart>
+                    </div>
+                </div>
+                <div class="stat-result">
+                    <div class="contribution-result result-grid" >
+                        <d-grid column-defines="$ctrl.__callOutCountContributionColumnDefine" grid-data="$ctrl.currentUser.data.person_call_number"></d-grid>
+                    </div>
+
+                    <div class="contribution-result">
+                        <line-chart options="$ctrl.currentUser.callOut"  title="'拨出次数贡献度'" chart-height="380" chart-width="$ctrl.chartWidth"
+                                    chart-id="'callOut'" on-click="$ctrl.onMobileClick"></line-chart>
+                    </div>
+                </div>
+
+                <div class="stat-result" ng-if="$ctrl.developer">
+                    <div class="contribution-result result-grid" >
+                        <d-grid column-defines="$ctrl.__feedbackLevelColumnDefine" grid-data="$ctrl.currentUser.feedbackLevel.data"></d-grid>
+                    </div>
+                    <div layout="row">
+                        <div flex="50">
+                            <pie-chart  title="'有效播出次数'" chart-data="$ctrl.currentUser.callCountPie.data" chart-legend="$ctrl.currentUser.callCountPie.legend" chart-id="callCountPie"></pie-chart>
+                        </div>
+                        <div flex="50">
+                            <pie-chart  title="'有效播出时长'" chart-data="$ctrl.currentUser.callLengthPie.data" chart-legend="$ctrl.currentUser.callLengthPie.legend" chart-id="callLengthPie"></pie-chart>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </md-content>
+    </div>
+</div>

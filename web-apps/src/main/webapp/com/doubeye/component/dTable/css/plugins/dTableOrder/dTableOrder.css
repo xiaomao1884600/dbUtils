@@ -1,0 +1,33 @@
+.com-doubeye-default-dTableOrder-main {
+	vertical-align: middle;
+	display: inline-block;
+}
+
+.com-doubeye-default-dTableOrder-order {
+	background-image: url("../../../images/ui-icons_228ef1_256x240.png");
+	display: inline-block;
+	height: 16px;
+	width: 16px;
+	cursor: pointer;
+}
+
+.com-doubeye-default-dTableOrder-order-none {
+	background-position: -98px -624px;
+}
+
+.com-doubeye-default-dTableOrder-order-asc {
+	background-position: -0px -16px;
+}
+
+.com-doubeye-default-dTableOrder-order-desc {
+	background-position: -64px -16px;
+}
+
+.com-doubeye-default-dTableOrder-toAdvance {
+	background-image: url("../../../images/ui-icons_228ef1_256x240.png");
+	background-position: -32px -16px;
+	height: 16px;
+	width: 16px;
+	cursor: pointer;
+	display: inline-block;
+}

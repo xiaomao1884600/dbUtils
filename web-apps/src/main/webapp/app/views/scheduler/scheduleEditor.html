@@ -1,0 +1,65 @@
+
+    <div>
+        <md-input-container>
+            <label>名称</label>
+            <input ng-model="$ctrl.schedule.name">
+        </md-input-container>
+    </div>
+    <div>
+        <md-input-container>
+            <label>标示符</label>
+            <input ng-model="$ctrl.schedule.identifier">
+        </md-input-container>
+    </div>
+    <div>
+        <md-input-container>
+            <label>任务类型</label>
+            <input ng-model="$ctrl.schedule.scheduleType">
+        </md-input-container>
+    </div>
+    <div>
+        <md-input-container>
+            <label>单例控制类型</label>
+            <input ng-model="$ctrl.schedule.singletonType">
+        </md-input-container>
+    </div>
+    <div>
+        <md-input-container>
+            <label>运行入口类</label>
+            <input ng-model="$ctrl.schedule.initConfig.mainClassName">
+        </md-input-container>
+    </div>
+    <div>
+        <md-input-container>
+            <label>结果文件存放目录</label>
+            <input ng-model="$ctrl.schedule.initConfig.resultFileDirectory">
+        </md-input-container>
+    </div>
+    <div>
+        <md-input-container>
+            <label>抓取结果文件名模板</label>
+            <input ng-model="$ctrl.schedule.initConfig.originFileNameTemplate">
+        </md-input-container>
+    </div>
+    <div>
+        <md-input-container>
+            <label>处理后的文件名模板</label>
+            <input ng-model="$ctrl.schedule.initConfig.processedFileNameTemplate">
+        </md-input-container>
+    </div>
+    <div>
+        <!-- TODO you should add this.schedule.initConfig.dataSourceId in the controller`s js file-->
+        <md-input-container>
+            <md-select ng-model="$ctrl.schedule.initConfig.dataSourceId" placeholder="数据源">
+                <md-optgroup label="items">
+                    <md-option ng-value="item" ng-repeat="item in $ctrl.dataSources">{{ item.name }}</md-option>
+                </md-optgroup>
+            </md-select>
+        </md-input-container>
+    </div>
+    <div>
+        <md-input-container>
+            <label>结果表名模板</label>
+            <input ng-model="$ctrl.schedule.initConfig.tableNameTemplate">
+        </md-input-container>
+    </div>

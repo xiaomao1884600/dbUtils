@@ -1,0 +1,15 @@
+<div>
+    <table style="width: 100%;">
+        <tr>
+            <td style="width: 50%"><textarea ng-model="$ctrl.firstJson" style="width: 100%; height: 200px;"></textarea></td>
+            <td style="width: 50%"><textarea ng-model="$ctrl.secondJson"style="width: 100%; height: 200px;"></textarea></td>
+        </tr>
+        <tr>
+            <td style="width: 50%"><abn-tree tree-data="$ctrl.firstTree" expand-level="5" tree-control="$ctrl.firstTreeComponent"></abn-tree></td>
+            <td style="width: 50%"><abn-tree tree-data="$ctrl.secondTree" expand-level="5" tree-control="$ctrl.secondTreeComponent"></abn-tree></td>
+        </tr>
+    </table>
+    <div><button ng-click="$ctrl.doCompare()">比较</button> <button ng-click="$ctrl.expandResult()">展开结果</button> <button ng-click="$ctrl.collapseResult()">收缩结果</button></div>
+    <abn-tree tree-data="$ctrl.resultTree" expand-level="5" tree-control="$ctrl.resultTreeComponent"></abn-tree>
+    <div style="width: 100%"><textarea ng-model="$ctrl.result" readonly="true" style="width: 100%; height: 200px;"></textarea></div>
+</div>

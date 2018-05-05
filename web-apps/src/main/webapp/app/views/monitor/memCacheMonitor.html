@@ -1,0 +1,52 @@
+<style>
+
+    .monitor-chart {
+        width:calc(50% - 5px);
+        margin-right: 2px;
+        margin-bottom: 2px;
+        float:left;
+    }
+
+</style>
+<div>
+    <div id="header">
+        <md-input-container>
+            <md-select ng-model="$ctrl.selectedMemCacheServer" placeholder="请选择要查询的MemCache服务器">
+                <md-option ng-value="item" ng-repeat="item in $ctrl.memCacheServers">{{ item.name }}</md-option>
+            </md-select>
+        </md-input-container>
+        <button ng-click="$ctrl.getData()">获取</button>
+
+        <d-date-time-picker start-time="$ctrl.startTime" end-time="$ctrl.endTime" date-group="$ctrl.dateGroup"></d-date-time-picker>
+        <h3 style="text-align: center">{{$ctrl.selectedMemCacheServer.name}}</h3>
+    </div>
+
+    <div   class="monitor-chart">
+        <line-chart options="$ctrl.counts"  title="'内容数量'" chart-height="$ctrl.chartHeight"
+                    chart-id="'keys'"></line-chart>
+    </div>
+    <div  class="monitor-chart">
+        <line-chart options="$ctrl.usedMem"  title="'已用内存'" chart-height="$ctrl.chartHeight"
+                    chart-id="'usedMem'"></line-chart>
+    </div>
+
+
+    <div  class="monitor-chart">
+        <line-chart options="$ctrl.currentConnections"  title="'连接数'" chart-height="$ctrl.chartHeight"
+                    chart-id="'currentConnections'"></line-chart>
+    </div>
+    <div  class="monitor-chart">
+        <line-chart options="$ctrl.readWrite"  title="'读写时间'" chart-height="$ctrl.chartHeight"
+                    chart-id="'readWrite'"></line-chart>
+    </div>
+
+    <div  class="monitor-chart">
+        <line-chart options="$ctrl.readWriteCount"  title="'读写次数'" chart-height="$ctrl.chartHeight"
+                    chart-id="'readWriteCount'"></line-chart>
+    </div>
+    <div  class="monitor-chart">
+        <line-chart options="$ctrl.readWriteBytes"  title="'读写（字节）'" chart-height="$ctrl.chartHeight"
+                    chart-id="'readWriteBytes'"></line-chart>
+    </div>
+
+</div>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <!-- venders -->
+    <script type="text/javascript" src="vendor/angularJS/angular.js"></script>
+    <script type="text/javascript" src="vendor/angularJS/angular-route.js"></script>
+    <script type="text/javascript" src="vendor/angularJS/ui-router/angular-ui-router.js"></script>
+    <script type="text/javascript" src="vendor/angularJS/ngDialog/ngDialog.js"></script>
+    <script type="text/javascript" src="vendor/angularJS/angular-cookies.js"></script>
+
+    <!-- global -->
+    <script type="text/javascript" src="master/js/pubilcApp.js"></script>
+    <script type="text/javascript" src="master/js/modules/pubilcConfig.js"></script>
+
+    <!-- utils -->
+    <script type="text/javascript" src="master/js/utils/Ext.js"></script>
+    <script type="text/javascript" src="master/js/factory/httpService.js"></script>
+
+    <!-- components -->
+    <script type="text/javascript" src="master/js/components/dManageableComboBox/dManageableComboBox.js"></script>
+    <script type="text/javascript" src="master/js/components/dGroupRadio/dGroupRadio.js"></script>
+
+    <!-- functions -->
+
+    <script type="text/javascript" src="master/js/modules/controller/toBespokeInfo.js"></script>
+
+
+
+
+    <link href="vendor/angularJS/ngDialog/ngDialog.css" rel="stylesheet">
+    <link href="vendor/angularJS/ngDialog/ngDialog-theme-default.css" rel="stylesheet">
+    <link href="vendor/angularJS/ngDialog/ngDialog-custom-width.css" rel="stylesheet">
+    <link href="vendor/angularJS/ngDialog/ngDialog-theme-plain.css" rel="stylesheet">
+
+</head>
+<body ng-app="dbUtilsApp">
+    <div style="padding-bottom: 10px;">
+        <a ng-href="#toBespokeInfo">预约通道信息 </a>
+    </div>
+    <div ng-view></div>
+</body>
+</html>

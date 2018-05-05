@@ -1,0 +1,26 @@
+<style>
+    td,th{
+        padding: 2px 10px;
+    }
+    tr:nth-child(odd),tr:hover{
+        background-color: #f0f0f0;
+    }
+    .red {
+        background-color: #ff8864;
+    }
+</style>
+
+<table border="1" cellpadding="0" cellspacing="0">
+    <tr>
+        <th>学生编号</th>
+        <th>学生姓名</th>
+        <th>手机号码</th>
+        <th>ADA</th>
+    </tr>
+    <tr ng-repeat="student in $ctrl.students">
+        <th>{{student.studentid}}</th>
+        <th>{{student.studentname}}</th>
+        <th>{{student.mobile}}</th>
+        <th>{{student.username}}</th>
+    </tr>
+</table>

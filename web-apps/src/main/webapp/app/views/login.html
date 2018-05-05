@@ -1,0 +1,38 @@
+<div class="col-md-6 loginbox">
+    <form role="form" class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-3">
+                <label for="username">用户名：</label>
+            </div>
+            <div class="col-md-9">
+                <input class="form-control" id="username" type="text" required ng-model="$ctrl.username">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-3">
+                <label for="password">密码：</label>
+            </div>
+            <div class="col-md-9">
+                <input class="form-control" id="password" type="password" required ng-model="$ctrl.password">
+            </div>
+        </div>
+        <div><button class="btn btn-default btn-block btn-info" ng-click="$ctrl.doLogin()">登录</button></div>
+        <div>放假期间请访问正式服务器地址：<a href="http://10.2.24.85:8080/dbUtils/main.html#!/login" target="_blank">点此前往</a></div>
+    </form>
+</div>
+<style>
+    .loginbox {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: #fff;
+        z-index: 100;
+    }
+    .loginbox form {
+        width: 360px;
+        display: block;
+        margin: 240px auto 0;
+    }
+</style>

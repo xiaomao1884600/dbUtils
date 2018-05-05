@@ -1,0 +1,25 @@
+* {
+	margin: 0 auto;
+	padding: 0;
+}
+
+body {
+	height: 100%;
+	width: 100%;
+}
+
+.panel {
+	position: absolute;
+	width: 150px;
+	height: 150px;
+	padding: 0.5em;
+}
+
+.panel h3 {
+	text-align: center;
+	cursor: pointer;
+}
+
+.ui-resizable-helper {
+	border: 1px dotted gray;
+}

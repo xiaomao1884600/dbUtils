@@ -1,0 +1,60 @@
+.com-doubeye-default-dTableRow-rowSelected {
+	background-color: #f3ac8a !important;
+}
+
+.com-doubeye-default-dTableRow-rowEven {
+	background-color: #66c798;
+}
+
+.com-doubeye-default-dTableRow-rowHover {
+	background-color: #d9ebd0;
+}
+
+.com-doubeye-default-dTableRow-tdHover {
+	background-color: #dcb565;
+}
+
+.com-doubeye-default-dTableRow-current {
+	border-top: 3px solid #95B3D7;
+	border-bottom: 3px solid #95B3D7;
+	border-left: 10px solid #95B3D7;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px
+		rgba(149, 179, 215, 0.6);
+	outline: 0 none;
+}
+
+.com-doubeye-default-dTableRow-eidtIndicator {
+	
+}
+
+.com-doubeye-default-dTableRow-eidtIndicator-new {
+	background-image: url("../images/ui-icons_228ef1_256x240.png");
+	display: inline-block;
+	height: 16px;
+	width: 16px;
+	background-position: -16px -128px;
+}
+
+.com-doubeye-default-dTableRow-eidtIndicator-delete {
+	background-image: url("../images/ui-icons_228ef1_256x240.png");
+	display: inline-block;
+	height: 16px;
+	width: 16px;
+	background-position: -48px -128px;
+}
+
+.com-doubeye-default-dTableRow-eidtIndicator-new_and_delete {
+	background-image: url("../images/ui-icons_228ef1_256x240.png");
+	display: inline-block;
+	height: 16px;
+	width: 16px;
+	background-position: 0px -128px;
+}
+
+.com-doubeye-default-dTableRow-eidtIndicator-modified {
+	background-image: url("../images/ui-icons_228ef1_256x240.png");
+	display: inline-block;
+	height: 16px;
+	width: 16px;
+	background-position: -32px -144px;
+}

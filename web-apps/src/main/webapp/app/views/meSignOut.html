@@ -1,0 +1,7 @@
+<div>
+    <button ng-click="$ctrl.getSignInCount()">签到</button>
+    <button ng-click="$ctrl.getSignOutCount()">签退</button>
+</div>
+
+<div ng-repeat="item in $ctrl.signIn">签到人数：{{item.cnt}}</div>
+<div ng-repeat="item in $ctrl.signOut">签到退数：{{item.cnt}}</div>

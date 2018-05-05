@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="avro-mapred-1.8.2-hadoop2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/experiments/src/main/lib/avro-mapred-1.8.2-hadoop2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,75 @@
+<style>
+    md-input-container {
+        vertical-align:top;
+    }
+    
+    .icon-close {
+        width: 16px;
+        height: 16px;
+        min-width: 16px !important;
+        min-height: 16px;
+        text-align: -webkit-right;
+        vertical-align: top;
+
+    }
+    
+</style>
+<div>
+    <md-input-container>
+        <!-- md-on-close="$ctrl.onCampusChanged()"-->
+        <md-select ng-model="$ctrl.selectedCampus" placeholder="请选择校区" >
+            <md-option ng-value="item" ng-repeat="item in $ctrl.campuses">{{ item.name }}</md-option>
+        </md-select>
+    </md-input-container>
+    <md-input-container>
+        <label>最少有效联系次数</label>
+        <input name="minValidCallOut" ng-model="$ctrl.minValidCallOut" placeholder="8" type="number"
+               required ng-maxlength="2">
+    </md-input-container>
+
+    <md-input-container>
+        <label>最少有效通话时长（分钟）</label>
+        <input name="minValidCallLength" ng-model="$ctrl.minValidCallLength" placeholder="28" type="number"
+               required ng-maxlength="2">
+    </md-input-container>
+
+
+    <d-date-range-picker start-time="$ctrl.startTime" end-time="$ctrl.endTime" date-group="$ctrl.dateGroup"></d-date-range-picker>
+
+
+    <md-input-container>
+        <md-button ng-click="$ctrl.getData()" class="md-primary">查询</md-button>
+    </md-input-container>
+
+</div>
+
+<div>
+    <md-tabs md-selected="$ctrl.selectedIndex" md-dynamic-height="true">
+        <md-tab ng-repeat="entry in $ctrl.results"  md-on-select="$ctrl.renderChart(entry)" >
+            <md-tab-label>
+                <div>
+                    <label>{{entry.name}}</label>
+                    <md-icon md-svg-src="images/icons/icon_close.svg" aria-label="关闭" ng-click="$ctrl.remove(entry)" ng-if="entry.type!=='all'" class="icon-close"></md-icon>
+                </div>
+            </md-tab-label>
+            <md-tab-body>
+                <d-grid grid-data="entry.data" column-defines="$ctrl.__teamDefines" operations="$ctrl.__operations" select-model="'single'" ng-if="entry.type==='all'"></d-grid>
+                <d-grid grid-data="entry.data" column-defines="$ctrl.__teamDetailDefines" operations="$ctrl.__operations" select-model="'single'" ng-if="entry.type==='team'"></d-grid>
+                <div ng-if="entry.type==='ada'">
+                    <d-pager current-page="entry.currentPage" total-page="entry.totalPage" display-page-number="5" record-per-page="entry.recordPerPage" callback="$ctrl.getDataDetail"></d-pager>
+                </div>
+                <d-grid grid-data="entry.data" column-defines="$ctrl.__adaDetailDefines" operations="$ctrl.__operations" select-model="'single'" ng-if="entry.type==='ada'"></d-grid>
+            </md-tab-body>
+        </md-tab>
+    </md-tabs>
+</div>
+
+<div style="visibility: hidden; width:400px;">
+    <div class="md-dialog-container" id="detailBrowser">
+        <md-dialog layout-padding="">
+            <div ng-show="$ctrl.currentRecord" style="height:80%;overflow-y:scroll;">
+                <record-analyze-result-browser user-id="$ctrl.userId" analyze-result="$ctrl.currentRecord" show-confirm-operation="false"></record-analyze-result-browser>
+            </div>
+        </md-dialog>
+    </div>
+</div>

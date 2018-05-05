@@ -1,0 +1,73 @@
+<style>
+    .monitor-chart {
+        width:calc(50% - 5px);
+        margin-right: 2px;
+        margin-bottom: 2px;
+        float:left;
+    }
+</style>
+<div>
+    <md-input-container >
+        <md-select ng-model="$ctrl.selectedDimension" placeholder="请选择统计维度">
+            <md-option ng-value="item" ng-repeat="item in $ctrl.dimensions">{{ item.name }}</md-option>
+        </md-select>
+    </md-input-container>
+
+
+    <md-input-container ng-show="$ctrl.selectedDimension.id === 1">
+        <md-select ng-model="$ctrl.selectedMonth" placeholder="请选择分析的月份">
+            <md-option ng-value="item" ng-repeat="item in $ctrl.monthes">{{ item.name }}</md-option>
+        </md-select>
+    </md-input-container>
+
+    <md-input-container ng-show="$ctrl.selectedDimension.id === 2">
+        <md-select ng-model="$ctrl.selectedCampus" placeholder="请选择要分析的校区">
+            <md-option ng-value="item" ng-repeat="item in $ctrl.campuses">{{ item.name }}</md-option>
+        </md-select>
+    </md-input-container>
+
+    <md-input-container ng-show="$ctrl.selectedDimension.id === 2">
+        <md-select ng-model="$ctrl.selectedYear" placeholder="请选择要分析的年度">
+            <md-option ng-value="item" ng-repeat="item in $ctrl.years">{{ item }}</md-option>
+        </md-select>
+    </md-input-container>
+
+
+    <md-input-container >
+        <button ng-click="$ctrl.onSearchClick()">查询</button>
+    </md-input-container>
+</div>
+
+<div>
+    <h3 style="text-align: center">{{$ctrl.title}}</h3>
+</div>
+
+<div  class="monitor-chart">
+    <line-chart options="$ctrl.callCounts"  title="'各校区电话数'" chart-height="$ctrl.chartHeight" chart-width="$ctrl.chartWidth"
+                chart-id="'callCounts'" chart-type="'bar'" on-click="$ctrl.onChartClick"></line-chart>
+</div>
+
+<div  class="monitor-chart">
+    <line-chart options="$ctrl.callLength"  title="'各校区通话时长'" chart-height="$ctrl.chartHeight" chart-width="$ctrl.chartWidth"
+                chart-id="'callLength'" chart-type="'bar'"></line-chart>
+</div>
+
+<div  class="monitor-chart">
+    <line-chart options="$ctrl.callDirectionCounts"  title="'拨入播出数'" chart-height="$ctrl.chartHeight" chart-width="$ctrl.chartWidth"
+                chart-id="'callDircectionCounts'"></line-chart>
+</div>
+
+<div  class="monitor-chart">
+    <line-chart options="$ctrl.callDirectionLength"  title="'拨入播出时长'" chart-height="$ctrl.chartHeight" chart-width="$ctrl.chartWidth"
+                chart-id="'callDirectionLength'"></line-chart>
+</div>
+
+<div  class="monitor-chart">
+    <line-chart options="$ctrl.avgLength"  title="'平均通话时长（秒）'" chart-height="$ctrl.chartHeight" chart-width="$ctrl.chartWidth"
+                chart-id="'avgLength'"></line-chart>
+</div>
+
+<div  class="monitor-chart">
+    <line-chart options="$ctrl.ranges"  title="'通话时长时间分布'" chart-height="$ctrl.chartHeight" chart-width="$ctrl.chartWidth"
+                chart-id="'ranges'"></line-chart>
+</div>

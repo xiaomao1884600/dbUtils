@@ -1,0 +1,54 @@
+1. 生成用户信息
+    1. 导入passport的user, user_comefrom表
+    CREATE TABLE t_user_from_passport
+        SELECT u.id `passportid`, comefrom `comeFromPassport`
+        FROM
+        user u
+        LEFT OUTER JOIN
+        (SELECT user_id, GROUP_CONCAT(comefrom) comefrom FROM user_comefrom GROUP BY user_id) c ON u.id = c.user_id;
+    ALTER TABLE t_user_from_passport ADD PRIMARY KEY (passportid);
+    2. 导入newedu t_student, t_studentpassport, t_studentinfo中相关内容，语句如下:
+    CREATE TABLE t_student_from_edu
+    SELECT
+    	s.studentid,passportid,gender,age,infocomefrom `comeFromE`,cityid,faculties
+    FROM
+    	newedu.t_student s
+    INNER JOIN newedu.t_studentinfo si ON s.studentid = si.studentid
+    INNER JOIN newedu.t_comefrom c ON s.studentid = c.studentid
+    INNER JOIN (
+    	SELECT
+    		studentid,
+    		MAX(passportid) passportid
+    	FROM
+    		newedu.t_studentpassport
+    	GROUP BY
+    		studentid
+    ) sp ON s.studentid = sp.studentid
+    LEFT OUTER JOIN (
+    	SELECT
+    		studentid,
+    		GROUP_CONCAT(DISTINCT facultyid) faculties
+    	FROM
+    		newedu.t_enrollment e
+    	INNER JOIN newedu.t_clazz c ON e.clazzid = c.clazzid
+    	GROUP BY
+    		studentid
+    ) e ON s.studentid = e.studentid;
+    3. 执行UserGeneration类
+2. 生成推荐物品信息 - articles
+    1. 导入zoneapi的users和articles表
+    2. 生成关联表
+    CREATE TABLE t_user_articles SELECT
+    	a.id,
+    	passport_id,
+    	title,
+    	introduction
+    FROM
+    	articles a
+    LEFT OUTER JOIN users u ON u.id = a.user_id;
+
+    ALTER TABLE t_user_articles ADD PRIMARY KEY pk_id (id);
+    ALTER TABLE t_user_articles ADD INDEX index_passport_id (passport_id);
+    3. 执行ItemGeneration类
+
+

@@ -1,0 +1,42 @@
+<div>
+
+    <div layout="row">
+        <!--
+        <md-input-container layout="row">
+            <md-select ng-model="$ctrl.selectedTerm" placeholder="请选择期数">
+                <md-option ng-value="item" ng-repeat="item in $ctrl.terms">{{ item.title }}</md-option>
+            </md-select>
+        </md-input-container>
+        -->
+
+        <term selected-term-id="'next'" start-term-id="167" selected-term="$ctrl.selectedTerm"></term>
+
+
+        <md-input-container>
+            <md-select ng-model="$ctrl.selectedTeam" placeholder="请选择团队">
+                <md-option ng-value="item" ng-repeat="item in $ctrl.teams">{{ item.username }}</md-option>
+            </md-select>
+        </md-input-container>
+
+        <md-input-container>
+            <md-button class="md-primary" ng-click="$ctrl.getData()">查询</md-button>
+        </md-input-container>
+    </div>
+
+    <table st-table="$ctrl.displayData" st-safe-src="$ctrl.goals" class="table table-striped">
+        <thead>
+        <tr>
+            <th st-sort="manager_username">团队经理</th>
+            <th st-sort="ada_username">ada</th>
+            <th st-sort="enrolled_goal">目标</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="row in $ctrl.displayData">
+            <td>{{row.manager_username}}</td>
+            <td>{{row.ada_username}}</td>
+            <td><input ng-model="row.enrolled_goal" ng-blur="$ctrl.save(row)"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>

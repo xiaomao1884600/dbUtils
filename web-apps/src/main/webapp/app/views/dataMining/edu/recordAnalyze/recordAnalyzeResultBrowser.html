@@ -1,0 +1,121 @@
+<style>
+    .recordText {
+        border-radius: 3px;
+        border: 1px solid #000;
+        padding: 3px 5px;
+        max-width: 500px;
+        min-width: 200px;
+    }
+
+    .highlighted {
+        background: #d58512;
+    }
+
+    .role-left {
+        background-color: aliceblue;
+        float: left;
+    }
+
+    .role-right {
+        background-color: #beebff;
+        float: right;
+    }
+
+    .recordText span {
+        background-color: #ce8483;
+    }
+
+    .current-conversation {
+        color: crimson;
+    }
+
+    table.tab tr td {
+        padding: 3px;
+    }
+
+    md-dialog.analyze-browser {
+        height: 90%;
+        overflow-y: hidden;
+    }
+
+    md-input-container {
+        vertical-align:top;
+    }
+
+    .word-cloud-mode {
+        margin-top: 0;
+        min-width: 60px;
+    }
+
+    .conversation-type {
+        top: -8px;
+    }
+</style>
+<div style="height: 100%" layout="row">
+    <div>
+        <div layout="row">
+            <audio ng-src="{{$ctrl.analyzeResult.ossPath}}" controls="controls" id="player" onerror="com.doubeye.Utils.audioPlayer.audioSrcError(event)"></audio>
+            <a ng-if="$ctrl.showDownload === true" ng-href="{{$ctrl.analyzeResult.ossPath}}">下载</a>
+
+
+            <div layout="row" style="padding-left: 20px;">
+                <!--
+                <md-switch class="word-cloud-mode md-primary" ng-model="$ctrl.wordCloudMode" aria-label="mode" ng-true-value="'关键词'" ng-false-value="'词频'" ng-change="$ctrl.refreshWordCloud()">
+                    {{$ctrl.wordCloudMode}}
+                </md-switch>
+                -->
+                <md-select ng-model="$ctrl.selectedCloudMode" placeholder="词云类型" style="margin-top: 0; margin-bottom: 0; height: 30px;" md-on-close="$ctrl.refreshWordCloud()">
+                    <md-option ng-value="item" ng-repeat="item in $ctrl.wordCloudModes">{{ item.name }}</md-option>
+                </md-select>
+                <md-button class="conversation-type md-raised" ng-repeat="type in $ctrl.conversationTypes" ng-click="$ctrl.onChangeConversationType(type.propertyName)" ng-class="$ctrl.selectedConversation==type.propertyName?'md-primary':''">{{type.name}}</md-button>
+            </div>
+        </div>
+        <div style="padding-top: 10px; margin-top: 0px; height:{{$ctrl.headerHeight}}px;" layout="column">
+            <div ng-if="$ctrl.developer">
+                <fieldset class="standard" >
+                    <legend> 请勾选录音标签 </legend>
+                    <div layout="row" layout-wrap flex>
+                        <div flex="20" ng-repeat="item in $ctrl.recordTags">
+                            <md-checkbox ng-checked="$ctrl.isTagSelected(item)" ng-click="$ctrl.toggleTagSelect(item)" class="md-primary">
+                                {{ item }}
+                            </md-checkbox>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <div layout="row" class="md-padding" style="height:calc(100% - {{$ctrl.headerHeight}}px + 20px)">
+            <div flex="$ctrl.percent" layout="column">
+                <div style="overflow-y: auto; min-height: 70%" id="aliResult" flex>
+                    <table class="tab" style="width:600px">
+                        <tr ng-repeat="entry in $ctrl.analyzeResult.analyze_info">
+                            <td ng-class="(entry.begin_time <= $ctrl.playedTime && entry.end_time >= $ctrl.playedTime) ? 'current-conversation' : ''"><span class="recordText" ng-class="entry.channel_id === 0 ? 'role-left' : 'role-right'"
+                                      ng-click="$ctrl.play(entry.begin_time)" ng-bind-html="entry.text | highlight:$ctrl.keyword"><span style="color: #b2dba1" ng-show="$ctrl.developer">{{entry.channel_id}}</span></span></td>
+
+                        </tr>
+                    </table>
+                </div>
+                <div ng-show="$ctrl.showConfirmOperation" flex>
+                    <input type="checkbox" ng-click="$ctrl.changeAsrRate()" ng-model="$ctrl.analyzeResult.asr_rate"><label>文字识别不准确</label>
+                    <span style="padding-left: 10px;"></span>
+                    <input type="checkbox" ng-click="$ctrl.changeChannelRate()" ng-model="$ctrl.analyzeResult.channel_rate"><label>角色识别不准确</label>
+                    <span style="padding-left: 10px;"></span>
+                    <div>
+                        <span ng-class="$ctrl.analyzeResult.user_channel_id === 0 ? 'role-left' : 'role-right'"><label>此颜色待表ADA</label> <button ng-click="$ctrl.changeUserRole()">切换角色</button> </span>
+                    </div>
+                </div>
+            </div>
+            <div flex="$ctrl.percent" style="overflow-y: auto; height:70%" ng-if="$ctrl.analyzeResult.tencent_record && $ctrl.analyzeResult.tencent_record_info.length > 0" id="tencentResult">
+                <table class="tab" style="width:600px">
+                    <tr ng-repeat="entry in $ctrl.analyzeResult.tencent_record_info">
+                        <td ng-class="(entry.begin_time <= $ctrl.playedTime && entry.end_time >= $ctrl.playedTime) ? 'current-conversation' : ''"><span class="recordText" ng-class="entry.channel_id === 0 ? 'role-left' : 'role-right'"
+                                  ng-click="$ctrl.play(entry.begin_time)">{{entry.text}}<span style="color: #b2dba1" ng-show="$ctrl.developer">{{entry.channel_id}}</span></span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div>
+        <word-cloud chart-width="200" chart-height="400" words="$ctrl.analyzeResult.words" title="" chart-id="wordCloudChart" on-click="$ctrl.onWordClick"></word-cloud>
+    </div>
+</div>

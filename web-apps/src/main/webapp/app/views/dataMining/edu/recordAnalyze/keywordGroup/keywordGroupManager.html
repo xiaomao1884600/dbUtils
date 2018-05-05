@@ -1,0 +1,56 @@
+<style>
+    md-input-container {
+        vertical-align:top;
+    }
+
+    .word-container {
+        width:768px; height: 150px;
+        overflow-y: scroll;
+    }
+
+    .word-weight-container {
+        padding-bottom: 0;
+    }
+</style>
+
+<div>
+    <button ng-click="$ctrl.addKeywordGroup()">新增</button>
+
+    <div>
+        <d-grid grid-data="$ctrl.keywordGroups" column-defines="$ctrl.__columnDefines" operations="$ctrl.__operations"></d-grid>
+    </div>
+</div>
+
+
+
+<div style="visibility: hidden">
+    <div class="md-dialog-container" id="keywordGroupContent">
+        <md-dialog layout-padding="" style="width:800px;">
+            <div class="word-weight-container">
+                <md-input-container>
+                    <label>关键词组名称</label><input type="text" ng-model="$ctrl.currentKeywordGroup.name"/>
+                </md-input-container>
+                <md-input-container>
+                    <label>关键词组表示</label><input type="text" ng-model="$ctrl.currentKeywordGroup.category"/>
+                </md-input-container>
+                <md-input-container>
+                    <md-checkbox class="md-primary" ng-true-value="1" ng-false-value="0" ng-model="$ctrl.currentKeywordGroup.objection">异议关键词</md-checkbox>
+                </md-input-container>
+            </div>
+
+            <div class="word-weight-container">
+                <div class="word-container word-weight-container">
+                    <span ng-repeat="item in $ctrl.currentKeywordGroup.displayKeywords">
+                        <input type="text" style="width:100px;" ng-model="item.text"><button ng-click="$ctrl.removeWord($index)">删除</button>
+                    </span>
+                    <button ng-click="$ctrl.addWord()">新增</button>
+                </div>
+            </div>
+
+
+            <div class="word-weight-container">
+                <md-button ng-click="$ctrl.saveKeywordGroup()" ng-disabled="$ctrl.saving">保存</md-button>
+            </div>
+        </md-dialog>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<div>
+
+    <div layout="row">
+        <!--
+        <md-input-container>
+            <md-select ng-model="$ctrl.selectedTerm" placeholder="请选择期数" md-on-close="$ctrl.onTermChange()">
+                <md-option ng-value="item" ng-repeat="item in $ctrl.terms">{{ item.title }}</md-option>
+            </md-select>
+        </md-input-container>
+        -->
+
+
+        <term selected-term-id="'next'" start-term-id="166" selected-term="$ctrl.selectedTerm" on-change="$ctrl.onTermChange" on-loaded="$ctrl.onTermLoaded"></term>
+
+
+        <md-input-container>
+            <md-select ng-model="$ctrl.selectedTeam" placeholder="请选择团队">
+                <md-option ng-value="item" ng-repeat="item in $ctrl.teams">{{ item.manager_username }}</md-option>
+            </md-select>
+        </md-input-container>
+
+        <md-input-container>
+            <label>截止日期</label>
+            <md-datepicker ng-model="$ctrl.endDate"></md-datepicker>
+        </md-input-container>
+
+        <md-input-container>
+            <md-button class="md-primary" ng-click="$ctrl.getData()">查询</md-button>
+        </md-input-container>
+    </div>
+
+    <d-grid grid-data="$ctrl.results" column-defines="$ctrl.__columnDefines"></d-grid>
+
+</div>

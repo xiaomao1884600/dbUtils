@@ -1,0 +1,25 @@
+<div layout="row" layout-fill class="layout-row flex" id="popup">
+    <md-sidenav class="md-sidenav-left md-whiteframe-z2"
+                md-component-id="left"
+                md-is-locked-open="$mdMedia('gt-sm')" style="width: 280px;">
+
+        <header class="nav-header" ss-style-color="{'background-color': 'primary.default'}">
+            <a ng-href="#/" class="logo">
+                <h1 class="md-heading">dbUtils2.0</h1>
+            </a>
+        </header>
+
+        <label style="text-align: center">{{user.userName}}</label>
+        <md-button ng-click="$ctrl.logout()">退出</md-button>
+
+        <md-content flex role="navigation" ss-style-color="{'background-color': 'primary.default'}">
+            <ss-sidenav flex menu="menu"></ss-sidenav>
+        </md-content>
+    </md-sidenav>
+
+
+
+
+    <div ui-view layout="column" flex style="width: calc(100% - 500px);overflow: auto; padding-left: 10px;" ></div>
+
+</div>

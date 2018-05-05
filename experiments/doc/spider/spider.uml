@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="895.3739978902952" y="606.0">com.doubeye.experiments.spider.contentAnalyzer.tongCheng.TongChengJogGetter</node>
+    <node x="223.31149789029507" y="515.0">com.doubeye.experiments.spider.contentAnalyzer.tongCheng.TongChengSearchResultListContentAnalyzer</node>
+    <node x="1209.2562763713079" y="0.0">com.doubeye.experiments.spider.contentAnalyzer.RecordIdGetter</node>
+    <node x="1286.3229430379747" y="394.0">com.doubeye.experiments.spider.contentAnalyzer.tongCheng.dictionary</node>
+    <node x="758.5333333333333" y="0.0">com.doubeye.experiments.spider.contentAnalyzer.ContentAnalyzer</node>
+    <node x="15.533333333333303" y="394.0">com.doubeye.experiments.spider.contentAnalyzer.tongCheng.helper</node>
+    <node x="263.0" y="718.0">com.doubeye.experiments.spider.contentAnalyzer.GeneralRecordSaver</node>
+    <node x="506.24272151898725" y="0.0">com.doubeye.experiments.spider.contentAnalyzer.Captchable</node>
+    <node x="1113.3229430379747" y="394.0">com.doubeye.experiments.spider.contentAnalyzer.zhaopin</node>
+    <node x="915.4927215189872" y="81.0">com.doubeye.experiments.spider.contentAnalyzer.ContentGetter</node>
+    <node x="477.0" y="718.0">com.doubeye.experiments.spider.contentAnalyzer.service</node>
+    <node x="750.4510548523206" y="606.0">com.doubeye.experiments.spider.contentAnalyzer.boss</node>
+    <node x="1108.9229430379746" y="172.0">com.doubeye.experiments.spider.contentAnalyzer.chinaHr</node>
+    <node x="1297.8229430379747" y="515.0">com.doubeye.experiments.spider.contentAnalyzer.tongCheng.TongChengUrlGenerator</node>
+    <node x="1123.3229430379747" y="283.0">com.doubeye.experiments.spider.contentAnalyzer.GeneralSpiderResultProcessor</node>
+    <node x="463.5333333333333" y="394.0">com.doubeye.experiments.spider.contentAnalyzer.tongCheng.TongChengDetailPageAnalyzer</node>
+    <node x="857.5333333333333" y="515.0">com.doubeye.experiments.spider.contentAnalyzer.AbstractJobGetter</node>
+    <node x="544.4927215189873" y="81.0">com.doubeye.experiments.spider.contentAnalyzer.AbstractContentAnalyzer</node>
+    <node x="1311.9062763713077" y="81.0">com.doubeye.experiments.spider.contentAnalyzer.UrlIdGetter</node>
+    <node x="159.5333333333333" y="394.0">com.doubeye.experiments.spider.contentAnalyzer.tongCheng.TongChengCompanyDetailPageAnalyzer</node>
+    <node x="1428.2479430379744" y="606.0">com.doubeye.experiments.spider.contentAnalyzer.tongCheng.resultProcess</node>
+    <node x="40.0" y="718.0">com.doubeye.experiments.spider.contentAnalyzer.postNormalizer</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.boss" target="com.doubeye.experiments.spider.contentAnalyzer.ContentGetter">
+      <point x="0.0" y="-15.5" />
+      <point x="807.9510548523206" y="586.0" />
+      <point x="837.8295886075948" y="586.0" />
+      <point x="837.8295886075948" y="152.0" />
+      <point x="931.8677215189872" y="152.0" />
+      <point x="-49.125" y="15.5" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.postNormalizer" target="com.doubeye.experiments.spider.contentAnalyzer.postNormalizer">
+      <point x="59.33333333333334" y="15.5" />
+      <point x="188.33333333333334" y="789.0" />
+      <point x="0.0" y="789.0" />
+      <point x="0.0" y="723.1666666666666" />
+      <point x="-89.0" y="-10.333333333333336" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.boss" target="com.doubeye.experiments.spider.contentAnalyzer.boss">
+      <point x="-28.75" y="15.5" />
+      <point x="779.2010548523206" y="657.0" />
+      <point x="730.4510548523206" y="657.0" />
+      <point x="730.4510548523206" y="629.25" />
+      <point x="-57.5" y="7.75" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.zhaopin" target="com.doubeye.experiments.spider.contentAnalyzer.zhaopin">
+      <point x="-49.875" y="15.5" />
+      <point x="1129.9479430379747" y="445.0" />
+      <point x="1093.3229430379747" y="445.0" />
+      <point x="1093.3229430379747" y="417.25" />
+      <point x="-66.5" y="7.75" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.tongCheng.TongChengSearchResultListContentAnalyzer" target="com.doubeye.experiments.spider.contentAnalyzer.tongCheng.helper">
+      <point x="-126.66666666666663" y="-15.5" />
+      <point x="248.64483122362844" y="495.0" />
+      <point x="77.5333333333333" y="495.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.AbstractJobGetter" target="com.doubeye.experiments.spider.contentAnalyzer.ContentAnalyzer">
+      <point x="-12.916666666666629" y="-15.5" />
+      <point x="922.1166666666667" y="475.0" />
+      <point x="807.8920886075948" y="475.0" />
+      <point x="807.8920886075948" y="51.0" />
+      <point x="818.5333333333333" y="51.0" />
+      <point x="-12.0" y="15.5" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.boss" target="com.doubeye.experiments.spider.contentAnalyzer.AbstractContentAnalyzer">
+      <point x="-38.33333333333337" y="-15.5" />
+      <point x="769.6177215189872" y="586.0" />
+      <point x="0.0" y="586.0" />
+      <point x="0.0" y="344.0" />
+      <point x="508.9771097046413" y="344.0" />
+      <point x="508.9771097046413" y="142.0" />
+      <point x="560.4927215189873" y="142.0" />
+      <point x="-80.0" y="15.5" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.zhaopin" target="com.doubeye.experiments.spider.contentAnalyzer.UrlIdGetter">
+      <point x="33.25" y="-15.5" />
+      <point x="1213.0729430379747" y="364.0" />
+      <point x="1359.8229430379747" y="364.0" />
+      <point x="-9.583333333333258" y="15.5" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.AbstractContentAnalyzer" target="com.doubeye.experiments.spider.contentAnalyzer.ContentAnalyzer">
+      <point x="48.0" y="-15.5" />
+      <point x="688.4927215189873" y="61.0" />
+      <point x="770.5333333333333" y="61.0" />
+      <point x="-60.0" y="15.5" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.tongCheng.TongChengDetailPageAnalyzer" target="com.doubeye.experiments.spider.contentAnalyzer.AbstractContentAnalyzer">
+      <point x="0.0" y="-15.5" />
+      <point x="577.5333333333333" y="374.0" />
+      <point x="674.4364978902952" y="374.0" />
+      <point x="674.4364978902952" y="152.0" />
+      <point x="656.4927215189873" y="152.0" />
+      <point x="16.0" y="15.5" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.zhaopin" target="com.doubeye.experiments.spider.contentAnalyzer.GeneralSpiderResultProcessor">
+      <point x="-11.083333333333258" y="-15.5" />
+      <point x="1168.7396097046412" y="374.0" />
+      <point x="1151.5729430379747" y="374.0" />
+      <point x="-84.75" y="15.5" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.tongCheng.resultProcess" target="com.doubeye.experiments.spider.contentAnalyzer.tongCheng.TongChengUrlGenerator">
+      <point x="-65.59999999999991" y="-15.5" />
+      <point x="1444.6479430379745" y="586.0" />
+      <point x="1442.5729430379747" y="586.0" />
+      <point x="48.25" y="15.5" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.tongCheng.TongChengSearchResultListContentAnalyzer" target="com.doubeye.experiments.spider.contentAnalyzer.AbstractContentAnalyzer">
+      <point x="25.33333333333337" y="-15.5" />
+      <point x="400.64483122362844" y="475.0" />
+      <point x="453.0333333333333" y="475.0" />
+      <point x="453.0333333333333" y="364.0" />
+      <point x="606.6864978902952" y="364.0" />
+      <point x="606.6864978902952" y="152.0" />
+      <point x="624.4927215189873" y="152.0" />
+      <point x="-16.0" y="15.5" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.tongCheng.dictionary" target="com.doubeye.experiments.spider.contentAnalyzer.tongCheng.dictionary">
+      <point x="-36.0" y="15.5" />
+      <point x="1322.3229430379747" y="445.0" />
+      <point x="1266.3229430379747" y="445.0" />
+      <point x="1266.3229430379747" y="409.5" />
+      <point x="-72.0" y="-0.0" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.GeneralSpiderResultProcessor" target="com.doubeye.experiments.spider.contentAnalyzer.chinaHr">
+      <point x="-45.200000000000045" y="-15.5" />
+      <point x="1191.1229430379744" y="263.0" />
+      <point x="1200.6229430379744" y="263.0" />
+      <point x="26.200000000000045" y="15.5" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.tongCheng.TongChengUrlGenerator" target="com.doubeye.experiments.spider.contentAnalyzer.tongCheng.dictionary">
+      <point x="0.0" y="-15.5" />
+      <point x="36.0" y="15.5" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.AbstractJobGetter" target="com.doubeye.experiments.spider.contentAnalyzer.zhaopin">
+      <point x="38.75" y="-15.5" />
+      <point x="973.7833333333333" y="485.0" />
+      <point x="1196.4479430379747" y="485.0" />
+      <point x="16.625" y="15.5" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.ContentGetter" target="com.doubeye.experiments.spider.contentAnalyzer.ContentAnalyzer">
+      <point x="1.1368683772161603E-13" y="-15.5" />
+      <point x="980.9927215189873" y="61.0" />
+      <point x="866.5333333333333" y="61.0" />
+      <point x="36.0" y="15.5" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.tongCheng.TongChengJogGetter" target="com.doubeye.experiments.spider.contentAnalyzer.ContentGetter">
+      <point x="34.79999999999984" y="-15.5" />
+      <point x="1017.1739978902951" y="586.0" />
+      <point x="1023.0333333333333" y="586.0" />
+      <point x="1023.0333333333333" y="152.0" />
+      <point x="997.3677215189872" y="152.0" />
+      <point x="16.375" y="15.5" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.AbstractJobGetter" target="com.doubeye.experiments.spider.contentAnalyzer.Captchable">
+      <point x="-64.58333333333326" y="-15.5" />
+      <point x="870.45" y="495.0" />
+      <point x="702.0333333333333" y="495.0" />
+      <point x="702.0333333333333" y="334.0" />
+      <point x="445.99272151898725" y="334.0" />
+      <point x="445.99272151898725" y="61.0" />
+      <point x="534.9927215189873" y="61.0" />
+      <point x="-28.75" y="15.5" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.chinaHr" target="com.doubeye.experiments.spider.contentAnalyzer.AbstractContentAnalyzer">
+      <point x="-52.40000000000009" y="-15.5" />
+      <point x="1122.0229430379745" y="142.0" />
+      <point x="720.4927215189873" y="142.0" />
+      <point x="80.0" y="15.5" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.UrlIdGetter" target="com.doubeye.experiments.spider.contentAnalyzer.RecordIdGetter">
+      <point x="0.0" y="-15.5" />
+      <point x="1369.4062763713077" y="61.0" />
+      <point x="1325.9229430379746" y="61.0" />
+      <point x="46.66666666666674" y="15.5" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.AbstractJobGetter" target="com.doubeye.experiments.spider.contentAnalyzer.ContentGetter">
+      <point x="12.916666666666629" y="-15.5" />
+      <point x="947.9499999999999" y="152.0" />
+      <point x="964.6177215189872" y="152.0" />
+      <point x="-16.375" y="15.5" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.zhaopin" target="com.doubeye.experiments.spider.contentAnalyzer.ContentAnalyzer">
+      <point x="-33.25" y="-15.5" />
+      <point x="1146.5729430379747" y="364.0" />
+      <point x="818.8920886075948" y="364.0" />
+      <point x="818.8920886075948" y="61.0" />
+      <point x="842.5333333333333" y="61.0" />
+      <point x="12.0" y="15.5" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.tongCheng.TongChengJogGetter" target="com.doubeye.experiments.spider.contentAnalyzer.tongCheng.TongChengSearchResultListContentAnalyzer">
+      <point x="-69.60000000000014" y="-15.5" />
+      <point x="912.773997890295" y="576.0" />
+      <point x="299.3114978902951" y="576.0" />
+      <point x="-76.0" y="15.5" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.tongCheng.TongChengSearchResultListContentAnalyzer" target="com.doubeye.experiments.spider.contentAnalyzer.tongCheng.TongChengDetailPageAnalyzer">
+      <point x="126.66666666666663" y="-15.5" />
+      <point x="501.9781645569617" y="495.0" />
+      <point x="634.5333333333333" y="495.0" />
+      <point x="57.0" y="15.5" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.chinaHr" target="com.doubeye.experiments.spider.contentAnalyzer.UrlIdGetter">
+      <point x="26.200000000000045" y="-15.5" />
+      <point x="1200.6229430379744" y="142.0" />
+      <point x="1321.4896097046412" y="142.0" />
+      <point x="-47.91666666666674" y="15.5" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.GeneralSpiderResultProcessor" target="com.doubeye.experiments.spider.contentAnalyzer.RecordIdGetter">
+      <point x="90.40000000000009" y="-15.5" />
+      <point x="1326.7229430379748" y="253.0" />
+      <point x="1261.4229430379746" y="253.0" />
+      <point x="1261.4229430379746" y="61.0" />
+      <point x="1279.2562763713079" y="61.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.tongCheng.TongChengSearchResultListContentAnalyzer" target="com.doubeye.experiments.spider.contentAnalyzer.tongCheng.TongChengCompanyDetailPageAnalyzer">
+      <point x="-25.333333333333314" y="-15.5" />
+      <point x="349.9781645569618" y="495.0" />
+      <point x="371.7833333333333" y="495.0" />
+      <point x="70.75" y="15.5" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.tongCheng.TongChengJogGetter" target="com.doubeye.experiments.spider.contentAnalyzer.AbstractJobGetter">
+      <point x="-1.1368683772161603E-13" y="-15.5" />
+      <point x="982.3739978902952" y="586.0" />
+      <point x="973.7833333333333" y="586.0" />
+      <point x="38.75" y="15.5" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.chinaHr" target="com.doubeye.experiments.spider.contentAnalyzer.ContentGetter">
+      <point x="-26.200000000000045" y="-15.5" />
+      <point x="1148.2229430379743" y="132.0" />
+      <point x="1030.1177215189873" y="132.0" />
+      <point x="49.125000000000114" y="15.5" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.tongCheng.resultProcess" target="com.doubeye.experiments.spider.contentAnalyzer.GeneralSpiderResultProcessor">
+      <point x="0.0" y="-15.5" />
+      <point x="1510.2479430379744" y="586.0" />
+      <point x="1512.3229430379747" y="586.0" />
+      <point x="1512.3229430379747" y="344.0" />
+      <point x="1321.0729430379747" y="344.0" />
+      <point x="84.75" y="15.5" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.tongCheng.TongChengCompanyDetailPageAnalyzer" target="com.doubeye.experiments.spider.contentAnalyzer.AbstractContentAnalyzer">
+      <point x="0.0" y="-15.5" />
+      <point x="301.0333333333333" y="354.0" />
+      <point x="519.9771097046413" y="354.0" />
+      <point x="519.9771097046413" y="152.0" />
+      <point x="592.4927215189873" y="152.0" />
+      <point x="-48.0" y="15.5" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.chinaHr" target="com.doubeye.experiments.spider.contentAnalyzer.chinaHr">
+      <point x="-52.400000000000006" y="15.5" />
+      <point x="1122.0229430379745" y="223.0" />
+      <point x="1088.9229430379746" y="223.0" />
+      <point x="1088.9229430379746" y="195.25" />
+      <point x="-65.5" y="7.75" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.boss" target="com.doubeye.experiments.spider.contentAnalyzer.AbstractJobGetter">
+      <point x="38.33333333333337" y="-15.5" />
+      <point x="846.2843881856539" y="586.0" />
+      <point x="896.2833333333333" y="586.0" />
+      <point x="-38.75" y="15.5" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.chinaHr" target="com.doubeye.experiments.spider.contentAnalyzer.GeneralSpiderResultProcessor">
+      <point x="52.40000000000009" y="15.5" />
+      <point x="1226.8229430379747" y="263.0" />
+      <point x="1236.3229430379747" y="263.0" />
+      <point x="0.0" y="-15.5" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.tongCheng.resultProcess" target="com.doubeye.experiments.spider.contentAnalyzer.UrlIdGetter">
+      <point x="32.799999999999955" y="-15.5" />
+      <point x="1543.0479430379746" y="586.0" />
+      <point x="1523.3229430379747" y="586.0" />
+      <point x="1523.3229430379747" y="152.0" />
+      <point x="1398.1562763713077" y="152.0" />
+      <point x="28.75" y="15.5" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.tongCheng.TongChengJogGetter" target="com.doubeye.experiments.spider.contentAnalyzer.tongCheng.TongChengUrlGenerator">
+      <point x="69.5999999999998" y="-15.5" />
+      <point x="1051.973997890295" y="586.0" />
+      <point x="1346.0729430379747" y="586.0" />
+      <point x="-48.25" y="15.5" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.zhaopin" target="com.doubeye.experiments.spider.contentAnalyzer.AbstractJobGetter">
+      <point x="49.875" y="15.5" />
+      <point x="1229.6979430379747" y="495.0" />
+      <point x="999.6166666666667" y="495.0" />
+      <point x="64.58333333333337" y="-15.5" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.AbstractContentAnalyzer" target="com.doubeye.experiments.spider.contentAnalyzer.Captchable">
+      <point x="-48.0" y="-15.5" />
+      <point x="28.75" y="15.5" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.chinaHr" target="com.doubeye.experiments.spider.contentAnalyzer.ContentAnalyzer">
+      <point x="0.0" y="-15.5" />
+      <point x="1174.4229430379746" y="51.0" />
+      <point x="890.5333333333333" y="51.0" />
+      <point x="60.0" y="15.5" />
+    </edge>
+    <edge source="com.doubeye.experiments.spider.contentAnalyzer.zhaopin" target="com.doubeye.experiments.spider.contentAnalyzer.AbstractContentAnalyzer">
+      <point x="-55.41666666666674" y="-15.5" />
+      <point x="1124.4062763713077" y="374.0" />
+      <point x="714.5777426160337" y="374.0" />
+      <point x="714.5777426160337" y="152.0" />
+      <point x="688.4927215189873" y="152.0" />
+      <point x="48.0" y="15.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="916.5" y="292.0" />
+  <SelectedNodes>
+    <node>com.doubeye.experiments.spider.contentAnalyzer.ContentAnalyzer</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

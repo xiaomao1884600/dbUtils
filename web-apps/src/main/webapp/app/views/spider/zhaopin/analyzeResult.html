@@ -1,0 +1,37 @@
+<md-progress-linear md-mode="indeterminate" ng-show="$ctrl.retrievingData === true" ></md-progress-linear>
+
+<div>
+    <md-input-container>
+        <md-select ng-model="$ctrl.selectedSite" placeholder="请选择要查询的招聘网站" md-on-close="$ctrl.onSiteChange()">
+            <md-option ng-value="item" ng-repeat="item in $ctrl.sites">{{ item.name }}</md-option>
+        </md-select>
+    </md-input-container> <button ng-click="$ctrl.getData()" ng-disabled="!$ctrl.selectedSite">获取</button>
+
+</div>
+
+<h3 id="province" style="text-align: center">{{$ctrl.selectedSite.name}}省份汇总分析结果</h3>
+<a ng-click="$ctrl.toAnchor('jobType')">转到职位类型汇总</a>
+<d-grid grid-data="$ctrl.analyzeResult.provinceResult" column-defines="$ctrl.provinceColumnDefines" operations="$ctrl.proviceOperations"></d-grid>
+<h3 id="jobType" style="text-align: center">{{$ctrl.selectedSite.name}}职位类型汇总分析结果</h3>
+<a ng-click="$ctrl.toAnchor('province')">转到省份汇总</a>
+<d-grid grid-data="$ctrl.analyzeResult.jobTypeResult" column-defines="$ctrl.jobTypeColumnDefines" operations="$ctrl.jobTypeOperations"></d-grid>
+
+<script type="text/ng-template" id="detailDialog">
+    <div class="detailDialog">
+        <detail-result detail-retrieve-action="$ctrl.detailDataRetrieveAction" parameter-value="$ctrl.detailParameterValue" id-column-label="$ctrl.idColumnLabel" table-identifier="$ctrl.selectedSite.identifier" title="$ctrl.detailTitle"></detail-result>
+    </div>
+</script>
+<style>
+    .ngdialog.ngdialog-theme-default {
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-left: 280px;
+    }
+    .ngdialog.ngdialog-theme-default.width-full .ngdialog-content {
+        width: 100%;
+        height: calc(100% - 5px);
+        border-radius: 0;
+        overflow: scroll;
+    }
+
+</style>

@@ -1,0 +1,18 @@
+<style>
+    .fullHeight {
+        height: 100%;
+    }
+</style>
+<div layout="column" ng-cloak style="height:100%;">
+    <md-content class="md-padding" style="height:100%;">
+        <md-tabs class="fullHeight" md-selected="$ctrl.selectedIndex" md-border-bottom md-autoselect md-swipe-content >
+            <md-tab ng-repeat="detail in $ctrl.detailContents"
+                    ng-disabled="tab.disabled"
+                    label="{{detail.startdate}}"> <!-- 根据time的内容改写 -->
+                <div  style="padding: 25px; text-align: center;">
+                    <d-grid column-defines="$ctrl.columnDefines" grid-data="detail.processlist"></d-grid> <!-- 根据time的内容改写 -->
+                </div>
+            </md-tab>
+        </md-tabs>
+    </md-content>
+</div>

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="web-apps:war">
+    <output-path>$PROJECT_DIR$/web-apps/target</output-path>
+    <root id="archive" name="dbUtils.war">
+      <element id="artifact" artifact-name="web-apps:war exploded" />
+    </root>
+  </artifact>
+</component>

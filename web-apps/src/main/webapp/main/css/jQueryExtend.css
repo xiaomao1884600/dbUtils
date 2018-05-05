@@ -1,0 +1,36 @@
+.custom-combobox {
+	position: relative;
+	display: inline-block;
+}
+
+.custom-combobox-toggle {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin-left: -1px;
+	padding: 0;
+	/* support: IE7 */
+	*height: 1.7em;
+	*top: 0.1em;
+}
+
+.custom-combobox-input {
+	margin: 0;
+	padding: 0.3em;
+}
+.collapsable-expandButton {
+	background-image: url("../../images/ui-icons_228ef1_256x240.png");
+	display: inline-block;
+	height: 16px;
+	width: 16px;
+  	cursor : pointer;
+  	float : left;
+}
+
+.collapsable-collapsed {
+	background-position: -16px -128px;
+}
+
+.collapsable-expanded {
+	background-position: -48px -128px;
+}

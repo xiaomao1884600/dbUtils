@@ -1,0 +1,53 @@
+<style>
+    td,th{
+        padding: 2px 10px;
+    }
+    tr:nth-child(odd),tr:hover{
+        background-color: #f0f0f0;
+    }
+    .red {
+        background-color: #ff8864;
+    }
+    .green {
+        background-color: #3e8f3e;
+    }
+    .ngdialog.ngdialog-theme-plain.custom-width .ngdialog-content {
+        width: 550px;
+    }
+
+    .warning {
+        color : #ff8864;
+    }
+</style>
+<div>
+    <div><label>用户姓名：</label> <input ng-model="$ctrl.userName" type="text"/> <button ng-click="$ctrl.getUserInfo()">获取用户信息</button></div>
+</div>
+<div>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>用户姓名</th>
+            <th>岗位</th>
+            <th>电话</th>
+            <th>操作</th>
+        </tr>
+        <tr ng-repeat="user in $ctrl.users">
+            <td>{{user.id}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.post}}</td>
+            <td>{{user.phone}}</td>
+            <td><button ng-click="$ctrl.onChangeClick(user)">修改姓名</button><input type="text" ng-model="user.nameToBeChange"/></td>
+        </tr>
+    </table>
+</div>
+
+<script type="text/ng-template" id="modalDialogId">
+    <div class="ngdialog-message">
+        <h3>确认</h3>
+        <p>{{ngDialogData}}</p>
+    </div>
+    <div class="ngdialog-buttons">
+        <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm(true)">确认</button>
+        <button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog(true)">取消</button>
+    </div>
+</script>

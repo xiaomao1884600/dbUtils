@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<title>Office 文档阅读器</title>
+
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<script type="text/javascript" src="../main/js/GlobalParameters.js"></script>
+		<script type="text/javascript">
+	com.doubeye.GlobalParameters.loaderPrefix = '../main/';
+</script>
+		<link rel="stylesheet" type="text/css" href="../main/css/cssLoader.css" />
+
+		<script type="text/javascript" src="../main/js/jsLoader.js"></script>
+		<script type="text/javascript">
+	com.doubeye.Utils.WEB_APP_CONTEXT_PATH = com.doubeye.Utils
+			.getContextPath('/com/doubeye/utils/Utils.js');
+</script>
+
+		<script type="text/javascript" language="jscript" for="FramerControl1"
+			event="OnDocumentOpened(str,obj)">
+	var selection = obj.Application.Selection;
+	//selection.HomeKey(6); // 设置文档中的光标到文件首。
+	selection.Find.ClearFormatting();
+	selection.Find.Replacement.ClearFormatting();
+	selection.Find.Text = com.doubeye.Utils.getQueryString('searchText');
+	while (selection.Find.Execute()) {
+		selection.Range.HighlightColorIndex = 7; // 高亮时的背景色
+	}
+</script>
+		<script type="text/javascript" language="jscript">
+	jQuery(document).ready(function() {
+		var docUrl = com.doubeye.Utils.getQueryString('docUrl');
+		var initConfig = com.doubeye.Ext.apply({
+			parent : 'container',
+			docUrl : docUrl
+		});
+		var cmp = new com.doubeye.IEWordViewer(initConfig).init().render();
+	});
+</script>
+	</head>
+	<style>
+</style>
+	<body>
+
+		<object id="FramerControl1" width="100%" height="100%"
+			codebase="dsoframer.ocx"
+			classid="clsid:00460182-9E5E-11d5-B7C8-B8269041DD57">
+			<param name="_ExtentX" value="16960" />
+			<param name="_ExtentY" value="13600" />
+			<param name="BorderColor" value="-2147483632" />
+			<param name="BackColor" value="-2147483643" />
+			<param name="ForeColor" value="-2147483640" />
+			<param name="TitlebarColor" value="-2147483635" />
+			<param name="TitlebarTextColor" value="-2147483634" />
+			<param name="BorderStyle" value="1" />
+			<param name="Titlebar" value="0" />
+			<param name="Toolbars" value="0" />
+			<param name="Menubar" value="0" />
+		</object>
+	</body>
+
+
+</html>

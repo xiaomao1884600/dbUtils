@@ -1,0 +1,24 @@
+<div>
+    <md-input-container>
+        <button ng-click="$ctrl.getData(1)">搜索</button>
+    </md-input-container>
+</div>
+<div>
+    <d-date-time-picker start-time="$ctrl.startTime" end-time="$ctrl.endTime" date-group="$ctrl.dateGroup"></d-date-time-picker>
+</div>
+
+<div>
+    <d-pager current-page="$ctrl.currentPage" total-page="$ctrl.totalPage" display-page-number="5" record-per-page="$ctrl.recordPerPage" callback="$ctrl.getData"></d-pager>
+    <d-grid grid-data="$ctrl.logs" column-defines="$ctrl.__columnDefines" operations="$ctrl.__operations"></d-grid>
+</div>
+
+
+<div style="visibility: hidden; width:400px;">
+    <div class="md-dialog-container" id="textBrowser">
+        <md-dialog layout-padding="" style="width:800px;height:600px;">
+            <div style="overflow-y: auto">
+                <textarea style="width: 100%;height: 95%;">{{$ctrl.currentRecord}}</textarea>
+            </div>
+        </md-dialog>
+    </div>
+</div>

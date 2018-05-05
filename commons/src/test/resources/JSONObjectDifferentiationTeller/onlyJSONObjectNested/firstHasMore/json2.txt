@@ -1,0 +1,25 @@
+{
+    "success":true,
+    "errorMessage":"",
+    "data":{
+        "workstatus":1,
+        "studentgradecount":{
+            "noenrolled":{
+                "enrolllevel":{
+                    "B":61327,
+                    "D":1971,
+                    "A":2455
+                }
+            },
+            "enrolled":46628,
+            "recover":1954
+        },
+        "unassignedstudent":{
+            "allcampus":[
+							{a : "3"}
+            ],
+            "total":0
+        },
+        "remindfeedback":0
+    }
+}

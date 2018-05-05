@@ -1,0 +1,53 @@
+<style>
+    .chart {
+        margin-top: 5px;
+    }
+</style>
+
+<div>
+    <md-input-container>
+        <md-select ng-model="$ctrl.selectedCampus" placeholder="请选择校区" md-on-close="$ctrl.onCampusChanged()">
+            <md-option ng-value="item" ng-repeat="item in $ctrl.campuses">{{ item.name }}</md-option>
+        </md-select>
+    </md-input-container>
+
+    <md-input-container>
+        <md-select ng-model="$ctrl.selectedTeam" placeholder="请选择团队">
+            <md-option ng-value="item.team_num" ng-repeat="item in $ctrl.teamsUnderCampus">{{ item.username }}</md-option>
+        </md-select>
+    </md-input-container>
+
+    <d-date-range-picker start-time="$ctrl.startTime" end-time="$ctrl.endTime" date-group="$ctrl.dateGroup"></d-date-range-picker>
+
+    <md-input-container>
+        <md-button ng-click="$ctrl.getData()" class="md-primary">查询</md-button>
+    </md-input-container>
+
+
+
+
+</div>
+<div>
+    <div class="chart" layout="row">
+        <div flex="75">
+            <line-chart options="$ctrl.enrollCount"  title="'报名人数趋势'" chart-height="$ctrl.chartHeight" chart-width="'100%'"
+                        chart-id="'callOutCountTrendStats'" force-re-render="'true'" on-click="$ctrl.showDetail"></line-chart>
+        </div>
+        <div flex="25">
+            <div width="100px">
+                <pie-chart title="$ctrl.enrollDetailTitle" chart-height="$ctrl.chartHeight" chart-data="$ctrl.enrollDetail.data" chart-legend="$ctrl.enrollDetail.legend" chart-id="enrollDetail" on-click="$ctrl.onChartClick"></pie-chart>
+            </div>
+        </div>
+    </div>
+    <div class="chart" layout="row">
+        <div flex="75">
+            <line-chart options="$ctrl.sales"  title="'营收趋势'" chart-height="$ctrl.chartHeight" chart-width="'100%'"
+                        chart-id="'callOutMobileTrendStats'" force-re-render="'true'" on-click="$ctrl.showDetail"></line-chart>
+        </div>
+        <div flex="25">
+            <div width="100px">
+                <pie-chart title="$ctrl.enrollSalesTitle" chart-height="$ctrl.chartHeight" chart-data="$ctrl.salesDetail.data" chart-legend="$ctrl.salesDetail.legend" chart-id="salesDetail" on-click="$ctrl.onChartClick"></pie-chart>
+            </div>
+        </div>
+    </div>
+</div>

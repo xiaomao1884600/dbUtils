@@ -1,0 +1,19 @@
+.com-doubeye-default-dTableEditDecorator-eidtIndicator {
+	
+}
+
+.com-doubeye-default-dTableEditDecorator-eidtIndicator-new {
+	background-image: url("../../../images/ui-icons_228ef1_256x240.png");
+	display: inline-block;
+	height: 16px;
+	width: 16px;
+	background-position: -16px -128px;
+}
+
+.com-doubeye-default-dTableEditDecorator-eidtIndicator-delete {
+	background-image: url("../../../images/ui-icons_228ef1_256x240.png");
+	display: inline-block;
+	height: 16px;
+	width: 16px;
+	background-position: -48px -128px;
+}

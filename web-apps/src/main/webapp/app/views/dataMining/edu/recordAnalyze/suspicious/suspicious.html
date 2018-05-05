@@ -1,0 +1,48 @@
+<style>
+    .result-table {
+        max-height: 200px;
+        overflow-y: scroll;
+    }
+</style>
+<md-input-container >
+    <md-select ng-model="$ctrl.selectedCampus" placeholder="请选择校区">
+        <md-option ng-value="item" ng-repeat="item in $ctrl.campuses">{{ item.name }}</md-option>
+    </md-select>
+</md-input-container>
+<md-input-container>
+    <md-select ng-model="$ctrl.seletedContentAbnormalType" placeholder="请选择录音内容异常类型">
+        <md-option ng-value="item" ng-repeat="item in $ctrl.contentAbnormalTypes">{{ item.name }}</md-option>
+    </md-select>
+</md-input-container>
+
+<d-date-range-picker start-time="$ctrl.startTime" end-time="$ctrl.endTime" date-group="$ctrl.dateGroup"></d-date-range-picker>
+<md-input-container>
+<md-button class="md-primary" ng-click="$ctrl.getData()">查询</md-button>
+</md-input-container>
+<h3>联系次数超过2次的电话</h3>
+<div class="result-table">
+    <d-grid grid-data="$ctrl.multiAda" column-defines="$ctrl.__adaColumnDefines" select-model="'multiple'" operations="$ctrl.__suspiciousOperations"></d-grid>
+</div>
+<h3>多个ADA联系过的电话</h3>
+<div class="result-table">
+    <d-grid grid-data="$ctrl.multiClient" column-defines="$ctrl.__clientColumnDefines" select-model="'multiple'" operations="$ctrl.__suspiciousOperations"></d-grid>
+</div>
+
+<h3>疑似凑时长和通话次数</h3>
+<div class="result-table">
+    <d-grid grid-data="$ctrl.contentAbnormalRecords" column-defines="$ctrl.__contentAbnormalColumnDefines" select-model="'multiple'" operations="$ctrl.__contentAbnormalOperations"></d-grid>
+</div>
+
+
+<div style="visibility: hidden; width:400px;">
+    <div class="md-dialog-container" id="detailBrowser">
+        <md-dialog layout-padding="">
+            <div style="padding-top: 10px;height:400px;overflow-y: scroll">
+                <d-grid grid-data="$ctrl.currentCallList" column-defines="$ctrl.__currentCallListColumnDefines" select-model="'single'" operations="$ctrl.__currentCallListOperations"></d-grid>
+            </div>
+            <div ng-show="$ctrl.currentAnalyzeResult" style="height:200px;overflow-y:scroll;">
+                <record-analyze-result-browser user-id="$ctrl.userId" analyze-result="$ctrl.currentAnalyzeResult" show-confirm-operation="false" user-groups="$ctrl.userGroups"></record-analyze-result-browser>
+            </div>
+        </md-dialog>
+    </div>
+</div>

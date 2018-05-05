@@ -1,0 +1,24 @@
+.com-doubeye-default-dTableRows-rowSelected {
+	background-color: #f3ac8a !important;
+}
+
+.com-doubeye-default-dTableRows-rowOdd {
+	background-color: #66c798;
+}
+
+.com-doubeye-default-dTableRows-rowHover {
+	background-color: #d9ebd0;
+}
+
+.com-doubeye-default-dTableRows-tdHover {
+	background-color: #dcb565;
+}
+
+.com-doubeye-default-dTableRows-current {
+	border-top: 3px solid #95B3D7;
+	border-bottom: 3px solid #95B3D7;
+	border-left: 10px solid #95B3D7;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px
+		rgba(149, 179, 215, 0.6);
+	outline: 0 none;
+}

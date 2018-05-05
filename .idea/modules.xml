@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/callback/callback.iml" filepath="$PROJECT_DIR$/callback/callback.iml" />
+      <module fileurl="file://$PROJECT_DIR$/commons/commons.iml" filepath="$PROJECT_DIR$/commons/commons.iml" />
+      <module fileurl="file://$PROJECT_DIR$/core/core.iml" filepath="$PROJECT_DIR$/core/core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/crack/crack.iml" filepath="$PROJECT_DIR$/crack/crack.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dataMining/dataMining.iml" filepath="$PROJECT_DIR$/dataMining/dataMining.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dbUtils_maven.iml" filepath="$PROJECT_DIR$/dbUtils_maven.iml" />
+      <module fileurl="file://$PROJECT_DIR$/experiments/experiments.iml" filepath="$PROJECT_DIR$/experiments/experiments.iml" />
+      <module fileurl="file://$PROJECT_DIR$/models/models.iml" filepath="$PROJECT_DIR$/models/models.iml" />
+      <module fileurl="file://$PROJECT_DIR$/monitor/monitor.iml" filepath="$PROJECT_DIR$/monitor/monitor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/persist/persist.iml" filepath="$PROJECT_DIR$/persist/persist.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spider/spider.iml" filepath="$PROJECT_DIR$/spider/spider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/web-apps/web-apps.iml" filepath="$PROJECT_DIR$/web-apps/web-apps.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,4 @@
+<span ng-repeat="item in $ctrl.items">
+    <input type="radio" name="$ctrl.componentName" ng-click="$ctrl.setCurrentRadio(item)" ng-checked="item.value==$ctrl._value"/>
+    <label>{{item.name}}</label>
+</span>

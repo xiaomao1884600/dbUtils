@@ -1,0 +1,15 @@
+.com-doubeye-default-dTable-rowSelected {
+	background-color: #f3ac8a !important;
+}
+
+.com-doubeye-default-dTable-rowEven {
+	background-color: #66c798;
+}
+
+.com-doubeye-default-dTable-rowHover {
+	background-color: #d9ebd0;
+}
+
+.com-doubeye-default-dTable-tdHover {
+	background-color: #dcb565;
+}

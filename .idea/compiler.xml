@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="callback" />
+        <module name="commons" />
+        <module name="core" />
+        <module name="crack" />
+        <module name="dataMining" />
+        <module name="experiments" />
+        <module name="models" />
+        <module name="monitor" />
+        <module name="persist" />
+        <module name="spider" />
+        <module name="web-apps" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="callback" target="1.8" />
+      <module name="commons" target="1.8" />
+      <module name="core" target="1.8" />
+      <module name="crack" target="1.8" />
+      <module name="dataMining" target="1.8" />
+      <module name="dbUtils_maven" target="1.5" />
+      <module name="experiments" target="1.8" />
+      <module name="models" target="1.8" />
+      <module name="monitor" target="1.8" />
+      <module name="persist" target="1.8" />
+      <module name="spider" target="1.8" />
+      <module name="web-apps" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

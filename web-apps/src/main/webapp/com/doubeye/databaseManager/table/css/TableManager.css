@@ -1,0 +1,35 @@
+.com-doubeye-default-TableManager-STATUS_UNCREATED {
+	color: silver;
+}
+
+.com-doubeye-default-TableManager-STATUS_CREATED {
+	color: #CD7F11;
+}
+
+.com-doubeye-default-TableManager-STATUS_META_MANAGED {
+	color: green;
+}
+
+.com-doubeye-default-TableManager-STATUS_UNKNOWN {
+	color: red;
+}
+
+.com-doubeye-default-TableManager-STATUS_INVALID_STATUS {
+	color: red;
+}
+
+.com-doubeye-default-TableManager-STATUS_OUT_OF_DATE {
+	color: red;
+}
+
+.com-doubeye-default-TableManager-META_MANAGED_BUT_DROPPED {
+	color: red;
+}
+
+.com-doubeye-default-TableManager-TABLENAME_PANEL {
+	padding: 10px;
+}
+
+.com-doubeye-default-TableManager-STATUS {
+	padding-left: 30px;
+}

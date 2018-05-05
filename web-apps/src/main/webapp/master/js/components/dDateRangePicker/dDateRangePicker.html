@@ -1,0 +1,20 @@
+<style>
+    md-input-container {
+        vertical-align:top;
+    }
+</style>
+<md-input-container>
+    <md-select ng-model="$ctrl.dateGroup" placeholder="请选择时间" md-on-close="$ctrl.getTimeRange(true)">
+        <md-option ng-value="item.identifier" ng-repeat="item in $ctrl.dateGroups">{{ item.name }}</md-option>
+    </md-select>
+</md-input-container>
+
+
+<md-input-container>
+    <label ng-disabled="$ctrl.dateGroup !== 'custom'">开始</label>
+    <md-datepicker ng-model="$ctrl.startTime" md-max-date="$ctrl.maxDate" ng-change="$ctrl.onDateChange('start')" ng-disabled="$ctrl.dateGroup !== 'custom'"></md-datepicker>
+</md-input-container>
+<md-input-container>
+    <label ng-disabled="$ctrl.dateGroup !== 'custom'">至</label>
+    <md-datepicker ng-model="$ctrl.endTime" ng-change="$ctrl.onDateChange('end')" ng-disabled="$ctrl.dateGroup !== 'custom'" md-max-date="$ctrl.maxEndDate"></md-datepicker>
+</md-input-container>

@@ -1,0 +1,177 @@
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Angular Material style sheet -->
+    <link rel="stylesheet" href="vendor/angularJS/material/angular-material_1.1.5/angular-material.css">
+    <link rel="stylesheet" href="vendor/angularJS/material/sidenav/angular-material-sidenav.css">
+    <link rel="stylesheet" href="master/js/modules/controller/mainFrame/main.css">
+    <link href="vendor/angularJS/ngDialog/ngDialog.css" rel="stylesheet">
+    <link href="vendor/angularJS/ngDialog/ngDialog-theme-default.css" rel="stylesheet">
+    <link href="vendor/angularJS/ngDialog/ngDialog-custom-width.css" rel="stylesheet">
+    <link href="vendor/angularJS/ngDialog/ngDialog-theme-plain.css" rel="stylesheet">
+    <link href="vendor/angularJS/datetime-range/datetime-range.css" rel="stylesheet">
+    <link rel="stylesheet" href="vendor/angularJS/abn-tree/abn_tree.css">
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/angularJS/smart-table/smart-table.css">
+    <link rel="stylesheet" href="master/css/font-awesome-4.7.0/css/font-awesome.css">
+
+    <!-- Angular Material requires Angular.js Libraries -->
+    <script src="vendor/angularJS/angularJS_1.6.4/angular.js"></script>
+    <script src="vendor/angularJS/angularJS_1.6.4/angular-animate.min.js"></script>
+    <script src="vendor/angularJS/angularJS_1.6.4/angular-aria.min.js"></script>
+    <script src="vendor/angularJS/angularJS_1.6.4/angular-cookies.min.js"></script>
+    <script src="vendor/angularJS/angularJS_1.6.4/angular-messages.min.js"></script>
+    <script src="vendor/angularJS/angularJS_1.6.4/angular-resource.js"></script>
+    <script src="vendor/angularJS/angularJS_1.6.4/angular-route.min.js"></script>
+    <script src="vendor/angularJS/angularJS_1.6.4/angular-sanitize.min.js"></script>
+    <script src="vendor/angularJS/locale/angular-locale_zh-cn.js"></script>
+
+    <!-- vendor -->
+    <script src="vendor/angularJS/material/angular-material_1.1.5/angular-material.js"></script>
+    <script src="vendor/angularJS/material/sidenav/angular-material-sidenav.js"></script>
+    <script src="vendor/angularJS/ui-router/angular-ui-router_1.0.3.js"></script>
+    <script type="text/javascript" src="vendor/angularJS/ngDialog/ngDialog.js"></script>
+    <script type="text/javascript" src="vendor/angularJS/datetime-range/datetime-range.js"></script>
+    <script type="text/javascript" src="vendor/angularJS/datetime-range/moment.min.js"></script>
+    <script type="text/javascript" src="vendor/angularJS/abn-tree/abn_tree_directive.js"></script>
+    <script type="text/javascript" src="vendor/angularJS/checklist/checklist-model.js"></script>
+    <script type="text/javascript" src="vendor/angularJS/smart-table/smart-table.js"></script>
+
+    <script type="text/javascript" src="vendor/eCharts/echarts_4.0.4.js"></script>
+    <script type="text/javascript" src="vendor/eCharts/echarts-wordcloud.min.js"></script>
+    <!-- <script type="text/javascript" src="vendor/eCharts/vintage.js"></script> -->
+
+    <!-- angular-strap -->
+
+    <!--
+    <script type="text/javascript" src="vendor/angularJS/angular-strap-2.3.6/angular-strap.js"></script>
+    <script type="text/javascript" src="vendor/angularJS/angular-strap-2.3.6/angular-strap.tpl.js"></script>
+    -->
+
+    <!-- components -->
+    <script type="text/javascript" src="master/js/components/dManageableComboBox/dManageableComboBox.js"></script>
+    <script type="text/javascript" src="master/js/components/dGroupRadio/dGroupRadio.js"></script>
+    <script type="text/javascript" src="master/js/components/dComboBox/dComboBox.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/reports/charts/lineChart.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/reports/charts/pieChart.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/reports/charts/scatterChart.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/reports/charts/wordCloud.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/reports/charts/multiDimensionPieChart.js"></script>
+    <script type="text/javascript" src="master/js/components/dGrid/dGrid.js"></script>
+    <script type="text/javascript" src="master/js/components/dDateTimePicker/dDateTimePicker.js"></script>
+    <script type="text/javascript" src="master/js/components/dPager/dPager.js"></script>
+    <script type="text/javascript" src="master/js/components/dDateRangePicker/dDateRangePicker.js"></script>
+    <script type="text/javascript" src="master/js/components/dSimpleDateTimePicker/dSimpleDateTimePicker.js"></script>
+
+    <!-- business component -->
+    <script type="text/javascript" src="master/js/components/business/term/term.js"></script>
+    <script type="text/javascript" src="master/js/components/business/campusTeam/campusTeam.js"></script>
+
+
+    <script src="master/js/factory/menuService.js"></script>
+    <script src="master/js/app_2.0.js"></script>
+
+    <!-- factory -->
+    <script type="text/javascript" src="master/js/utils/Ext.js"></script>
+    <script type="text/javascript" src="master/js/utils/Utils.js"></script>
+    <script type="text/javascript" src="master/js/utils/ArraySortor.js"></script>
+    <script type="text/javascript" src="master/js/utils/constant.js"></script>
+    <script src="master/js/factory/dialogService.js"></script>
+    <script src="master/js/factory/httpService2.js"></script>
+
+    <script src="master/js/factory/authorizationService.js"></script>
+    <script src="master/js/factory/mathUtils.js"></script>
+    <script src="master/js/factory/projectManageUtils.js"></script>
+    <script src="master/js/factory/collectionUtils.js"></script>
+
+
+    <script src="master/js/modules/controller/mainFrame/mainFrame.js"></script>
+    <script src="master/js/modules/controller/mainFrame/welcome.js"></script>
+    <script type="text/javascript" src="master/js/login.js"></script>
+    <!-- functions -->
+    <script type="text/javascript" src="master/js/modules/controller/etlCasesList.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/studentInfo.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/toBespokeInfo.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/privilegeInfo.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/newEduStudentInfo.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/assignLog.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/vote.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/meSignOut.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/caseList.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/compareJSON.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/projectEnvironments.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/zhaopin/changeUserName.js"></script>
+
+    <script type="text/javascript" src="master/js/modules/controller/logAnalyze/eController.js"></script>
+
+
+    <!-- monitors -->
+    <script type="text/javascript" src="master/js/modules/controller/reports/charts/networkMonitor.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/monitor/menCacheMonitor.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/monitor/mysqlMonitor.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/monitor/mysqlDetail.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/monitor/serverShellMonitor.js"></script>
+
+    <!-- scheduler -->
+    <script type="text/javascript" src="master/js/modules/controller/scheduler/runningTasks.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/scheduler/taskManager.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/scheduler/scheduleEditor.js"></script>
+
+    <!-- spider.posts -->
+    <script type="text/javascript" src="master/js/modules/controller/spider/zhaopin/analyzeResult.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/spider/zhaopin/detailResult.js"></script>
+    <!-- spider.university -->
+    <script type="text/javascript" src="master/js/modules/controller/spider/university/universitySearch.js"></script>
+    <!-- spider.company -->
+    <script type="text/javascript" src="master/js/modules/controller/spider/zhaopin/company/companyList.js"></script>
+
+    <!-- edu dataMining record -->
+    <script type="text/javascript" src="master/js/modules/controller/dataMining/edu/recordAnalyze/feedbackEnrollCompare.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/dataMining/edu/recordAnalyze/localRecordBrowser.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/dataMining/edu/recordAnalyze/callInfo.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/dataMining/edu/recordAnalyze/recordAnalyzeResultBrowser.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/dataMining/edu/recordAnalyze/statByCampus.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/dataMining/edu/recordAnalyze/hotVocabulary/hotVocabularyManager.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/dataMining/edu/recordAnalyze/keywordGroup/keywordGroupManager.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/dataMining/edu/recordAnalyze/log/fatalLog.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/dataMining/edu/recordAnalyze/log/uploadLog.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/dataMining/edu/recordAnalyze/log/recordDbEtlLog.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/dataMining/edu/recordAnalyze/console/recordScheduleConsole.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/dataMining/edu/recordAnalyze/console/scheduleRunningLog.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/dataMining/edu/recordAnalyze/suspicious/suspicious.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/dataMining/edu/recordAnalyze/suspicious/suspiciousV2.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/dataMining/edu/recordAnalyze/contribution/contribution.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/dataMining/edu/recordAnalyze/trend/trend.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/dataMining/edu/recordAnalyze/report/callOutAvgAnalyze.js"></script>
+
+    <!-- edu dataMining commons -->
+    <script type="text/javascript" src="master/js/modules/controller/dataMining/commons/remarkList.js"></script>
+
+    <!-- edu dataMining enrollment -->
+    <script type="text/javascript" src="master/js/modules/controller/dataMining/edu/enrollment/contribution/enrollmentContribution.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/dataMining/edu/enrollment/trend/enrollTrend.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/dataMining/edu/enrollment/trend/enrollTrendV2.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/dataMining/edu/enrollment/trend/specialtyDayEnrollWarning.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/dataMining/edu/enrollment/trend/enrollConversionRate.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/dataMining/edu/enrollment/trend/dayEnrollmentReport.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/dataMining/edu/enrollment/confirm/enrollConfirm.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/dataMining/edu/enrollment/goal/goalManage.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/dataMining/edu/enrollment/goal/campusGoalManage.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/dataMining/edu/enrollment/goal/goalAchievement.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/dataMining/edu/enrollment/goal/campusGoalAchievement.js"></script>
+
+    <!-- edu dataMining assignment -->
+    <script type="text/javascript" src="master/js/modules/controller/dataMining/edu/recordAnalyze/report/assignByDayAnalyze.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/dataMining/edu/assignment/trend/assignmentTrend.js"></script>
+
+    <!-- edu dataMining noInvite -->
+    <script type="text/javascript" src="master/js/modules/controller/dataMining/edu/recordAnalyze/thematicAnalyze/noInvite.js"></script>
+
+    <!-- authorization -->
+    <script type="text/javascript" src="master/js/modules/controller/authorization/online/onlineAuth.js"></script>
+</head>
+<body ng-app="dbUtilsApp2">
+<main-frame></main-frame>
+</body>
+</html>

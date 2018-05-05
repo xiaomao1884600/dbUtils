@@ -1,0 +1,23 @@
+{
+  "coreDataSource" : {
+    "comment" : "核心数据库连接配置",
+    "connectionHelperClassName" : "com.doubeye.commons.database.MySQL.MySQLConnectionHelper",
+    "dataSource" : {
+      "host" : "10.2.20.228",
+      "port" : "3306",
+      "defaultSchema" : "core",
+      "userName" : "root",
+      "password" : "hxsdabcd"
+    }
+  },
+  "aliyunAuthorization" : {
+    "doubeye" : {
+      "accessKeyId": "LTAIknRDVvtaSLBM",
+      "accessKeySecret": "6X9cZbHkjZtxFtPzwylIRajIMSdd6h"
+    },
+    "defaultIdentifier" : "doubeye"
+  },
+  "localMySQLBinDirectory" : "/usr/bin",
+  "ldapUrl" : "ldap://hxsddc.hxsd.local",
+  "dataSourceKey" : ""
+}

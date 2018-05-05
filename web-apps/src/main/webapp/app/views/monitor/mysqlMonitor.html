@@ -1,0 +1,53 @@
+<style>
+
+    .monitor-chart {
+        width:calc(50% - 5px);
+        margin-right: 2px;
+        margin-bottom: 2px;
+        float:left;
+    }
+
+</style>
+<div>
+    <div id="header">
+        <md-input-container>
+            <md-select ng-model="$ctrl.selectedApp" placeholder="请选择要查询的项目">
+                <md-option ng-value="item" ng-repeat="item in $ctrl.apps">{{ item.name }}</md-option>
+            </md-select>
+        </md-input-container>
+        <button ng-click="$ctrl.getData()">获取</button>
+
+        <d-date-time-picker start-time="$ctrl.startTime" end-time="$ctrl.endTime" date-group="$ctrl.dateGroup"></d-date-time-picker>
+
+        <h3 style="text-align: center">{{$ctrl.selectedApp.name}}</h3>
+    </div>
+
+    <div   class="monitor-chart">
+        <line-chart options="$ctrl.transactions"  title="'事务'" chart-height="$ctrl.chartHeight"
+                    chart-id="'transactions'" on-click="$ctrl.onChartClick"></line-chart>
+    </div>
+    <div   class="monitor-chart">
+        <line-chart options="$ctrl.updateDelete"  title="'语句类型'" chart-height="$ctrl.chartHeight"
+                    chart-id="'deleteUpdate'" on-click="$ctrl.onChartClick"></line-chart>
+    </div>
+
+    <div   class="monitor-chart">
+        <line-chart options="$ctrl.threads"  title="'线程/连接'" chart-height="$ctrl.chartHeight"
+                    chart-id="'threads'" on-click="$ctrl.onChartClick"></line-chart>
+    </div>
+
+    <div   class="monitor-chart">
+        <line-chart options="$ctrl.queries"  title="'查询'" chart-height="$ctrl.chartHeight"
+                    chart-id="'queries'" on-click="$ctrl.onChartClick"></line-chart>
+    </div>
+
+    <div   class="monitor-chart">
+        <line-chart options="$ctrl.handlers"  title="'handlers'" chart-height="$ctrl.chartHeight"
+                    chart-id="'handlers'" on-click="$ctrl.onChartClick"></line-chart>
+    </div>
+
+    <div   class="monitor-chart">
+        <line-chart options="$ctrl.ps"  title="'TPS/BPS'" chart-height="$ctrl.chartHeight"
+                    chart-id="'ps'" on-click="$ctrl.onChartClick"></line-chart>
+    </div>
+</div>

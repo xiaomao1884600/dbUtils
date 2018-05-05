@@ -1,0 +1,21 @@
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>错误编码</th>
+                <th>提示消息</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in $ctrl.errorItems">
+                <td>{{item.errorCode}}</td>
+                <td>{{item.errorMessage}}</td>
+                <td>
+                    <button ng-click="$ctrl.edit(item)">编辑</button>
+                    <button ng-click="remove()">删除</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

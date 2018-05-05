@@ -1,0 +1,57 @@
+/**
+* 表格编辑
+*/
+/* 常量定义 */
+/* 文本溢出用"..."表示 */
+/* 内容区域 */
+table.grid {
+    border: 1px solid #666666;
+    font-size: 12px;
+    border-collapse: collapse;
+    color: #333;
+}
+table.grid thead {
+    border-bottom: 2px solid #D61821;
+    font-weight: bold;
+    padding: 3px 0;
+    background-color: none;
+}
+table.grid tr th {
+    background-color: #dedede;
+    border: 1px solid #666666;
+    text-align: center;
+    font-weight: bolder;
+    white-space : nowrap;
+}
+table.grid tr.com-doubeye-default-dTableRows-rowEven {
+    background-color: #f2f2f2 !important;
+}
+table.grid tr.com-doubeye-default-dTableRows-rowHover {
+    background-color: #ffffcc !important;
+}
+table.grid tr td {
+    border: 1px solid #666666;
+    border-top: none;
+    border-left: none;
+}
+table.grid tr td div {
+    overflow: hidden;
+    /* 超出部分隐藏 */
+    white-space: nowrap;
+    width: 100%;
+    /* IE6要定义宽度 */
+    text-overflow: ellipsis;
+    /* 适用IE */
+    -o-text-overflow: ellipsis;
+    /* 适用opera */
+    -moz-binding: url('ellipsis.xml#ellipsis');
+    /* 适用火狐(firefox通过XUL实现效果) */
+}
+table.grid tr td.com-doubeye-default-dTableRows-tdHover {
+    background-color: #fbf21c !important;
+}
+
+table.grid tr td.com-doubeye-default-dTableRows-current {
+    background-color: #FC8C94 !important;
+    box-shadow: 0 2px 6px rgba(100, 100, 100, 0.3);
+}

@@ -1,0 +1,19 @@
+.resizeElement-hover {
+	cursor: col-resize;
+}
+
+.resizeElement {
+	background-image: url("../images/ui-icons_228ef1_256x240.png");
+	display: inline-block;
+	height: 16px;
+	width: 16px;
+	background-position: -64px -16px;
+	background-repeat:repeat-y;
+}
+
+.th {
+	width: 50px;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	background-color: #44ff44;
+}

@@ -1,0 +1,78 @@
+<style>
+    td,th{
+        padding: 2px 10px;
+    }
+    tr:nth-child(odd),tr:hover{
+        background-color: #f0f0f0;
+    }
+    .red {
+        background-color: #ff8864;
+    }
+    .green {
+        background-color: #3e8f3e;
+    }
+    .ngdialog.ngdialog-theme-plain.custom-width .ngdialog-content {
+        width: 550px;
+    }
+
+    .warning {
+        color : #ff8864;
+    }
+</style>
+
+<div>
+    <label>请选择要使用的数据库</label><d-group-radio cookie-name="eDataSource"></d-group-radio>
+    <div>
+        <label>请输入学号、姓名或者电话号码</label>
+        <input type="text" ng-model="$ctrl.student"/>
+        <button ng-click="$ctrl.doSearch()">搜索</button>
+    </div>
+</div>
+
+
+    <table>
+        <tr>
+            <th>id</th>
+            <th>姓名</th>
+            <th>是否是旧量</th>
+            <th>手机号</th>
+            <th>手机号2</th>
+            <th>QQ</th>
+            <th>QQ2</th>
+            <th>负责人</th>
+            <th>是否是线下学生</th>
+            <th>操作</th>
+        </tr>
+        <tr ng-repeat="student in $ctrl.students">
+            <td>{{student.studentid}}</td>
+            <td>{{student.studentname}}</td>
+            <td ng-class="{'warning' : student.oldstudent == '是'}">{{student.oldstudent}}</td>
+            <td>{{student.mobile}}</td>
+            <td>{{student.mobile2}}</td>
+            <td>{{student.qq}}</td>
+            <td>{{student.qq2}}</td>
+            <td>{{student.username}}</td>
+            <td ng-class="{'warning' : student.isInChannel == '渠道学生'}">{{student.isInChannel}}</td>
+            <td>
+                <button ng-click="$ctrl.deleteSecondMobile(student.studentid)"> 清除第二个手机号</button>
+                <button ng-click="$ctrl.deleteSecondQQ(student.studentid)">清除第二个QQ号</button>
+                <button ng-click="$ctrl.deleteBoth(student.studentid)">同时清除</button>
+                <span style="padding-left: 40px;">
+                    <button ng-click="$ctrl.assignToChannel(student.studentid)" ng-show="student.isInChannel === '线下学生'">线下转渠道</button>
+                    <button ng-click="$ctrl.unAssignToChannel(student.studentid)" ng-show="student.isInChannel !== '线下学生'">取消渠道标记</button>
+                </span>
+            </td>
+        </tr>
+    </table>
+    <label>{{student.studentname}}</label> <label>{{student.mobile}}</label>
+
+<script type="text/ng-template" id="modalDialogId">
+    <div class="ngdialog-message">
+        <h3>确认</h3>
+        <p>{{ngDialogData}}</p>
+    </div>
+    <div class="ngdialog-buttons">
+        <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm(true)">确认</button>
+        <button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog(true)">取消</button>
+    </div>
+</script>

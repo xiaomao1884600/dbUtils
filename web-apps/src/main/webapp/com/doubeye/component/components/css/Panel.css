@@ -1,0 +1,23 @@
+.com-doubeye-default-Panel-tool {
+	right: 5px;
+    width: auto;
+    position : absolute;
+    margin-top : -8px;
+    top : 50%;
+}
+
+.com-doubeye-default-Panel-collapse {
+	background-image: url("../images/ui-icons_228ef1_256x240.png");
+	display: inline-block;
+	height: 16px;
+	width: 16px;
+	cursor: pointer;
+}
+
+.com-doubeye-default-Panel-collapsed {
+	background-position: -64px -16px;
+}
+
+.com-doubeye-default-Panel-notCollapsed {
+	background-position: -0px -16px;
+}

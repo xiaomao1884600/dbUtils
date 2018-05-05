@@ -1,0 +1,108 @@
+<style>
+    td,th{
+        padding: 2px 10px;
+    }
+    tr:nth-child(odd),tr:hover{
+        background-color: #f0f0f0;
+    }
+    .red {
+        background-color: #ff8864;
+    }
+    .green {
+        background-color: #3e8f3e;
+    }
+    .ngdialog.ngdialog-theme-plain.custom-width .ngdialog-content {
+        width: 550px;
+    }
+
+    .warning {
+        color : #ff8864;
+    }
+
+    .tableList {
+        width:300px;height:200px;overflow-y: scroll;
+    }
+</style>
+<div style="width:900px; float: left; height: 400px;">
+    <div>
+        {{$ctrl.description}}
+    </div>
+    <div>
+        <button ng-click="$ctrl.addCase()">新增</button>
+    </div>
+    <table>
+        <tr>
+            <th>编号</th>
+            <th>名称</th>
+            <th>源数据源</th>
+            <th>源数据库</th>
+            <th>目标数据源</th>
+            <th>目标数据库</th>
+            <th>操作</th>
+        </tr>
+        <tr ng-repeat="thisCase in $ctrl.cases">
+            <td>{{thisCase.id}}</td>
+            <td>{{thisCase.caseName}}</td>
+            <td>{{thisCase.originDatasourceLabel}}</td>
+            <td>{{thisCase.originDatabase}}</td>
+            <td>{{thisCase.targetDatasourceLabel}}</td>
+            <td>{{thisCase.targetDatabase}}</td>
+            <td>
+                <div ng-show="thisCase.id">
+                    <button ng-click="$ctrl.editCase(thisCase)">编辑</button>
+                    <button ng-click="$ctrl.runCase(thisCase)">同步</button>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div ng-show="$ctrl.showEditor" style="float: right; width:400px; margin-left: 20px;">
+    <div ng-hide="true">
+        <label>id：</label><input type="text" ng-model="$ctrl.currentCase.id"/>
+    </div>
+    <div>
+        <label>名称：</label><input type="text" ng-model="$ctrl.currentCase.caseName"/>
+    </div>
+    <div>
+        <label>源数据源：</label>
+        <d-combo-box value="$ctrl.currentCase.originDatasourceId" label-property-name="'name'" value-property-name="'id'" options="$ctrl.dataSources"  name="originDatasource"></d-combo-box>
+    </div>
+
+    <div>
+        <label>源数据库：</label>
+        <d-combo-box value="$ctrl.currentCase.originDatabase" label-property-name="'name'" value-property-name="'database'" options="$ctrl.originDatabases"  name="originDatabases" ></d-combo-box>
+    </div>
+    <div style="padding-left: 10px;">
+        <label><input type="checkbox" ng-model="$ctrl.currentCase.selectAllTableInOriginDatabase"/> 选择所有数据表 </label>
+        <!-- 复选列表 -->
+        <div ng-show="!$ctrl.currentCase.selectAllTableInOriginDatabase" style="padding-left: 20px;" ng-class="$ctrl.currentCase.selectAllTableInOriginDatabase ? '' : 'tableList'">
+            <div ng-repeat="table in $ctrl.currentCase.allTablesInOriginDatabase">
+                <label>
+                    <input type="checkbox" checklist-model="$ctrl.currentCase.originTableNames" checklist-value="table.TABLE_NAME"> {{table.TABLE_NAME}}
+                </label>
+            </div>
+        </div>
+    </div>
+    <div>
+        <label>目标数据源：</label>
+        <d-combo-box value="$ctrl.currentCase.targetDatasourceId" label-property-name="'name'" value-property-name="'id'" options="$ctrl.dataSources" name="targetDatasource" ></d-combo-box>
+    </div>
+    <div>
+        <label>目标数据库：</label>
+        <d-combo-box value="$ctrl.currentCase.targetDatabase" label-property-name="'name'" value-property-name="'database'" options="$ctrl.targetDatabases" name="targetDatabases" ></d-combo-box>
+    </div>
+    <div><button ng-click="$ctrl.save()">保存</button>    <button>取消</button></div>
+</div>
+
+
+<script type="text/ng-template" id="modalDialogId">
+    <div class="ngdialog-message">
+        <h3>确认</h3>
+        <p>是否要保存尚未保存的新建的方案？</p>
+    </div>
+    <div class="ngdialog-buttons">
+        <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm(true)">确认</button>
+        <button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog(true)">取消</button>
+    </div>
+</script>

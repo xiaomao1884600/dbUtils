@@ -1,0 +1,62 @@
+<div>
+    <md-button ng-click="$ctrl.newSchedule()">
+        新增计划任务
+    </md-button>
+</div>
+
+<div>
+    <d-grid grid-data="$ctrl.schedules" column-defines="$ctrl.columnDefines" operations="$ctrl.scheduleOprations"></d-grid>
+</div>
+
+
+<!--
+<div style="visibility: hidden">
+
+    <div class="md-dialog-container" id="configDialog">
+        <md-dialog aria-label="Mango (Fruit)">
+            <md-dialog-content>
+                <div class="md-dialog-content">
+                    <schedule-editor schedule="$ctrl.editingSchedule"></schedule-editor>
+                </div>
+            </md-dialog-content>
+            <md-dialog-actions layout="row">
+                <span flex></span>
+                <md-button ng-click="$ctrl.confirmInitConfigChange()">
+                    确定
+                </md-button>
+                <md-button ng-click="$ctrl.cancelInitConfigChange()">
+                    取消
+                </md-button>
+            </md-dialog-actions>
+        </md-dialog>
+    </div>
+</div>
+-->
+
+<div style="visibility: hidden">
+    <div class="md-dialog-container" id="configDialog">
+        <md-dialog layout-padding="">
+
+            <h2>Pre-Rendered Dialog</h2>
+
+            <div layout="flex">
+                <md-input-container>
+                    <label>Items</label>
+                    <md-select ng-model="$ctrl.schedule.initConfig.dataSourceId" placeholder="数据源">
+                        <md-optgroup label="items">
+                            <md-option ng-value="item" ng-repeat="item in $ctrl.dataSources">{{ item.name }}</md-option>
+                        </md-optgroup>
+                    </md-select>
+                </md-input-container>
+            </div>
+            <p>
+                This is a pre-rendered dialog, which means that <code>$mdDialog</code> doesn't compile its
+                template on each opening.
+                <br><br>
+                The Dialog Element is a static element in the DOM, which is just visually hidden.<br>
+                Once the dialog opens, we just fetch the element from the DOM into our dialog and upon close
+                we restore the element back into its old DOM position.
+            </p>
+        </md-dialog>
+    </div>
+</div>

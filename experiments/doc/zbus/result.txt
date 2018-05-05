@@ -1,0 +1,7 @@
+完成启动消息服务器，Producer和Consumer的测试，能够发送和接收消息
+步骤：
+1. 启动zbus服务，dist中的zbus.bat
+2. 启动Producer
+3. 启动Consumer
+2,3没有步骤区别
+

@@ -1,0 +1,61 @@
+<style>
+    md-input-container {
+        vertical-align:top;
+    }
+
+    .word-container {
+        width:768px; height: 150px;
+        overflow-y: scroll;
+    }
+
+    .word-weight-container {
+        padding-bottom: 0px;
+    }
+</style>
+
+<div>
+    <button ng-click="$ctrl.addVocabularyTable()">新增</button>
+
+    <div>
+        <d-grid grid-data="$ctrl.vocabularyTables" column-defines="$ctrl.__columnDefines" operations="$ctrl.__operations"></d-grid>
+    </div>
+</div>
+
+
+
+<div style="visibility: hidden">
+    <div class="md-dialog-container" id="vocabularyContent">
+        <md-dialog layout-padding="" style="width:800px;">
+            <div class="word-weight-container">
+                <md-input-container>
+                    <label>热词表名称</label><input type="text" ng-model="$ctrl.currentVocabularyTable.name"/>
+                </md-input-container>
+                <md-input-container>
+                <label>全局权重</label><input type="number" style="width:60px;" ng-model="$ctrl.currentVocabularyTable.global_weight"/>
+                </md-input-container>
+
+            </div>
+
+            <div class="word-weight-container">
+                <div class="word-weight-container">
+                    <label>未指定权重</label>
+                </div>
+                <div class="word-container word-weight-container">
+                    <span ng-repeat="item in $ctrl.currentVocabularyTable.words"><input type="text" style="width:100px;" ng-model="item"><button ng-click="$ctrl.removeWord('words', $index)">删除</button></span> <button ng-click="$ctrl.addWord('words')">新增</button>
+                </div>
+            </div>
+            <div class="word-weight-container">
+                <div class="word-weight-container">
+                    <label>自定义权重</label>
+                </div>
+                <div class="word-container word-weight-container">
+                    <span ng-repeat="item in $ctrl.currentVocabularyTable.word_weights"><input type="text" style="width:100px;" ng-model="item.id"><input type="number" style="width:40px;" ng-model="item.weight"><button ng-click="$ctrl.removeWord('word_weights', key)">删除</button></span> <button ng-click="$ctrl.addWord('word_weights')">新增</button>
+                </div>
+            </div>
+
+            <div class="word-weight-container">
+                <md-button ng-click="$ctrl.saveVocabularyTable()">保存</md-button>
+            </div>
+        </md-dialog>
+    </div>
+</div>

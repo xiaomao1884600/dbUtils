@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+
+    <parent>
+        <groupId>com.doubeye</groupId>
+        <artifactId>dbUtils_maven</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>web-apps</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+    <name>dbUtils Web Application</name>
+    <url>http://10.2.20.63:8511/dbUtils</url>
+
+    <properties>
+        <spring.security.version>4.2.2.RELEASE</spring.security.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>models</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>commons</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>monitor</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>spider</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>persist</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>dataMining</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.json-lib</groupId>
+            <artifactId>json-lib</artifactId>
+            <classifier>jdk15</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-servlet-api</artifactId>
+        </dependency>
+
+        <!-- spring security -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+<!--
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-initConfig</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+-->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <finalName>dbUtils</finalName>
+
+        <resources>
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.1.1</version>
+                <configuration>
+                    <warName>dbUtils</warName>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                    <compilerArguments>
+                        <extdirs>d:\workcode\dbUtils\web-apps\src\main\webapp\web-inf\lib</extdirs>
+                    </compilerArguments>
+                </configuration>
+            </plugin>
+    </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>development</id>
+            <build>
+                <resources>
+                    <resource>
+                        <filtering>true</filtering>
+                        <directory>${basedir}/src/main/config</directory>
+                        <includes>
+                            <include>init.json</include>
+                        </includes>
+                        <targetPath>${project.build.directory}/${build.finalName}/config</targetPath>
+                    </resource>
+                </resources>
+            </build>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+                <property>
+                    <name>environment.type</name>
+                    <value>dev</value>
+                </property>
+            </activation>
+        </profile>
+
+        <profile>
+            <id>production</id>
+            <build>
+                <finalName>dbUtilsProduction</finalName>
+                <resources>
+                    <resource>
+                        <filtering>true</filtering>
+                        <directory>${basedir}/src/main/productionConfig</directory>
+                        <includes>
+                            <include>init.json</include>
+                        </includes>
+                        <targetPath>${project.build.directory}/${project.build.finalName}/config</targetPath>
+                    </resource>
+                </resources>
+
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-war-plugin</artifactId>
+                        <version>2.1.1</version>
+                        <configuration>
+                            <warName>dbUtilsProduction</warName>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+            <activation>
+                <property>
+                    <name>environment.type</name>
+                    <value>production</value>
+                </property>
+            </activation>
+        </profile>
+    </profiles>
+    
+</project>

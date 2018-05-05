@@ -1,0 +1,21 @@
+<style>
+    div.info {
+        border: 1px solid #D9DEE4;
+        background-color: #DCE2E7;
+        color: #444;
+        padding : 5px;
+    }
+</style>
+<div>
+    <div>
+        <div style="display:inline-block"><h3>日志文件信息</h3> <button ng-click="$ctrl.doLogPurge()">清除</button>  <md-datepicker ng-model="$ctrl.purgeDate" md-placeholder="选择日期"></md-datepicker></div>
+        <div ng-repeat="logTableInfo in $ctrl.logTableInfo">
+            <p>{{logTableInfo.comment}}（{{logTableInfo.tableName}}）占用{{logTableInfo.size}}MB空间, 记录数{{logTableInfo.rowCount}}</p>
+        </div>
+    </div>
+    <div class="info">
+        <p>状态为黄色代表运行时间超过运行间隔的0.5倍，或失败任务数超过总数的10%，或9:00-22:00运行时间中，总任务数为0</p>
+        <p>状态为红色最后一次运行时间在当前时间的2倍运行间隔</p>
+    </div>
+    <d-grid grid-data="$ctrl.schedules" column-defines="$ctrl.__columnDefines" operations="$ctrl.__operations"></d-grid>
+</div>

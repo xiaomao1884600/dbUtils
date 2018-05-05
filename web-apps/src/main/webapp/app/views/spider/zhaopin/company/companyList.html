@@ -1,0 +1,73 @@
+<style>
+    md-input-container {
+        vertical-align:top;
+    }
+</style>
+
+<div>
+
+    <md-input-container>
+        <label for="companyName">公司名称</label>
+        <input ng-model="$ctrl.companyName" id="companyName">
+    </md-input-container>
+
+
+    <md-input-container>
+        <button ng-click="$ctrl.getData(1)">搜索</button>
+    </md-input-container>
+</div>
+
+
+<div>
+    <d-pager current-page="$ctrl.currentPage" total-page="$ctrl.totalPage" display-page-number="5"
+             record-per-page="$ctrl.recordPerPage" callback="$ctrl.getData"></d-pager>
+    <d-grid grid-data="$ctrl.companies" column-defines="$ctrl.__columnDefines" operations="$ctrl.__operations"></d-grid>
+</div>
+
+<div style="visibility: hidden; width:800px;">
+    <div class="md-dialog-container" id="companyDetail">
+        <md-dialog layout-padding="">
+            <div width="100%">
+                <div>
+                    <h3>{{$ctrl.currentCompany.companyName}}</h3>
+                </div>
+                <div width="80%">
+                    <H4>基本信息</H4>
+                    <div>
+                        <span width="25%">
+                            <label>公司性质：</label><p>{{$ctrl.currentCompany.property}}</p>
+                        </span>
+                        <span width="25%">
+				                <label>行业类别：</label><p>{{$ctrl.currentCompany.industries}}</p>
+				            </span>
+                        <span width="25%">
+				                <label>公司规模：</label><p>{{$ctrl.currentCompany.size}}</p>
+				            </span>
+                        <span width="25%">
+				                <label>公司网址：</label><p>{{$ctrl.currentCompany.officialSite}}</p>
+				            </span>
+                    </div>
+                    <div>
+				            <span width="25%">
+				                <label>注册资金：</label><p>{{$ctrl.currentCompany.registered_capital}}</p>
+				            </span>
+                        <span width="25%">
+				                <label>成立时间：</label><p>{{$ctrl.currentCompany.established_time}}</p>
+				            </span>
+                        <span width="50%">
+				                <label>招聘网站：</label><p>{{$ctrl.currentCompany.sites}}</p>
+				            </span>
+                    </div>
+                    <div>
+				            <span width="80%">
+				                <label>地址：</label><p>{{$ctrl.currentCompany.address}}</p>
+				            </span>
+                        <span width="20%">
+				                <label>状态：</label><p>{{$ctrl.currentCompany.status}}</p>
+				            </span>
+                    </div>
+                </div>
+            </div>
+        </md-dialog>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<div style="display: block;width: 100%">
+<table>
+    <label>我也加一个：</label><input ng-model="$ctrl.optionName"/> <button ng-click="$ctrl.addVoteOption()">添加</button>
+    <tr>
+        <th>编号</th>
+        <th>主题</th>
+        <th>票数</th>
+        <th>投票</th>
+    </tr>
+    <tr ng-repeat="option in $ctrl.options">
+        <td>{{option.id}}</td>
+        <td>{{option.message}}</td>
+        <td>{{option.votingCount}}</td>
+        <td><button ng-click="$ctrl.vote(option.id)">投票</button></td>
+    </tr>
+</table>
+</div>

@@ -1,0 +1,16 @@
+
+<md-radio-group ng-model="$ctrl.dateGroup" layout="row" ng-change="$ctrl.onRadioChange()">
+    <md-radio-button value="today" class="md-primary"> 今天 </md-radio-button>
+    <md-radio-button value="yesterday" class="md-primary"> 昨天 </md-radio-button>
+    <md-radio-button value="last24Hours" class="md-primary"> 过去24小时 </md-radio-button>
+    <md-radio-button value="lastOneHour" class="md-primary"> 过去1小时 </md-radio-button>
+    <md-radio-button value="lastHalfHour" class="md-primary"> 过去半小时 </md-radio-button>
+    <md-radio-button value="lastSomeMinutes" class="md-primary"> 过去 </md-radio-button> <input type="text" ng-model="$ctrl.lastMinutes" size="3" ng-disabled="$ctrl.dateGroup !== 'lastSomeMinutes'" ng-change="$ctrl.getTimeRange()"/> <span style="padding-left:10px;padding-right:10px;"> 分钟 </span>
+    <md-radio-button value="custom" class="md-primary"> 自定义 </md-radio-button>
+
+    <span style="padding-left: 50px;" ng-hide="$ctrl.dateGroup === 'cust1om'"> 选定时间{{$ctrl.startTime}} -- {{$ctrl.endTime}}</span>
+</md-radio-group>
+
+<div style="padding-top: 10px;">
+    <datetime-range start="$ctrl.startTimeDisplay" end="$ctrl.endTimeDisplay" ng-show="$ctrl.dateGroup === 'custom'" on-change="$ctrl.onDatePickerChange()"></datetime-range >
+</div>

@@ -1,0 +1,95 @@
+<style>
+    .stat-result {
+        clear: both;
+    }
+    .result-grid {
+        overflow-y: scroll;
+        height : 400px;
+    }
+    .contribution-result {
+        width:calc(45% - 5px);
+        margin-right: 2px;
+        margin-bottom: 2px;
+        float:left;
+    }
+    .team-contribution-result {
+        width:calc(40% - 5px);
+        margin-right: 2px;
+        margin-bottom: 2px;
+        float:left;
+    }
+    .result-tab {
+        height:50px;min-height:10px !important;
+    }
+
+    md-input-container {
+        vertical-align: top;
+    }
+</style>
+
+<div>
+    <md-input-container>
+        <md-select ng-model="$ctrl.selectedCampus" placeholder="请选择校区">
+            <md-option ng-value="item" ng-repeat="item in $ctrl.campuses">{{ item.name }}</md-option>
+        </md-select>
+    </md-input-container>
+
+    <d-date-range-picker start-time="$ctrl.startTime" end-time="$ctrl.endTime" date-group="$ctrl.dateGroup"></d-date-range-picker>
+
+    <md-input-container>
+        <md-switch ng-model="$ctrl.mode" aria-label="mode" ng-true-value="'团队'" ng-false-value="'个人'" class="md-primary" style="margin-top: 0px !important;">
+            {{$ctrl.mode}}
+        </md-switch>
+    </md-input-container>
+    <md-input-container>
+        <md-button class="md-parimary" ng-click="$ctrl.getData()">查询</md-button>
+    </md-input-container>
+    <md-input-container>
+        <md-button ng-show="$ctrl.contributions && $ctrl.contributions.length > 0" ng-click="$ctrl.showTeamStat()">{{$ctrl.showTeamButtonTitle}}</md-button>
+    </md-input-container>
+</div>
+<div>
+    <div ng-show="$ctrl.displayTeamStat" class="stat-result">
+        <div class="row">
+            <div class="team-contribution-result" width="$ctrl.chartWisth" style="width: auto">
+
+                <line-chart options="$ctrl.team.teamEnroll"  title="'团队报名对比'" chart-height="380" chart-width="$ctrl.chartWidth"
+                            chart-id="'teamEnroll'"></line-chart>
+            </div>
+            <div class="team-contribution-result" width="$ctrl.chartWisth" style="width: auto">
+
+                <line-chart options="$ctrl.team.rangeStats"  title="'团队报名时段对比'" chart-height="380" chart-width="$ctrl.chartWidth"
+                            chart-id="'teamEnrollRange'" force-re-render="'true'"></line-chart>
+            </div>
+        </div>
+    </div>
+    <div layout="column" ng-cloak class="stat-result">
+        <md-content class="md-padding" >
+            <md-tabs class="result-tab" md-selected="$ctrl.selectedIndex" md-border-bottom md-enable-disconnect>
+                <md-tab ng-repeat="entry in $ctrl.contributions" label="{{entry.username}}" md-on-select="$ctrl.renderChart(entry)">
+                </md-tab>
+            </md-tabs>
+            <div class="content" ng-show="$ctrl.contributions && $ctrl.contributions.length > 0">
+                <div class="stat-result">
+                    <div class="contribution-result result-grid">
+                        <d-grid column-defines="$ctrl.__enrollList" grid-data="$ctrl.currentUser.data.person_enrollment_day"></d-grid>
+                    </div>
+
+                    <div class="contribution-result">
+                        <line-chart options="$ctrl.currentUser.callOutLength"  title="'拨出时长贡献度'" chart-height="380" chart-width="$ctrl.chartWidth"
+                                    chart-id="'callLength'" on-click="$ctrl.onMobileClick"></line-chart>
+                    </div>
+                </div>
+                <div class="stat-result">
+                    <div class="contribution-result result-grid">
+                        <d-grid column-defines="$ctrl.__intervalContributionColumnDefine" grid-data="$ctrl.currentUser.data.person_enrollment_hour"></d-grid>
+                    </div>
+                    <div class="contribution-result">
+                        <line-chart options="$ctrl.currentUser.range"  title="'时段贡献度'" chart-height="380" chart-width="$ctrl.chartWidth"
+                                    chart-id="'range'"></line-chart>
+                    </div>
+                </div>
+            </div>
+        </md-content>
+    </div>
+</div>

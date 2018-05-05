@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>MyHtml.html</title>
+		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+		<meta http-equiv="description" content="this is my page">
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<script type="text/javascript" src="../js/GlobalParameters.js"></script>
+		<script type="text/javascript">
+	com.doubeye.GlobalParameters.loaderPrefix = '../';
+</script>
+		<script type="text/javascript" src="../js/jsLoader.js"></script>
+		<script type="text/javascript" src="../../com/doubeye/utils/Map.js"></script>
+		<script type="text/javascript"
+			src="../../com/doubeye/utils/messageHandler/MessageHandler.js"></script>
+		<script type="text/javascript"
+			src="../../com/doubeye/utils/messageHandler/AlertMessageHandler.js"></script>
+		<script type="text/javascript"
+			src="../../com/doubeye/ajax/Redirect.js"></script>
+		<script type="text/javascript"
+			src="../../com/doubeye/ajax/AjaxQueue.js"></script>
+		<script type="text/javascript"
+			src="../../com/doubeye/ajax/AjaxRequest.js"></script>
+		<script type="text/javascript">
+	//测试内容：创建AjaxRequst,发送一个不存在的请求(404错误)(ajax系统错误)
+	var ajax = new com.doubeye.Ajax.AjaxRequest({
+		realUrl : '../../Test_Ajax2?action=message',
+		queue : new com.doubeye.Ajax.AjaxQueue(),
+		messageType : 'AlertMessage'
+	});
+	ajax.init();
+	//测试内容：创建AjaxRequst发送一个方法(action)不存在的请求(500错误)(ajax系统错误)
+	/*var ajax = new com.doubeye.Ajax.AjaxRequest({
+		realUrl : '../../Test_Ajax?action=notExits',
+		queue : new com.doubeye.Ajax.AjaxQueue(),
+		messageType : 'AlertMessage'
+		});
+	ajax.init();*/
+
+	//测试内容：创建AjaxRequst,定义业务错误的回调函数，发送一个返回状态为ERROR的请求
+	/*var ajax = new com.doubeye.Ajax.AjaxRequest({
+		realUrl : '../../Test_Ajax?action=error',
+		queue : new com.doubeye.Ajax.AjaxQueue(),
+		messageType : 'AlertMessage'
+		});
+	ajax.init();*/
+
+	//测试内容：创建AjaxRequst,定义结果集的回调函数，发送一个返回状态为RECORD的请求
+	/*var showRecord = function(data){
+		alert(data);
+	};
+	var ajax = new com.doubeye.Ajax.AjaxRequest({
+		realUrl : '../../Test_Ajax?action=record',
+		queue : new com.doubeye.Ajax.AjaxQueue(),
+		recordHandle : showRecord
+		});
+	ajax.init();*/
+
+	//测试内容：创建AjaxRequst,定义返回字符串的回调函数，发送一个返回状态为MESSAGE的请求
+	/*var ajax = new com.doubeye.Ajax.AjaxRequest({
+		realUrl : '../../Test_Ajax?action=message',
+		queue : new com.doubeye.Ajax.AjaxQueue(),
+		messageType : 'AlertMessage'
+		});
+	ajax.init();*/
+
+	//测试内容：创建一个Redirec(重定向)的对象,定义好间隔时间和每次访问重定向URL的处理函数，接着创建一个AjaxRequst对象，添加对Redirec对象的引用，发送一个返回状态为REDIRECT的请求
+	/*var redirect=new com.doubeye.Ajax.Redirect({
+		intervalTime : 2000,
+		getRedirectDetail : function(data){
+		 	alert(data.MESSAGE);
+		},
+		end : function(){
+			alert('结束');
+		}
+	})
+	var ajax = new com.doubeye.Ajax.AjaxRequest({
+		realUrl : '../../Test_Ajax?action=redirect',
+		queue : new com.doubeye.Ajax.AjaxQueue(),
+		redirect : redirect
+		});
+	ajax.init();*/
+
+	//测试内容：将AjaxQueue的最大并发请求数设置为2，建5个需要AjaxQueue管理的AjaxRequst，并且一起发送。后台利用线程Sleep模拟各个请求的操作时间
+	/*var ajax1 = new com.doubeye.Ajax.AjaxRequest({
+		realUrl : '../../Test_Ajax?action=sleep1',
+		queue : new com.doubeye.Ajax.AjaxQueue(),
+		});
+	ajax1.init();
+	
+	var ajax2 = new com.doubeye.Ajax.AjaxRequest({
+		realUrl : '../../Test_Ajax?action=sleep2',
+		queue : new com.doubeye.Ajax.AjaxQueue(),
+		});
+	ajax2.init();
+	
+	var ajax3 = new com.doubeye.Ajax.AjaxRequest({
+		realUrl : '../../Test_Ajax?action=sleep1',
+		queue : new com.doubeye.Ajax.AjaxQueue(),
+		});
+	ajax3.init();
+	
+	var ajax4 = new com.doubeye.Ajax.AjaxRequest({
+		realUrl : '../../Test_Ajax?action=sleep2',
+		queue : new com.doubeye.Ajax.AjaxQueue(),
+		});
+	ajax4.init();
+	
+	var ajax5 = new com.doubeye.Ajax.AjaxRequest({
+		realUrl : '../../Test_Ajax?action=sleep1',
+		queue : new com.doubeye.Ajax.AjaxQueue(),
+		});
+	ajax5.init();*/
+
+	//测试内容：创建AjaxRequst,设置超时时间为5秒,后台请求方法下断点。
+	/*var ajax = new com.doubeye.Ajax.AjaxRequest({
+		realUrl : '../../Test_Ajax?action=message',
+		timeout : 5000,
+		queue : new com.doubeye.Ajax.AjaxQueue()
+		});
+	ajax.init();*/
+</script>
+	</head>
+	<body>
+		<div id="sudan">
+			苏丹
+		</div>
+	</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <!-- venders -->
+    <script type="text/javascript" src="vendor/angularJS/angular.js"></script>
+    <script type="text/javascript" src="vendor/angularJS/angular-route.js"></script>
+    <script type="text/javascript" src="vendor/angularJS/ui-router/angular-ui-router.js"></script>
+    <script type="text/javascript" src="vendor/angularJS/ngDialog/ngDialog.js"></script>
+    <script type="text/javascript" src="vendor/angularJS/angular-cookies.js"></script>
+    <script type="text/javascript" src="vendor/angularJS/datetime-range/datetime-range.js"></script>
+    <script type="text/javascript" src="vendor/angularJS/datetime-range/moment.min.js"></script>
+    <script type="text/javascript" src="vendor/angularJS/abn-tree/abn_tree_directive.js"></script>
+    <script type="text/javascript" src="vendor/angularJS/checklist/checklist-model.js"></script>
+    <script type="text/javascript" src="vendor/angularJS/smart-table/smart-table.js"></script>
+
+
+    <!-- global -->
+    <script type="text/javascript" src="master/js/app.js"></script>
+    <script type="text/javascript" src="master/js/modules/initConfig.js"></script>
+
+    <!-- utils -->
+    <script type="text/javascript" src="master/js/utils/Ext.js"></script>
+    <script type="text/javascript" src="master/js/utils/Utils.js"></script>
+    <script type="text/javascript" src="master/js/factory/httpService.js"></script>
+
+    <!-- components -->
+    <script type="text/javascript" src="master/js/components/dManageableComboBox/dManageableComboBox.js"></script>
+    <script type="text/javascript" src="master/js/components/dGroupRadio/dGroupRadio.js"></script>
+    <script type="text/javascript" src="master/js/components/dComboBox/dComboBox.js"></script>
+
+    <!-- functions -->
+    <script type="text/javascript" src="master/js/modules/controller/errorList.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/etlCasesList.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/studentInfo.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/toBespokeInfo.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/privilegeInfo.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/doubleEleven.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/generalUpdateSQLBuilder.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/newEduStudentInfo.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/assignLog.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/vote.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/meSignOut.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/jobManager.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/caseList.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/compareJSON.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/projectEnvironments.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/zhaopin/changeUserName.js"></script>
+    <script type="text/javascript" src="master/js/login.js"></script>
+    <script type="text/javascript" src="master/js/modules/controller/logAnalyze/eController.js"></script>
+
+    <script type="text/javascript" src="master/js/modules/controller/menuController.js"></script>
+
+
+
+    <link href="vendor/angularJS/ngDialog/ngDialog.css" rel="stylesheet">
+    <link href="vendor/angularJS/ngDialog/ngDialog-theme-default.css" rel="stylesheet">
+    <link href="vendor/angularJS/ngDialog/ngDialog-custom-width.css" rel="stylesheet">
+    <link href="vendor/angularJS/ngDialog/ngDialog-theme-plain.css" rel="stylesheet">
+    <link href="vendor/angularJS/datetime-range/datetime-range.css" rel="stylesheet">
+    <link rel="stylesheet" href="vendor/angularJS/abn-tree/abn_tree.css">
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+
+</head>
+<body ng-app="dbUtilsApp">
+    <div style="padding-left:20px; padding-bottom: 10px;">
+        <!-- <a ng-href="#errorList">errorList v0.0.5</a> -->
+        <a ng-href="#etlCasesList">edu数据迁移方案 v0.6.3 <label style="color:red">添加执行选中的多个迁移方案</label></a>
+        <a ng-href="#studentInfo">学生信息表 v0.0.3</a>
+        <a ng-href="#toBespokeInfo">预约通道信息 v0.3.7 <label style="color:red">可接量ADA显示可接量数字</label></a>
+        <div><a ng-href="#privilegeInfo">e.hxsd.local用户权限查询 v0.0.5 </a><label style="color:red">重置用户密码</label></div>
+
+        <div><a ng-href="#student">e学生信息 <label style="color:red">添加线下转渠道功能 0.0.2</label></a></div>
+        <div><a ng-href="#assignLog">分配日志 <label style="color:red">0.0.1</label></a></div>
+        <a ng-href="#doubleEleven">双十一优惠错误名单</a>
+
+        <a ng-href="#meSignOut">ME签退人数查询</a>
+
+        <a ng-href="#vote">投票</a>
+        <div><a ng-href="#jobManager">定时任务 <label style="color: red">DEV</label></a></div>
+
+        <div><a ng-href="#compareJson">JSON比较 <label style="color: red"> 0.0.2 加入差异着色</label></a></div>
+        <div><a ng-href="#generalUdateSQLBuilder">数据库修改 <label style="color:red">DEV</label></a></div>
+        <div><a ng-href="#caseList">导入导出方案 <label style="color: red">β</label></a></div>
+
+        <div><a ng-href="#projectEnvironments">项目环境列表 <label style="color: red">1.0.0</label></a></div>
+        <div><a ng-href="#changeUserName">修改招聘用户名 <label style="color: red">1.0.0</label></a></div>
+        <div><a ng-href="#eController">e日志分析 <label style="color: red">1.0.0</label></a></div>
+    </div>
+    <div ng-view></div>
+</body>
+</html>

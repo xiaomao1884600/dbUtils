@@ -1,0 +1,34 @@
+<style>
+    md-input-container {
+        vertical-align:top;
+    }
+</style>
+<div>
+    <md-input-container>
+        <label>请输入所在城市</label>
+        <input type ng-model="$ctrl.city">
+    </md-input-container>
+    <md-input-container>
+        <label>请输入关键字</label>
+        <input type ng-model="$ctrl.keyword">
+    </md-input-container>
+
+    <md-input-container>
+        <md-select ng-model="$ctrl.selectedSource" placeholder="选择数据来源">
+            <md-option ng-value="item" ng-repeat="item in $ctrl.sources">{{ item.name }}</md-option>
+        </md-select>
+    </md-input-container>
+    <md-input-container>
+        <button ng-click="$ctrl.doSearch(0)">搜索</button>
+    </md-input-container>
+</div>
+<d-pager current-page="$ctrl.currentPage" record-per-page="10" total-page="$ctrl.totalPage" display-page-number="5" callback="$ctrl.doSearch" record-start-at1="false" total-records="$ctrl.totalRecords"></d-pager>
+<d-grid grid-data="$ctrl.universities" column-defines="$ctrl.__columnDefines" operations="$ctrl.__operations"></d-grid>
+
+<div style="visibility: hidden;">
+    <div class="md-dialog-container" id="textBrowser">
+        <md-dialog layout-padding="">
+            <textarea style="width: 800px; height: 600px;">{{$ctrl.text}}</textarea>
+        </md-dialog>
+    </div>
+</div>

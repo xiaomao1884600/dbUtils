@@ -1,0 +1,86 @@
+<style>
+    td,th{
+        padding: 2px 10px;
+    }
+    tr:nth-child(odd),tr:hover{
+        background-color: #f0f0f0;
+    }
+    .red {
+        background-color: #ff8864;
+    }
+    .green {
+        background-color: #3e8f3e;
+    }
+    .ngdialog.ngdialog-theme-plain.custom-width .ngdialog-content {
+        width: 550px;
+    }
+
+    .warning {
+        color : #ff8864;
+    }
+</style>
+<div style="padding-left: 20px;">
+    <div>
+        <label>请选择要使用的数据库</label><d-group-radio cookie-name="eDataSource"></d-group-radio>
+        <button ng-click="$ctrl.getEtlCases()">获取etl方案信息</button>
+    </div>
+
+    <div>
+        <label>添加etl方案</label>
+        <div><label>etl方案名称</label><input type="text" ng-model="$ctrl.addingEtlCaseName"/></div>
+        <div><label>源表名（远程表名）</label><input type="text" ng-model="$ctrl.addingOriginTableName"/></div>
+        <div><label>目标表名（实体表名）</label><input type="text" ng-model="$ctrl.addingTargetTableName" ng-change="$ctrl.targetTableNameChanged()"/></div>
+        <div><label>主键</label><input type="text" ng-model="$ctrl.addingPrimaryKey"/></div>
+        <div><label>条件</label><input type="text" ng-model="$ctrl.addingCondition"/></div>
+        <button ng-click="$ctrl.addCase()">添加</button>
+    </div>
+
+    <div>
+        <span>
+            <button ng-click="$ctrl.selectAllCases()">全选</button>
+        </span>
+        <span>
+            <button ng-click="$ctrl.unselectAllCases()">取消全选</button>
+        </span>
+        <span>
+            <button ng-click="$ctrl.runCases()">执行选中</button>
+        </span>
+        <div>
+            {{$ctrl.groupProgress}}
+        </div>
+    </div>
+
+    <table>
+        <thead>
+        <tr>
+            <th>编号</th>
+            <th>选择</th>
+            <th>方案名称</th>
+            <th>状态</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in $ctrl.etlCases">
+            <td>{{item.id}}</td>
+            <td><input type="checkbox" ng-model="item.selected"/></td>
+            <td>{{item.name}}</td>
+            <td>{{item.progress}}</td>
+            <td>
+                <button ng-click="$ctrl.run(item)" ng-disabled="item.running">执行</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script type="text/ng-template" id="modalDialogId">
+    <div class="ngdialog-message">
+        <h3>确认</h3>
+        <p>是否要删除名为{{ngDialogData}}的方案吗？</p>
+    </div>
+    <div class="ngdialog-buttons">
+        <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm(true)">确认</button>
+        <button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog(true)">取消</button>
+    </div>
+</script>

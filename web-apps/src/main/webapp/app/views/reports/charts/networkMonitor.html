@@ -1,0 +1,14 @@
+<div>
+    <div id="header">
+        <md-input-container>
+            <md-select ng-model="$ctrl.parameters.realUrl" placeholder="请选择要查询的网站">
+                <md-option ng-value="item" ng-repeat="item in $ctrl.monitoredUrls">{{ item }}</md-option>
+            </md-select>
+        </md-input-container> <button ng-click="$ctrl.getData()">获取</button>
+
+        <d-date-time-picker start-time="$ctrl.startTime" end-time="$ctrl.endTime" date-group="$ctrl.dateGroup"></d-date-time-picker>
+
+        <!-- <datetime-range start="$ctrl.startTimeDisplay" end="$ctrl.endTimeDisplay"></datetime-range> -->
+    </div>
+    <line-chart parameters="$ctrl.parameters" getter-realUrl="$ctrl.dataUrl" options="$ctrl.data" header-height="126px;" chart-id="network" chart-height="$ctrl.chartHeight"></line-chart>
+</div>

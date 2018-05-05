@@ -1,0 +1,17 @@
+<div>
+
+    <md-input-container>
+        <label for="mobile">请输入学生手机号</label>
+        <input ng-model="$ctrl.mobile" id="mobile">
+    </md-input-container>
+
+    <md-input-container >
+        <md-button class="primary" ng-click="$ctrl.getData()">查询</md-button>
+    </md-input-container>
+</div>
+
+
+
+<div  class="monitor-chart">
+    <d-grid column-defines="$ctrl.__callInfoColumnDefines" grid-data="$ctrl.data"></d-grid>
+</div>

@@ -1,0 +1,45 @@
+<div>
+    <div>
+        <h3 style="text-align: center">{{$ctrl.title}}</h3>
+        <table>
+            <tr>
+                <td width="33%">
+                    <pie-chart title="工作经验" height="'100px;'" chart-data="$ctrl.analyzeResult.experienceData" legends="$ctrl.analyzeResult.experienceLegends" chart-id="experience"></pie-chart>
+                </td>
+
+                <td width="33%">
+                    <pie-chart title="学历" height="'100px;'" chart-data="$ctrl.analyzeResult.degreeData" legends="$ctrl.analyzeResult.degreeLegends" chart-id="degree"></pie-chart>
+                </td>
+
+                <td width="33%">
+                    <pie-chart title="薪资" height="'100px;'" chart-data="$ctrl.analyzeResult.salaryData" legends="$ctrl.analyzeResult.salaryLegends" chart-id="salary"></pie-chart>
+                </td>
+
+            </tr>
+        </table>
+    </div>
+    <d-grid grid-data="$ctrl.analyzeResult.detailResult" column-defines="$ctrl.columnDefines" operations="$ctrl.operations"></d-grid>
+</div>
+
+
+<div style="width:100%;height: 100%; position:fixed;top: 0;left: 0;z-index: 10001"  ng-hide="$ctrl.hideDetail">
+    <div class="detailDialog"  style="width:1200px;height:430px;position: absolute; top:50%;left: 50%;margin: -200px 0 0  -600px;z-index: 2;background: #fff;box-shadow:0 0 3px #333;border-radius: 10px">
+        <h3 style="text-align: center">{{$ctrl.provincePostTitle}}</h3>
+        <table>
+            <tr>
+                <td width="33%">
+                    <pie-chart title="工作经验" height="'100px;'" chart-data="$ctrl.provinceJobTypeResult.experienceData" legends="$ctrl.provinceJobTypeResult.experienceLegends" chart-id="experienceDetail"></pie-chart>
+                </td>
+
+                <td width="33%">
+                    <pie-chart title="学历" height="'100px;'" chart-data="$ctrl.provinceJobTypeResult.degreeData" legends="$ctrl.provinceJobTypeResult.degreeLegends" chart-id="degreeDetail"></pie-chart>
+                </td>
+
+                <td width="33%">
+                    <pie-chart title="薪资" height="'100px;'" chart-data="$ctrl.provinceJobTypeResult.salaryData" legends="$ctrl.provinceJobTypeResult.salaryLegends" chart-id="salaryDetail"></pie-chart>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div ng-click="$ctrl.onDetailBlur()" style="width:100%;height: 100%;position: absolute;top: 0;left: 0;z-index: 1"></div>
+</div>

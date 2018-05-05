@@ -1,0 +1,58 @@
+<div>
+
+    <div layout="row">
+
+
+        <term selected-term-id="'next'" start-term-id="167" selected-term="$ctrl.selectedTerm"
+              on-change="$ctrl.getDataGeneratedTime"></term>
+
+
+        <md-input-container>
+            <md-button class="md-primary" ng-click="$ctrl.generateData()">生成确认数据</md-button>
+            <md-button class="md-primary" ng-click="$ctrl.downloadDetail()">下载详情</md-button>
+            <md-button class="md-primary" ng-click="$ctrl.downloadResignedEnrollment()">下载离职ADA持有报名量</md-button>
+        </md-input-container>
+    </div>
+
+
+    <label><span ng-if="$ctrl.selectedTerm.termid">{{$ctrl.selectedTerm.title}}期</span>数据生成时间：{{$ctrl.dataGeneratedTime}}</label>
+    <div layout="row">
+        <md-select ng-model="$ctrl.selectedClassType" placeholder="请选择专业班类型">
+            <md-option ng-value="item" ng-repeat="item in $ctrl.classTypes">{{ item.name }}</md-option>
+        </md-select>
+        <md-select ng-model="$ctrl.selectedCreateType" placeholder="请选择建表类型">
+            <md-option ng-value="item" ng-repeat="item in $ctrl.createTypes">{{ item.name }}</md-option>
+        </md-select>
+        <md-input-container>
+            <md-button class="md-primary" ng-click="$ctrl.getStatistic()">查看确认统计</md-button>
+        </md-input-container>
+    </div>
+
+    <div ng-if="$ctrl.statisticData.all">
+        <label>全国</label> <label ng-if="$ctrl.selectedClassType && $ctrl.selectedClassType.id > 0">{{$ctrl.selectedClassType.name}}</label>
+        <label>共报名{{$ctrl.statisticData.all.total}}人，</label> <label ng-if="$ctrl.statisticData.all.confirm">准时入学{{$ctrl.statisticData.all.confirm}}人，占{{$ctrl.statisticData.all.confirmPercent}}%，</label>
+        <label ng-if="$ctrl.statisticData.all.drop">不能准时入学{{$ctrl.statisticData.all.drop}}人，占{{$ctrl.statisticData.all.dropPercent}}%，</label>
+        <label ng-if="$ctrl.statisticData.all.unknown">尚未确认{{$ctrl.statisticData.all.unknown}}人，
+            占{{$ctrl.statisticData.all.unknownPercent}}%</label>
+    </div>
+
+    <md-tabs md-selected="$ctrl.selectedIndex" md-dynamic-height="true">
+        <md-tab ng-repeat="entry in $ctrl.statisticData.campuses" md-on-select="$ctrl.renderChart(entry)">
+            <md-tab-label>
+                <div>
+                    <label>{{entry.campus}}</label>
+                </div>
+            </md-tab-label>
+            <md-tab-body>
+                <label>{{entry.campus}}</label> <label
+                    ng-if="$ctrl.selectedClassType && $ctrl.selectedClassType.id > 0">{{$ctrl.selectedClassType.name}}</label>
+                <label>共报名{{entry.total}}人，</label> <label ng-if="entry.confirm">准时入学{{entry.confirm}}人，占{{entry.confirmPercent}}%，</label>
+                <label ng-if="entry.drop">不能准时入学{{entry.drop}}人，占{{entry.dropPercent}}%，</label> <label
+                    ng-if="entry.unknown">尚未确认{{entry.unknown}}人， 占{{entry.unknownPercent}}%</label>
+                <d-grid grid-data="entry.specialty" column-defines="$ctrl.__specialtyColumnDefines"></d-grid>
+                <h4>ADA确认统计</h4>
+                <d-grid grid-data="entry.ada" column-defines="$ctrl.__adaColumnDefines"></d-grid>
+            </md-tab-body>
+        </md-tab>
+    </md-tabs>
+</div>

@@ -1,0 +1,229 @@
+<style>
+    .recordText {
+        border-radius: 3px;
+        border: 1px solid #000;
+        padding: 3px 5px;
+        max-width: 500px;
+        min-width: 200px;
+    }
+
+    .role-left {
+        background-color: aliceblue;
+        float: left;
+    }
+
+    .role-right {
+        background-color: #beebff;
+        float: right;
+    }
+
+    table.tab tr td {
+        padding: 3px;
+    }
+
+    .tagged {
+        background: #f2dede;
+    }
+
+</style>
+
+<div layout-gt-sm="row">
+    <campus-team selected-campus="$ctrl.selectedCampus" selected-team-user="$ctrl.selectedTeamUser" team-users-under-campus="$ctrl.teamUsersUnderCampus" layout="row" on-loaded="$ctrl.onCampusTeamLoaded"></campus-team>
+    <!--
+    todo
+    <md-input-container >
+        <md-select ng-model="$ctrl.selectedCampus" placeholder="请选择校区" md-on-close="$ctrl.onCampusChanged()">
+            <md-option ng-value="item" ng-repeat="item in $ctrl.campus">{{ item.name }}</md-option>
+        </md-select>
+    </md-input-container>
+
+
+    <md-autocomplete style="margin-top: 8px;"
+            md-no-cache="true"
+            md-selected-item="$ctrl.selectedTeamUser"
+            md-search-text-change="$ctrl.searchTextChange($ctrl.searchText)"
+            md-search-text="$ctrl.searchUserName"
+            md-items="item in $ctrl.query($ctrl.searchUserName)"
+            md-item-text="item.username"
+            md-min-length="0"
+            placeholder="请选择学生负责人">
+        <md-item-template>
+            <span md-highlight-text="$ctrl.searchUserName" md-highlight-flags="^i">{{item.username}}</span>
+        </md-item-template>
+        <md-not-found>
+            未找到 "{{$ctrl.searchUserName}}"
+        </md-not-found>
+    </md-autocomplete>
+
+    -->
+
+    <md-input-container>
+        <label>分机号码</label>
+        <input ng-model="$ctrl.user_mobile">
+    </md-input-container>
+
+    <md-input-container>
+        <label>学生姓名或手机号</label>
+        <input ng-model="$ctrl.search">
+    </md-input-container>
+    <md-input-container>
+        <label>通话时长，单位分钟（支持>-<）</label>
+        <input ng-model="$ctrl.when_long">
+    </md-input-container>
+
+
+
+    <md-input-container >
+        <md-select ng-model="$ctrl.readFlag" placeholder="审查标记">
+            <md-option ng-value="item" ng-repeat="item in $ctrl.readFlags">{{ item.name }}</md-option>
+        </md-select>
+    </md-input-container>
+
+
+    <md-input-container ng-show="$ctrl.developer">
+        <button ng-click="$ctrl.clearRecordIds()">清除录音编号</button>
+    </md-input-container>
+
+
+    <md-input-container>
+        <button ng-click="$ctrl.doSearch()">搜索</button>
+    </md-input-container>
+</div>
+
+<div layout="row">
+
+    <md-input-container ng-if="$ctrl.developer">
+        <md-select ng-model="$ctrl.selectedFeedbackLevel" placeholder="咨询量等级">
+            <md-option ng-value="item" ng-repeat="item in $ctrl.feedbackLevels">{{ item.name }}</md-option>
+        </md-select>
+    </md-input-container>
+
+    <md-input-container>
+        <md-select ng-model="$ctrl.selectedSearchRole" placeholder="关键词查询范围">
+            <md-option ng-value="item" ng-repeat="item in $ctrl.searchRoles">{{ item.name }}</md-option>
+        </md-select>
+    </md-input-container>
+
+
+    <md-input-container>
+        <label>关键词</label>
+        <input ng-model="$ctrl.keyword">
+    </md-input-container>
+
+    <md-input-container>
+        <md-select ng-model="$ctrl.selectedKeywordGroup" placeholder="关键词组">
+            <md-option ng-value="item" ng-repeat="item in $ctrl.keywordGroups">{{ item.name }}</md-option>
+        </md-select>
+    </md-input-container>
+
+</div>
+
+<div width="100%" ng-show="$ctrl.developer">
+    <md-input-container>
+        <textarea aria-label="录音编号" ng-model="$ctrl.recordIds" style="max-height: 100px; overflow-y: scroll; width: 400px;"></textarea>
+    </md-input-container>
+    <md-input-container>
+        <md-checkbox ng-model="$ctrl.containTencentResult" aria-label="包含腾讯云识别结果" class="md-align-top-left md-primary">
+            包含腾讯云识别结果
+        </md-checkbox>
+    </md-input-container>
+</div>
+
+<d-simple-date-time-picker start-time="$ctrl.startTime" end-time="$ctrl.endTime" date-group="$ctrl.dateGroup"></d-simple-date-time-picker>
+
+<d-pager current-page="$ctrl.currentPage" total-page="$ctrl.totalPage" display-page-number="5" record-per-page="$ctrl.recordPerPage" callback="$ctrl.getData" total-records="$ctrl.totalRecords"></d-pager>
+
+<table st-table="$ctrl.displayData" st-safe-src="$ctrl.records" class="table table-striped">
+    <thead>
+    <tr>
+        <th st-sort="username">招生负责人</th>
+        <th st-sort="studentname" ng-if="!$ctrl.skipStudentInfo">学生姓名</th>
+        <th st-sort="studentid" ng-if="$ctrl.skipStudentInfo">学生id</th>
+        <th st-sort="campusName">所属校区</th>
+        <th st-sort="calltype">类型</th>
+        <th st-sort="datetime">通话时间</th>
+        <th st-sort="billable">通话时长</th>
+        <th>异议得分</th>
+        <th>播放</th>
+        <th>下载</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="row in $ctrl.displayData">
+        <!--<td>{{row.username}}（{{row.user_mobile}}）</td>-->
+        <td>{{row.username}}（<span ng-bind-html="row.user_mobile"></span>）</td>
+        <td ng-if="!$ctrl.skipStudentInfo"><span ng-bind-html="row.studentname"></span>(<span ng-bind-html="row.student_mobile"></span>)</td>
+        <td ng-if="$ctrl.skipStudentInfo">{{row.studentid}}</td>
+        <td>{{row.campusName}}</td>
+        <td>{{row.calltype_title}}</td>
+        <td>{{row.datetime}}</td>
+        <td>{{row.duration}}</td>
+        <td> <a href="javascript:void(0);" ng-click="$ctrl.showObejctDetail(row);">{{row.objectionScore}}</a></td>
+        <td>
+            <!-- onplay="com.doubeye.Utils.audioPlayer.onPlay(event)" -->
+            <audio ng-src="{{row.oss_path}}" controls="controls" preload="none" ng-click="$ctrl.prePlay(row)" onplay="com.doubeye.Utils.audioPlayer.onPlay(event)" onerror="com.doubeye.Utils.audioPlayer.audioSrcError(event)"></audio>
+        </td>
+        <td>
+            <md-button class="md-primary" ng-if="row.user_mobile.length === 8" ng-click="$ctrl.downloadCTIRecord(row)">下载</md-button>
+            <md-button class="md-primary" ng-if="row.user_mobile.length === 4 || row.user_mobile.length === 11" ng-href="{{row.oss_path}}">下载</md-button>
+        </td>
+        <td ng-class="((row.record_type && row.record_type.length > 0) || row.is_read === 1)? 'tagged' : ''">
+            <md-button class="md-primary" ng-click="$ctrl.showText(row)">显示文字</md-button>
+            <md-button class="md-primary" ng-click="$ctrl.showFeedback(row)">反馈</md-button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+<div style="visibility: hidden; width:800px;">
+    <div class="md-dialog-container" id="textBrowser">
+        <md-dialog layout-padding="" class="analyze-browser">
+            <record-analyze-result-browser user-id="$ctrl.userId" user-name="$ctrl.userName" analyze-result="$ctrl.currentRecord" show-confirm-operation="'true'" user-groups="$ctrl.userGroups" selected-tags="$ctrl.currentRecord.record_type" style="height: 90%"></record-analyze-result-browser>
+        </md-dialog>
+    </div>
+</div>
+
+<div style="visibility: hidden; width:200px;height: auto">
+    <div class="md-dialog-container" id="objectionDetial">
+        <md-dialog layout-padding="">
+            <div ng-repeat="tag in $ctrl.currentRecord.objection_tags.all">
+                <h4>{{tag.name}}</h4>
+                <span style="padding: 5px;" ng-repeat="term in tag.keywords">{{term.word}}({{term.studentCount}}/ {{term.userCount}})</span>
+            </div>
+        </md-dialog>
+    </div>
+</div>
+
+
+<div style="visibility: hidden; width:300px;height: auto">
+    <div class="md-dialog-container" id="feedback">
+        <md-dialog layout-padding="" style="width: 600px">
+
+            <md-toolbar class="md-theme-light" style="padding: 0">
+                <h2 class="md-toolbar-tools">
+                    <span>反馈信息</span>
+                </h2>
+            </md-toolbar>
+
+            <md-content>
+                <md-list>
+                    <md-list-item class="md-3-line" ng-repeat="item in $ctrl.currentRecord.feedback">
+                        <div class="md-list-item-text">
+                            <h4>{{item.feedback_username}} 于 {{item.feedback_time}} 添加备注：</h4>
+
+                            <p>反馈等级：{{item.feedback_level_title}}  反馈类型：{{item.feedback_type_title}}({{item.linked_title}})   意向：<span ng-if="item.term_title">{{item.term_title}}期{{item.specilaty_title}}</span> <span ng-if="!item.term_title">无</span></p>
+                            <p>未报名原因：<span ng-repeat="reason in item.no_enroll_reason_title" style="padding-right : 5px;">{{reason}}</span></p>
+                            <p ng-if="item.reminder_time" style="font-weight: bold">本次反馈添加了于{{item.reminder_time}}的反馈提醒 <i ng-if="item.relatefeedbackid" class="fa fa-check-square-o fa-lg" style="color:limegreen"></i><i ng-if="!item.relatefeedbackid" class="fa fa-pencil-square-o fa-lg" style="color:dodgerblue"></i></p>
+                            <p style="font-weight: bold">反馈内容：</p>
+                            <p ng-bind-html="item.trackcontent"></p>
+
+                        </div>
+                        <md-divider md-inset ng-if="!$last"></md-divider>
+                    </md-list-item>
+                </md-list>
+            </md-content>
+        </md-dialog>
+    </div>
+</div>
