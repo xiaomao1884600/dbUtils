@@ -4,7 +4,7 @@
  * 注意！！！不要将此文件加入到main.html的js加载中
  */
 angular.module('dayEnrollment', []).component('dayEnrollment', {
-    templateUrl: 'app/views/dataMining/edu/enrollment/trend/dayEnrollment.html',
+    templateUrl: 'app/views/dataMining/edu/enrollment/trend/dayEnrollmentReport.html',
     controller: ['httpService', 'authorizationService',
         function dayEnrollmentController(httpService, authorizationService) {
             var self = this;
@@ -55,6 +55,8 @@ angular.module('dayEnrollment', []).component('dayEnrollment', {
                     text : '详情',
                     callback : self.drillDown
                 }];
+
+
             }//END OF $onInit
         }]//EDN OF CONTROLLER
 });
