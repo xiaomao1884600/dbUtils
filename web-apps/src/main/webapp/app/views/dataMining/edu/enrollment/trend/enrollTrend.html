@@ -1,0 +1,35 @@
+<style>
+    .chart {
+        margin-top: 5px;
+    }
+</style>
+
+<div>
+    <md-input-container>
+        <md-select ng-model="$ctrl.selectedCampus" placeholder="请选择校区" md-on-close="$ctrl.onCampusChanged()">
+            <md-option ng-value="item" ng-repeat="item in $ctrl.campuses">{{ item.name }}</md-option>
+        </md-select>
+    </md-input-container>
+
+    <md-input-container>
+        <md-select ng-model="$ctrl.selectedTeam" placeholder="请选择团队">
+            <md-option ng-value="item.team_num" ng-repeat="item in $ctrl.teamsUnderCampus">{{ item.username }}</md-option>
+        </md-select>
+    </md-input-container>
+
+    <d-date-range-picker start-time="$ctrl.startTime" end-time="$ctrl.endTime" date-group="$ctrl.dateGroup"></d-date-range-picker>
+
+    <md-input-container>
+        <md-button ng-click="$ctrl.getData()" class="md-primary">查询</md-button>
+    </md-input-container>
+</div>
+<div>
+    <div class="chart">
+        <line-chart options="$ctrl.enrollCount"  title="'报名人数趋势对比'" chart-height="$ctrl.chartHeight" chart-width="$ctrl.chartWidth"
+                    chart-id="'callOutCountTrendStats'" force-re-render="'true'" on-click="$ctrl.onChartClick"></line-chart>
+    </div>
+    <div class="chart">
+        <line-chart options="$ctrl.sales"  title="'营收趋势对比'" chart-height="$ctrl.chartHeight" chart-width="$ctrl.chartWidth"
+                    chart-id="'callOutMobileTrendStats'" force-re-render="'true'" on-click="$ctrl.onChartClick"></line-chart>
+    </div>
+</div>

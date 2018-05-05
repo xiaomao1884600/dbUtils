@@ -1,0 +1,2 @@
+DROP TABLE test_differentiationTeller_result_table_1;
+DROP TABLE test_differentiationTeller_result_table_2;

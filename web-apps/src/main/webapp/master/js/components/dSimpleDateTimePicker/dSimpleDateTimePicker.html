@@ -1,0 +1,51 @@
+<style>
+    md-input-container {
+        vertical-align:top;
+    }
+    .time-part {
+        width : 40px !important;
+    }
+</style>
+<div layout="row">
+    <md-input-container>
+        <md-select ng-model="$ctrl.dateGroup" placeholder="请选择时间" md-on-close="$ctrl.getTimeRange(true)">
+            <md-option ng-value="item.identifier" ng-repeat="item in $ctrl.dateGroups">{{ item.name }}</md-option>
+        </md-select>
+    </md-input-container>
+
+
+    <md-input-container>
+        <label ng-disabled="$ctrl.dateGroup !== 'custom'">开始</label>
+        <md-datepicker ng-model="$ctrl.startDate" md-max-date="$ctrl.maxDate" ng-change="$ctrl.onDateChange('start')" ng-disabled="$ctrl.dateGroup !== 'custom'"></md-datepicker>
+    </md-input-container>
+    <md-input-container>
+        <label>时</label>
+        <input type="number" ng-model="$ctrl.startHourPart" min="0" max="23" class="time-part" ng-change="$ctrl.onTimeChange('start')" ng-disabled="$ctrl.dateGroup !== 'custom'"/>
+    </md-input-container>
+    <md-input-container>
+        <label>分</label>
+        <input type="number" ng-model="$ctrl.startMinutePart" min="0" max="59" class="time-part" ng-change="$ctrl.onTimeChange('start')" ng-disabled="$ctrl.dateGroup !== 'custom'"/>
+    </md-input-container>
+    <md-input-container>
+        <label>秒</label>
+        <input type="number" ng-model="$ctrl.startSecondPart" min="0" max="59" class="time-part" ng-change="$ctrl.onTimeChange('start')" ng-disabled="$ctrl.dateGroup !== 'custom'"/>
+    </md-input-container>
+    <md-input-container layout="row">
+        <label ng-disabled="$ctrl.dateGroup !== 'custom'">至</label>
+        <md-datepicker ng-model="$ctrl.endDate" ng-change="$ctrl.onDateChange('end')" ng-disabled="$ctrl.dateGroup !== 'custom'"></md-datepicker>
+    </md-input-container>
+
+    <md-input-container>
+        <label>时</label>
+        <input type="number" ng-model="$ctrl.endHourPart" min="0" max="23" class="time-part" ng-change="$ctrl.onTimeChange('end')" ng-disabled="$ctrl.dateGroup !== 'custom'"/>
+    </md-input-container>
+    <md-input-container>
+        <label>分</label>
+        <input type="number" ng-model="$ctrl.endMinutePart" min="0" max="59" class="time-part" ng-change="$ctrl.onTimeChange('end')" ng-disabled="$ctrl.dateGroup !== 'custom'"/>
+    </md-input-container>
+    <md-input-container>
+        <label>秒</label>
+        <input type="number" ng-model="$ctrl.endSecondPart" min="0" max="59" class="time-part" ng-change="$ctrl.onTimeChange('end')" ng-disabled="$ctrl.dateGroup !== 'custom'"/>
+    </md-input-container>
+
+</div>

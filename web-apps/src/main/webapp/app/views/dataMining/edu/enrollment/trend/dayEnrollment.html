@@ -1,0 +1,32 @@
+<div layout="row">
+    <md-input-container>
+        <md-select ng-model="$ctrl.selectedCampus" placeholder="请选择校区" >
+            <md-option ng-value="item" ng-repeat="item in $ctrl.campuses">{{ item.name }}</md-option>
+        </md-select>
+    </md-input-container>
+
+    <d-date-range-picker start-time="$ctrl.startTime" end-time="$ctrl.endTime" date-group="$ctrl.dateGroup"></d-date-range-picker>
+
+    <md-input-container>
+        <md-button ng-click="$ctrl.getData()" class="md-primary">查询</md-button>
+    </md-input-container>
+
+</div>
+
+<div>
+    <md-tabs md-selected="$ctrl.selectedIndex" md-dynamic-height="true" flex="75">
+        <md-tab ng-repeat="entry in $ctrl.tabs"  md-on-select="$ctrl.renderChart(entry)" >
+            <md-tab-label>
+                <div>
+                    <label>{{entry.name}}</label>
+                    <md-icon md-svg-src="images/icons/icon_close.svg" aria-label="关闭" ng-click="$ctrl.remove(entry)" ng-if="entry.type!=='all'" class="icon-close"></md-icon>
+                </div>
+            </md-tab-label>
+            <md-tab-body>
+                <h4 ng-if="entry.summaries">{{entry.summaries}}</h4>
+                <d-grid grid-data="entry.data" column-defines="$ctrl.__teamDefines" operations="$ctrl.__operations" select-model="'single'" ng-if="entry.type==='all'"></d-grid>
+                <d-grid grid-data="entry.data" column-defines="$ctrl.__teamDetailDefines" select-model="'single'" ng-if="entry.type==='team'" operations="$ctrl.__adaEndrollTrendOperations"></d-grid>
+            </md-tab-body>
+        </md-tab>
+    </md-tabs>
+</div>

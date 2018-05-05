@@ -1,0 +1,28 @@
+<md-toolbar class="md-theme-light" style="padding: 0">
+    <h2 class="md-toolbar-tools">
+        <span>添加新备注</span>
+        <md-button ng-click="$ctrl.saveNote()">保存</md-button>
+    </h2>
+</md-toolbar>
+
+<md-content style="height: 100px;">
+    <textarea style="width: 95%; height: 60px;" ng-model="$ctrl.currentNote"></textarea>
+</md-content>
+
+<md-toolbar class="md-theme-light" style="padding: 0">
+    <h2 class="md-toolbar-tools">
+        <span>历史备注</span>
+    </h2>
+</md-toolbar>
+
+<md-content>
+    <md-list>
+        <md-list-item class="md-3-line" ng-repeat="item in $ctrl.list">
+            <div class="md-list-item-text">
+                <h4>{{item.username}} 于 {{item.updated_at}} 备注：</h4>
+                <p>{{item.remark}}</p>
+            </div>
+            <md-divider md-inset ng-if="!$last"></md-divider>
+        </md-list-item>
+    </md-list>
+</md-content>

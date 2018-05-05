@@ -1,0 +1,38 @@
+<div>
+
+    <div layout="row">
+
+        <term selected-term-id="'next'" start-term-id="165" selected-term="$ctrl.selectedStartTerm"></term>
+
+
+        <term selected-term-id="'next'" start-term-id="165" selected-term="$ctrl.selectedEndTerm"></term>
+
+
+
+        <md-button class="md-primary" ng-click="$ctrl.getData()">查询</md-button>
+
+    </div>
+    <div>
+        <h5>{{$ctrl.summary}}</h5>
+        <d-grid grid-data="$ctrl.results" column-defines="$ctrl.__columnDefines"></d-grid>
+    </div>
+    <div>
+        <line-chart options="$ctrl.achieves"  title="'校区完成情况对比'" chart-height="$ctrl.chartHeight" chart-width="$ctrl.chartWidth"
+                    chart-id="'achievement'" y-axis-formatter="$ctrl.chartYAxisFormatter" axis-label-rotate="30" remark-config="$ctrl.chartRemarkConfig" title-position="center"></line-chart>
+        <span ng-if="$ctrl.developer" layout="row" style="height: 100px;">
+            <textarea ng-model="$ctrl.chartRemark" style="padding: 10px;" flex="80"></textarea>
+            <span layout="column">
+                <md-button ng-click="$ctrl.saveChartRemark()">保存备注</md-button>
+                <md-button ng-click="$ctrl.showAllRemark()">所有备注</md-button>
+            </span>
+        </span>
+    </div>
+</div>
+
+<div style="visibility: hidden; width:300px;height: auto">
+    <div class="md-dialog-container" id="noteDetail">
+        <md-dialog layout-padding="" style="width: 500px">
+            <remark-list user="$ctrl.user" list="$ctrl.chartRemark"></remark-list>
+        </md-dialog>
+    </div>
+</div>

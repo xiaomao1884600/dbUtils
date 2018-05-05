@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component LANGUAGE_LEVEL="JDK_1_5" inheritJdk="true">
+	<output-test realUrl="file://$MODULE_DIR$/target/test-classes"/>
+	<contentEntry realUrl="file://$MODULE_DIR$">
+		<excludeFolder realUrl="file://$MODULE_DIR$/target"/>
+	</contentEntry>
+</component>

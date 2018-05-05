@@ -1,0 +1,1286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - core@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
+    <root id="1"/>
+    <schema id="2" parent="1" name="core">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="newjob"/>
+    <schema id="6" parent="1" name="performance_schema"/>
+    <schema id="7" parent="1" name="second_core"/>
+    <schema id="8" parent="1" name="sys"/>
+    <table id="9" parent="2" name="core_datasource"/>
+    <table id="10" parent="2" name="core_datasource_group"/>
+    <table id="11" parent="2" name="core_datasource_type"/>
+    <table id="12" parent="2" name="function_reset_password_log"/>
+    <table id="13" parent="2" name="me_connection_log"/>
+    <table id="14" parent="2" name="t_clazz"/>
+    <table id="15" parent="2" name="t_enrollment">
+      <Comment>学生报名表</Comment>
+    </table>
+    <table id="16" parent="2" name="t_feelog"/>
+    <table id="17" parent="2" name="t_student">
+      <Comment>学生主表</Comment>
+    </table>
+    <table id="18" parent="2" name="t_studentecuser">
+      <Comment>学生当前负责人表</Comment>
+    </table>
+    <column id="19" parent="9" name="id">
+      <Position>1</Position>
+      <Comment>编号</Comment>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="20" parent="9" name="identifier">
+      <Position>2</Position>
+      <Comment>标识</Comment>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="21" parent="9" name="name">
+      <Position>3</Position>
+      <Comment>名称</Comment>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="22" parent="9" name="datasourceType">
+      <Position>4</Position>
+      <Comment>类型</Comment>
+      <DataType>tinyint(4)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="23" parent="9" name="username">
+      <Position>5</Position>
+      <Comment>用户名</Comment>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="24" parent="9" name="password">
+      <Position>6</Position>
+      <Comment>密码</Comment>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="25" parent="9" name="host">
+      <Position>7</Position>
+      <Comment>主机</Comment>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="26" parent="9" name="port">
+      <Position>8</Position>
+      <Comment>端口</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="27" parent="9" name="defaultSchema">
+      <Position>9</Position>
+      <Comment>默认数据库</Comment>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="28" parent="9" name="datasourceGroup">
+      <Position>10</Position>
+      <Comment>数据源组</Comment>
+      <DataType>tinyint(4)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="29" parent="9" name="fk_datasource_type">
+      <ColNames>datasourceType</ColNames>
+    </index>
+    <index id="30" parent="9" name="index_datasource">
+      <ColNames>identifier
+datasourceGroup</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="31" parent="9" name="pk_datasource_group">
+      <ColNames>datasourceGroup</ColNames>
+    </index>
+    <key id="32" parent="9" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="33" parent="9" name="index_datasource">
+      <ColNames>identifier
+datasourceGroup</ColNames>
+      <UnderlyingIndexName>index_datasource</UnderlyingIndexName>
+    </key>
+    <foreign-key id="34" parent="9" name="fk_datasource_type">
+      <ColNames>datasourceType</ColNames>
+      <RefSchemaName>core</RefSchemaName>
+      <RefTableName>core_datasource_type</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="35" parent="9" name="pk_datasource_group">
+      <ColNames>datasourceGroup</ColNames>
+      <RefSchemaName>core</RefSchemaName>
+      <RefTableName>core_datasource_group</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="36" parent="10" name="id">
+      <Position>1</Position>
+      <Comment>数据源组编号</Comment>
+      <DataType>tinyint(4)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="37" parent="10" name="identifier">
+      <Position>2</Position>
+      <Comment>标识</Comment>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="38" parent="10" name="datasource_group_name">
+      <Position>3</Position>
+      <Comment>数据源组名称</Comment>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="39" parent="10" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="40" parent="11" name="id">
+      <Position>1</Position>
+      <Comment>编号</Comment>
+      <DataType>tinyint(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="41" parent="11" name="identifier">
+      <Position>2</Position>
+      <Comment>标示符</Comment>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="42" parent="11" name="typeName">
+      <Position>3</Position>
+      <Comment>数据源类型名称</Comment>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="43" parent="11" name="driverClassName">
+      <Position>4</Position>
+      <Comment>数据源驱动类名称</Comment>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="44" parent="11" name="helperClassName">
+      <Position>5</Position>
+      <Comment>助手类类名称</Comment>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="45" parent="11" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="46" parent="12" name="datasource">
+      <Position>1</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="47" parent="12" name="userid">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="48" parent="12" name="username">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="49" parent="12" name="old_domain_flag">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="50" parent="12" name="old_password">
+      <Position>5</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="51" parent="12" name="old_salt">
+      <Position>6</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="52" parent="12" name="password">
+      <Position>7</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="53" parent="12" name="salt">
+      <Position>8</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <index id="54" parent="12" name="pk_reset_log">
+      <ColNames>datasource
+userid</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="55" parent="12" name="pk_reset_log">
+      <ColNames>datasource
+userid</ColNames>
+      <UnderlyingIndexName>pk_reset_log</UnderlyingIndexName>
+    </key>
+    <column id="56" parent="13" name="connection_start">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="57" parent="13" name="connection_return">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="58" parent="13" name="connection_cost">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="59" parent="13" name="query_start">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="60" parent="13" name="query_return">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="61" parent="13" name="query_cost">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="62" parent="13" name="connection_status">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="63" parent="13" name="query_status">
+      <Position>8</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="64" parent="13" name="connection_exception">
+      <Position>9</Position>
+      <DataType>varchar(1000)|0</DataType>
+    </column>
+    <column id="65" parent="13" name="query_exception">
+      <Position>10</Position>
+      <DataType>varchar(1000)|0</DataType>
+    </column>
+    <column id="66" parent="14" name="clazzid">
+      <Position>1</Position>
+      <DataType>int(11) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="67" parent="14" name="title">
+      <Position>2</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="68" parent="14" name="team">
+      <Position>3</Position>
+      <DataType>int(11) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="69" parent="14" name="termid">
+      <Position>4</Position>
+      <DataType>int(11) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="70" parent="14" name="specialtyid">
+      <Position>5</Position>
+      <DataType>int(11) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="71" parent="14" name="facultyid">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="72" parent="14" name="clazzweeks">
+      <Position>7</Position>
+      <DataType>smallint(6)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="73" parent="14" name="clazztimetype">
+      <Position>8</Position>
+      <DataType>tinyint(3) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;1&apos;</DefaultExpression>
+    </column>
+    <column id="74" parent="14" name="campusid">
+      <Position>9</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="75" parent="14" name="discarded">
+      <Position>10</Position>
+      <DataType>tinyint(1) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="76" parent="14" name="buildingid">
+      <Position>11</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="77" parent="14" name="buildingroomid">
+      <Position>12</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="78" parent="14" name="students">
+      <Position>13</Position>
+      <DataType>smallint(5) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="79" parent="14" name="planstudents">
+      <Position>14</Position>
+      <DataType>smallint(5) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="80" parent="14" name="enrolledstudents">
+      <Position>15</Position>
+      <DataType>smallint(5) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="81" parent="14" name="tuition">
+      <Position>16</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="82" parent="14" name="favorabletuition">
+      <Position>17</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="83" parent="14" name="startdate">
+      <Position>18</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0000-00-00&apos;</DefaultExpression>
+    </column>
+    <column id="84" parent="14" name="enddate">
+      <Position>19</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0000-00-00&apos;</DefaultExpression>
+    </column>
+    <column id="85" parent="14" name="introduction">
+      <Position>20</Position>
+      <DataType>mediumtext|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="86" parent="14" name="memo">
+      <Position>21</Position>
+      <DataType>mediumtext|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="87" parent="14" name="userid">
+      <Position>22</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="88" parent="14" name="dateline">
+      <Position>23</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="89" parent="14" name="deluserid">
+      <Position>24</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="90" parent="14" name="deldateline">
+      <Position>25</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="91" parent="14" name="deleted">
+      <Position>26</Position>
+      <DataType>tinyint(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="92" parent="14" name="clazztutor">
+      <Position>27</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="93" parent="14" name="teacher">
+      <Position>28</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="94" parent="14" name="preparation">
+      <Position>29</Position>
+      <Comment>是否预科班</Comment>
+      <DataType>mediumint(1) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="95" parent="14" name="preparationtuition">
+      <Position>30</Position>
+      <Comment>报名本班且同时报名预科班时，预科班应缴学费</Comment>
+      <DataType>int(10) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="96" parent="14" name="usepreparation">
+      <Position>31</Position>
+      <Comment>是否启用预科班优惠</Comment>
+      <DataType>mediumint(1) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="97" parent="14" name="computer">
+      <Position>32</Position>
+      <Comment>电脑数量</Comment>
+      <DataType>smallint(5) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="98" parent="14" name="onlinecourseid">
+      <Position>33</Position>
+      <DataType>smallint(5) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="99" parent="14" name="onlinecoursestarttimeid">
+      <Position>34</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="100" parent="14" name="lowerlimit">
+      <Position>35</Position>
+      <Comment>教学下限</Comment>
+      <DataType>tinyint(2)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="101" parent="14" name="upcoursetime">
+      <Position>36</Position>
+      <Comment>上课时间</Comment>
+      <DataType>varchar(64)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="102" parent="14" name="attr">
+      <Position>37</Position>
+      <Comment>班级属性 1=OT, 2= O, 3=PT</Comment>
+      <DataType>tinyint(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="103" parent="14" name="realestimate">
+      <Position>38</Position>
+      <Comment>班级实招人数估算</Comment>
+      <DataType>smallint(6) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="104" parent="14" name="onlinetermid">
+      <Position>39</Position>
+      <Comment>腾讯课堂期数</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="105" parent="14" name="specialclazz">
+      <Position>40</Position>
+      <Comment>特训班 -1  非特训班 -2</Comment>
+      <DataType>tinyint(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <index id="106" parent="14" name="campusid">
+      <ColNames>campusid</ColNames>
+    </index>
+    <index id="107" parent="14" name="classname">
+      <ColNames>title</ColNames>
+    </index>
+    <index id="108" parent="14" name="classroomid">
+      <ColNames>buildingroomid</ColNames>
+    </index>
+    <index id="109" parent="14" name="courseid">
+      <ColNames>specialtyid</ColNames>
+    </index>
+    <index id="110" parent="14" name="intendingnum">
+      <ColNames>students</ColNames>
+    </index>
+    <index id="111" parent="14" name="team">
+      <ColNames>team</ColNames>
+    </index>
+    <index id="112" parent="14" name="term">
+      <ColNames>termid</ColNames>
+    </index>
+    <key id="113" parent="14" name="PRIMARY">
+      <ColNames>clazzid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="114" parent="15" name="enrollmentid">
+      <Position>1</Position>
+      <Comment>主键</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="115" parent="15" name="studentid">
+      <Position>2</Position>
+      <Comment>学生id</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="116" parent="15" name="clazzpricing">
+      <Position>3</Position>
+      <Comment>班级定价</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="117" parent="15" name="receivabletuition">
+      <Position>4</Position>
+      <Comment>学生应缴费用（实际需缴费用）</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="118" parent="15" name="termid">
+      <Position>5</Position>
+      <Comment>火星期</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="119" parent="15" name="clazzid">
+      <Position>6</Position>
+      <Comment>班级id</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="120" parent="15" name="seatnum">
+      <Position>7</Position>
+      <Comment>座位号</Comment>
+      <DataType>smallint(6)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="121" parent="15" name="status">
+      <Position>8</Position>
+      <Comment>报名状态(注：根据状态变更)</Comment>
+      <DataType>tinyint(4)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="122" parent="15" name="adaid">
+      <Position>9</Position>
+      <Comment>教育顾问负责人</Comment>
+      <DataType>int(10) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="123" parent="15" name="paiddateline">
+      <Position>10</Position>
+      <Comment>缴齐学费时间</Comment>
+      <DataType>int(10) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="124" parent="15" name="dateline">
+      <Position>11</Position>
+      <Comment>报名时间</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="125" parent="15" name="deluserid">
+      <Position>12</Position>
+      <Comment>删除人</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="126" parent="15" name="deldateline">
+      <Position>13</Position>
+      <Comment>删除时间</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="127" parent="15" name="deleted">
+      <Position>14</Position>
+      <Comment>删除标记</Comment>
+      <DataType>tinyint(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="128" parent="15" name="enrollqueueid">
+      <Position>15</Position>
+      <Comment>排队id</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="129" parent="15" name="userid">
+      <Position>16</Position>
+      <Comment>操作人</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="130" parent="15" name="insertstart">
+      <Position>17</Position>
+      <Comment>插班开始时间</Comment>
+      <DataType>int(10) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="131" parent="15" name="insertend">
+      <Position>18</Position>
+      <Comment>插班结束时间</Comment>
+      <DataType>int(10) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="132" parent="15" name="exclude">
+      <Position>19</Position>
+      <Comment>不计绩效</Comment>
+      <DataType>tinyint(3) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="133" parent="15" name="insertweek">
+      <Position>20</Position>
+      <Comment>插班周数</Comment>
+      <DataType>mediumint(2) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="134" parent="15" name="second">
+      <Position>21</Position>
+      <Comment>是否二次报名（插班\报名班级开课5天后新报名为二次报名）</Comment>
+      <DataType>tinyint(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="135" parent="15" name="onlinetermid">
+      <Position>22</Position>
+      <Comment>腾讯课堂期数</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="136" parent="15" name="fromenrollmentid">
+      <Position>23</Position>
+      <Comment>上一次报名id（0代表新报名，&gt;0代表非新报名）</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="137" parent="15" name="fromclazzid">
+      <Position>24</Position>
+      <Comment>上次报名班级id</Comment>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="138" parent="15" name="fromenrollmentstatus">
+      <Position>25</Position>
+      <Comment>本次报名状态（注：不变更；1为新报名，2为转班）</Comment>
+      <DataType>int(2)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="139" parent="15" name="flow">
+      <Position>26</Position>
+      <Comment>0报名流程审核中，1为流程结束(成功)，2为审批失败，10为延班审核中，20为休学审核中，30为退班审核中，40为复学审核中</Comment>
+      <DataType>tinyint(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="140" parent="15" name="image">
+      <Position>27</Position>
+      <Comment>附件</Comment>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="141" parent="15" name="campusid">
+      <Position>28</Position>
+      <Comment>报名的时候的校区，费用校区根据此校区处理（解决无限期/不确定期）</Comment>
+      <DataType>smallint(6)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <index id="142" parent="15" name="clazzid">
+      <ColNames>clazzid</ColNames>
+    </index>
+    <index id="143" parent="15" name="fromenrollmentid">
+      <ColNames>enrollmentid</ColNames>
+    </index>
+    <index id="144" parent="15" name="status">
+      <ColNames>status</ColNames>
+    </index>
+    <index id="145" parent="15" name="studentid">
+      <ColNames>studentid</ColNames>
+    </index>
+    <index id="146" parent="15" name="termid">
+      <ColNames>termid</ColNames>
+    </index>
+    <key id="147" parent="15" name="PRIMARY">
+      <ColNames>enrollmentid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <trigger id="148" parent="15" name="enrollment_update_log_insert">
+      <Turn>after-row</Turn>
+      <Events>I</Events>
+    </trigger>
+    <trigger id="149" parent="15" name="enrollment_update_log_update">
+      <Turn>after-row</Turn>
+      <Events>U</Events>
+    </trigger>
+    <column id="150" parent="16" name="feelogid">
+      <Position>1</Position>
+      <DataType>int(10) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="151" parent="16" name="feelogcode">
+      <Position>2</Position>
+      <DataType>char(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="152" parent="16" name="studentid">
+      <Position>3</Position>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="153" parent="16" name="enrollmentid">
+      <Position>4</Position>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="154" parent="16" name="campusid">
+      <Position>5</Position>
+      <Comment>缴费校区</Comment>
+      <DataType>int(10) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="155" parent="16" name="clazzid">
+      <Position>6</Position>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="156" parent="16" name="clazztitle">
+      <Position>7</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="157" parent="16" name="feeactionid">
+      <Position>8</Position>
+      <DataType>tinyint(3) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="158" parent="16" name="feetypeid">
+      <Position>9</Position>
+      <DataType>tinyint(3) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="159" parent="16" name="feetypeprefix">
+      <Position>10</Position>
+      <DataType>char(1)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="160" parent="16" name="feepaytypeid">
+      <Position>11</Position>
+      <DataType>tinyint(3) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="161" parent="16" name="receivablemoney">
+      <Position>12</Position>
+      <DataType>decimal(11,2)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0.00&apos;</DefaultExpression>
+    </column>
+    <column id="162" parent="16" name="money">
+      <Position>13</Position>
+      <DataType>decimal(11,2)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0.00&apos;</DefaultExpression>
+    </column>
+    <column id="163" parent="16" name="description">
+      <Position>14</Position>
+      <Comment>付款描述</Comment>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="164" parent="16" name="status">
+      <Position>15</Position>
+      <DataType>tinyint(4)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="165" parent="16" name="realpostdate">
+      <Position>16</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <column id="166" parent="16" name="posting">
+      <Position>17</Position>
+      <DataType>tinyint(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="167" parent="16" name="postinguserid">
+      <Position>18</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="168" parent="16" name="postingdateline">
+      <Position>19</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="169" parent="16" name="userid">
+      <Position>20</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="170" parent="16" name="dateline">
+      <Position>21</Position>
+      <DataType>int(10) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="171" parent="16" name="deluserid">
+      <Position>22</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="172" parent="16" name="deldateline">
+      <Position>23</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="173" parent="16" name="deleted">
+      <Position>24</Position>
+      <DataType>tinyint(4)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="174" parent="16" name="hidden">
+      <Position>25</Position>
+      <DataType>tinyint(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="175" parent="16" name="transferid">
+      <Position>26</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="176" parent="16" name="transfermemo">
+      <Position>27</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="177" parent="16" name="transfercode">
+      <Position>28</Position>
+      <Comment>冲红对应新开收据</Comment>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="178" parent="16" name="objectid">
+      <Position>29</Position>
+      <Comment>记录ID</Comment>
+      <DataType>int(10) unsigned|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="179" parent="16" name="discount">
+      <Position>30</Position>
+      <DataType>decimal(9,2)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;1.00&apos;</DefaultExpression>
+    </column>
+    <column id="180" parent="16" name="extension">
+      <Position>31</Position>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+    <column id="181" parent="16" name="openbank">
+      <Position>32</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="182" parent="16" name="accountname">
+      <Position>33</Position>
+      <Comment>账户名</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="183" parent="16" name="account">
+      <Position>34</Position>
+      <DataType>varchar(25)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="184" parent="16" name="cancelreason">
+      <Position>35</Position>
+      <Comment>取消过账原因</Comment>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="185" parent="16" name="canceluserid">
+      <Position>36</Position>
+      <Comment>取消过账操作人</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="186" parent="16" name="canceldateline">
+      <Position>37</Position>
+      <Comment>取消过帐操作时间</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="187" parent="16" name="issendmail">
+      <Position>38</Position>
+      <Comment>1=已发送，0=未发送</Comment>
+      <DataType>tinyint(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="188" parent="16" name="poststatus">
+      <Position>39</Position>
+      <Comment>冲红冲抵状态</Comment>
+      <DataType>varchar(25)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="189" parent="16" name="arefundstatus">
+      <Position>40</Position>
+      <Comment>管理证件押金 1-退费</Comment>
+      <DataType>tinyint(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="190" parent="16" name="image">
+      <Position>41</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <index id="191" parent="16" name="deleted">
+      <ColNames>deleted</ColNames>
+    </index>
+    <index id="192" parent="16" name="enrollmentid">
+      <ColNames>enrollmentid</ColNames>
+    </index>
+    <index id="193" parent="16" name="feelogcode">
+      <ColNames>feelogcode</ColNames>
+    </index>
+    <index id="194" parent="16" name="feetypeid">
+      <ColNames>feetypeid</ColNames>
+    </index>
+    <index id="195" parent="16" name="studentid">
+      <ColNames>studentid</ColNames>
+    </index>
+    <index id="196" parent="16" name="transfercode">
+      <ColNames>transfercode</ColNames>
+    </index>
+    <key id="197" parent="16" name="PRIMARY">
+      <ColNames>feelogid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="198" parent="17" name="studentid">
+      <Position>1</Position>
+      <Comment>学生主键</Comment>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="199" parent="17" name="studentname">
+      <Position>2</Position>
+      <Comment>学生姓名</Comment>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="200" parent="17" name="nameprefix">
+      <Position>3</Position>
+      <Comment>姓名拼音</Comment>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="201" parent="17" name="campusid">
+      <Position>4</Position>
+      <Comment>校区id</Comment>
+      <DataType>smallint(6)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="202" parent="17" name="avatar">
+      <Position>5</Position>
+      <Comment>头像</Comment>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="203" parent="17" name="gender">
+      <Position>6</Position>
+      <Comment>性别  1=男  2=女</Comment>
+      <DataType>tinyint(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="204" parent="17" name="idtype">
+      <Position>7</Position>
+      <Comment>证件类型</Comment>
+      <DataType>tinyint(3)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="205" parent="17" name="idcard">
+      <Position>8</Position>
+      <Comment>证件</Comment>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="206" parent="17" name="reverseidcard">
+      <Position>9</Position>
+      <Comment>反转证件号码（检索用）</Comment>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="207" parent="17" name="mobile">
+      <Position>10</Position>
+      <Comment>手机号</Comment>
+      <DataType>char(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="208" parent="17" name="mobile2">
+      <Position>11</Position>
+      <Comment>手机号2</Comment>
+      <DataType>char(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="209" parent="17" name="qq">
+      <Position>12</Position>
+      <Comment>qq</Comment>
+      <DataType>varchar(15)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="210" parent="17" name="qq2">
+      <Position>13</Position>
+      <Comment>qq2</Comment>
+      <DataType>varchar(15)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="211" parent="17" name="email">
+      <Position>14</Position>
+      <Comment>邮箱</Comment>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="212" parent="17" name="wechat">
+      <Position>15</Position>
+      <Comment>微信</Comment>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="213" parent="17" name="provinceid">
+      <Position>16</Position>
+      <Comment>省</Comment>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="214" parent="17" name="cityid">
+      <Position>17</Position>
+      <Comment>市</Comment>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="215" parent="17" name="districtid">
+      <Position>18</Position>
+      <Comment>地区（县）</Comment>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="216" parent="17" name="userid">
+      <Position>19</Position>
+      <Comment>建表人</Comment>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="217" parent="17" name="dateline">
+      <Position>20</Position>
+      <Comment>建表时间</Comment>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="218" parent="17" name="studentnumber">
+      <Position>21</Position>
+      <Comment>学号</Comment>
+      <DataType>varchar(30)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="219" parent="17" name="oldstudent">
+      <Position>22</Position>
+      <Comment>是否旧量  1=是  0=否</Comment>
+      <DataType>tinyint(3)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="220" parent="17" name="isrefresh">
+      <Position>23</Position>
+      <Comment>是否重新建表</Comment>
+      <DataType>tinyint(1)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="221" parent="17" name="changedateline">
+      <Position>24</Position>
+      <Comment>插入或新建时间</Comment>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <index id="222" parent="17" name="changedateline">
+      <ColNames>changedateline</ColNames>
+    </index>
+    <index id="223" parent="17" name="dateline">
+      <ColNames>dateline</ColNames>
+    </index>
+    <index id="224" parent="17" name="idcard">
+      <ColNames>idcard</ColNames>
+    </index>
+    <index id="225" parent="17" name="mobile">
+      <ColNames>mobile</ColNames>
+    </index>
+    <index id="226" parent="17" name="mobile2">
+      <ColNames>mobile2</ColNames>
+    </index>
+    <index id="227" parent="17" name="oldstudentcampus">
+      <ColNames>campusid
+oldstudent</ColNames>
+    </index>
+    <index id="228" parent="17" name="qq">
+      <ColNames>qq</ColNames>
+    </index>
+    <index id="229" parent="17" name="qq2">
+      <ColNames>qq2</ColNames>
+    </index>
+    <index id="230" parent="17" name="reverseidcard">
+      <ColNames>reverseidcard</ColNames>
+    </index>
+    <index id="231" parent="17" name="studentname">
+      <ColNames>studentname</ColNames>
+    </index>
+    <index id="232" parent="17" name="studentnamemobile">
+      <ColNames>studentname
+mobile</ColNames>
+    </index>
+    <index id="233" parent="17" name="studentnamemobile2">
+      <ColNames>studentname
+mobile2</ColNames>
+    </index>
+    <index id="234" parent="17" name="studentnumber">
+      <ColNames>studentnumber</ColNames>
+    </index>
+    <index id="235" parent="17" name="wechat">
+      <ColNames>wechat</ColNames>
+    </index>
+    <key id="236" parent="17" name="PRIMARY">
+      <ColNames>studentid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="237" parent="18" name="studentid">
+      <Position>1</Position>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="238" parent="18" name="ecuserid">
+      <Position>2</Position>
+      <Comment>学生当前负责人</Comment>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="239" parent="18" name="ecdateline">
+      <Position>3</Position>
+      <Comment>学生当前负责时间</Comment>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="240" parent="18" name="isfeedback">
+      <Position>4</Position>
+      <Comment>是否有反馈 1=是 ，0=否</Comment>
+      <DataType>tinyint(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="241" parent="18" name="isenrollment">
+      <Position>5</Position>
+      <Comment>是否报过名  1= 是 0 = 否</Comment>
+      <DataType>tinyint(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="242" parent="18" name="isassigned">
+      <Position>6</Position>
+      <Comment>是否分配过 1=是 0=否 2=预约分配中(已经预约)</Comment>
+      <DataType>tinyint(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <index id="243" parent="18" name="ecdateline">
+      <ColNames>ecdateline</ColNames>
+    </index>
+    <index id="244" parent="18" name="ecuserid">
+      <ColNames>ecuserid</ColNames>
+    </index>
+    <key id="245" parent="18" name="PRIMARY">
+      <ColNames>studentid</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

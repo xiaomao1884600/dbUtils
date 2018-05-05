@@ -1,0 +1,73 @@
+<style>
+    md-input-container {
+        vertical-align:top;
+    }
+
+    .icon-close {
+        width: 16px;
+        height: 16px;
+        min-width: 16px !important;
+        min-height: 16px;
+        text-align: -webkit-right;
+        vertical-align: top;
+    }
+
+    .ngdialog.ngdialog-theme-default {
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-left: 280px;
+    }
+    .ngdialog.ngdialog-theme-default.width-full .ngdialog-content {
+        width: 100%;
+        height: calc(100% - 5px);
+        border-radius: 0;
+        overflow: scroll;
+    }
+
+</style>
+<div layout="row">
+    <md-input-container>
+        <md-select ng-model="$ctrl.selectedCampus" placeholder="请选择校区" >
+            <md-option ng-value="item" ng-repeat="item in $ctrl.campuses">{{ item.name }}</md-option>
+        </md-select>
+    </md-input-container>
+
+
+    <md-input-container>
+        <md-switch ng-model="$ctrl.mode" aria-label="mode" ng-true-value="'自然日'" ng-false-value="'期'" class="md-primary" style="margin-top: 0px !important;">
+            {{$ctrl.mode}}
+        </md-switch>
+    </md-input-container>
+    <d-date-range-picker ng-show="$ctrl.mode === '自然日'" start-time="$ctrl.startTime" end-time="$ctrl.endTime" date-group="$ctrl.dateGroup"></d-date-range-picker>
+    <term ng-show="$ctrl.mode === '期'" selected-term-id="'next'" start-term-id="166" selected-term="$ctrl.selectedTerm" on-loaded="$ctrl.onTermLoaded" on-change="$ctrl.onTermChange"></term>
+
+
+    <md-input-container>
+        <md-button ng-click="$ctrl.getData()" class="md-primary">查询</md-button>
+    </md-input-container>
+
+</div>
+
+<div layout="row">
+    <md-tabs md-selected="$ctrl.selectedIndex" md-dynamic-height="true" flex="75">
+        <md-tab ng-repeat="entry in $ctrl.tabs"  md-on-select="$ctrl.renderChart(entry)" >
+            <md-tab-label>
+                <div>
+                    <label>{{entry.name}}</label>
+                    <md-icon md-svg-src="images/icons/icon_close.svg" aria-label="关闭" ng-click="$ctrl.remove(entry)" ng-if="entry.type!=='all'" class="icon-close"></md-icon>
+                </div>
+            </md-tab-label>
+            <md-tab-body>
+                <h4 ng-if="entry.summaries">{{entry.summaries}}</h4>
+                <d-grid grid-data="entry.data" column-defines="$ctrl.__teamDefines" operations="$ctrl.__operations" select-model="'single'" ng-if="entry.type==='all'"></d-grid>
+                <d-grid grid-data="entry.data" column-defines="$ctrl.__teamDetailDefines" select-model="'single'" ng-if="entry.type==='team'" operations="$ctrl.__adaEndrollTrendOperations"></d-grid>
+            </md-tab-body>
+        </md-tab>
+    </md-tabs>
+
+    <div flex="25" ng-show="$ctrl.showTrendChart">
+        <line-chart title-position="'center'" options="$ctrl.enrollTrendData"  title="$ctrl.chartTitle" chart-height="$ctrl.chartHeight" chart-width="$ctrl.chartWidth"
+                    chart-id="'enrollTrend'" force-re-render="true"></line-chart>
+    </div>
+
+</div>

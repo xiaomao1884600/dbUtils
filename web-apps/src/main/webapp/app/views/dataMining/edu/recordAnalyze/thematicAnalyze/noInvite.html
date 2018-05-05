@@ -1,0 +1,43 @@
+<div layout-gt-sm="row">
+    <!--
+    <md-input-container >
+        <md-select ng-model="$ctrl.selectedCampus" placeholder="请选择校区" md-on-close="$ctrl.onCampusChanged()">
+            <md-option ng-value="item" ng-repeat="item in $ctrl.campus">{{ item.name }}</md-option>
+        </md-select>
+    </md-input-container>
+
+
+    <md-autocomplete style="margin-top: 8px;"
+                     md-no-cache="true"
+                     md-selected-item="$ctrl.selectedTeamUser"
+                     md-search-text-change="$ctrl.searchTextChange($ctrl.searchText)"
+                     md-search-text="$ctrl.searchUserName"
+                     md-items="item in $ctrl.query($ctrl.searchUserName)"
+                     md-item-text="item.username"
+                     md-min-length="0"
+                     placeholder="请选择学生负责人">
+        <md-item-template>
+            <span md-highlight-text="$ctrl.searchUserName" md-highlight-flags="^i">{{item.username}}</span>
+        </md-item-template>
+        <md-not-found>
+            未找到 "{{$ctrl.searchUserName}}"
+        </md-not-found>
+    </md-autocomplete>
+    -->
+    <campus-team selected-campus="$ctrl.selectedCampus" selected-team-user="$ctrl.selectedTeamUser" team-users-under-campus="$ctrl.teamUsersUnderCampus" layout="row"></campus-team>
+
+    <md-input-container>
+        <label>分配时间</label>
+        <input name="assignDays" ng-model="$ctrl.assignDays" placeholder="7" type="number"
+               required ng-maxlength="2">
+    </md-input-container>
+
+    <md-input-container>
+        <button ng-click="$ctrl.doSearch(1)">搜索</button>
+    </md-input-container>
+</div>
+
+<div>
+    <d-pager current-page="$ctrl.currentPage" total-page="$ctrl.totalPage" display-page-number="5" record-per-page="$ctrl.recordPerPage" callback="$ctrl.doSearch" total-records="$ctrl.totalRecords"></d-pager>
+    <d-grid grid-data="$ctrl.data" column-defines="$ctrl.__columnDefines" select-model="'single'" operations="$ctrl.__operations"></d-grid>
+</div>

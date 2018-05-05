@@ -1,0 +1,23 @@
+<md-input-container >
+    <md-select ng-model="$ctrl.selectedCampus" placeholder="请选择校区" md-on-close="$ctrl.onCampusChanged()">
+        <md-option ng-value="item" ng-repeat="item in $ctrl.campus">{{ item.name }}</md-option>
+    </md-select>
+</md-input-container>
+
+
+<md-autocomplete style="margin-top: 8px;"
+                 md-no-cache="true"
+                 md-selected-item="$ctrl.selectedTeamUser"
+                 md-search-text-change="$ctrl.searchTextChange($ctrl.searchText)"
+                 md-search-text="$ctrl.searchUserName"
+                 md-items="item in $ctrl.query($ctrl.searchUserName)"
+                 md-item-text="item.username"
+                 md-min-length="0"
+                 placeholder="请选择学生负责人">
+    <md-item-template>
+        <span md-highlight-text="$ctrl.searchUserName" md-highlight-flags="^i">{{item.username}}</span>
+    </md-item-template>
+    <md-not-found>
+        未找到 "{{$ctrl.searchUserName}}"
+    </md-not-found>
+</md-autocomplete>

@@ -1,0 +1,21 @@
+<div layout="row">
+    <term selected-term-id="'next'" start-term-id="165" selected-term="$ctrl.selectedTerm"></term>
+    <md-input-container>
+        <md-button class="md-primary" ng-click="$ctrl.getData()">查询</md-button>
+    </md-input-container>
+</div>
+
+<table st-table="$ctrl.displayData" st-safe-src="$ctrl.goals" class="table table-striped">
+    <thead>
+    <tr>
+        <th st-sort="manager_username">校区</th>
+        <th st-sort="enrolled_goal">目标</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="row in $ctrl.displayData">
+        <td>{{row.campus_title}}</td>
+        <td><input ng-model="row.enrolled_goal" ng-blur="$ctrl.save(row)"></td>
+    </tr>
+    </tbody>
+</table>
