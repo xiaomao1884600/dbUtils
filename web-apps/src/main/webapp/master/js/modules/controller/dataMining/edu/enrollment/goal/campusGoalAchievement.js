@@ -185,7 +185,6 @@ angular.module('campusGoalAchievement', []).component('campusGoalAchievement', {
                     }]);
 
                     com.doubeye.Utils.chart.processLineChartData(chartData, self, 'campus_title', self.__chartConfigs);
-                    console.log(self.achieves);
                 };
                 
                 this.getData = function () {

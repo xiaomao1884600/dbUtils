@@ -96,5 +96,5 @@ angular.module('Routing', ['ui.router'])
     })
 
     .run(function (router) {
-        router.setUpRoutes();
+        //router.setUpRoutes();
     });
